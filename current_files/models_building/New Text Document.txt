@@ -1,0 +1,4661 @@
+C:\Users\o.mahmud\AppData\Local\anaconda3\python.exe "C:\Users\o.mahmud\Desktop\IOT\New folder\our\main.py" 
+
+======================================================================
+ANGRY EMOTION DETECTION SYSTEM - Complete Pipeline
+======================================================================
+Using Librosa MFCC computation
+======================================================================
+
+STEP 1: Loading and Splitting Data
+----------------------------------------------------------------------
+
+======================================================================
+LOADING ALL DATASETS
+======================================================================
+
+Processing AudioWAV_crema:
+  Loading angry emotion:
+  Found 1271 WAV files in angry
+  Loading other emotions:
+  Found 6171 WAV files in other
+  Total from AudioWAV_crema: 7442 audios
+
+Processing research_data_esd:
+  Loading angry emotion:
+  Found 7000 WAV files in angry
+  Loading other emotions:
+  Found 35000 WAV files in other
+  Total from research_data_esd: 42000 audios
+
+======================================================================
+TOTAL AUDIOS LOADED: 49442
+  - Angry: 8271
+  - Other: 41171
+======================================================================
+
+======================================================================
+DATA SPLIT SUMMARY
+======================================================================
+
+Training Set: 39553 audios
+  - Angry: 6617
+  - Other: 32936
+
+Test Set: 9889 audios
+  - Angry: 1654
+  - Other: 8235
+======================================================================
+
+
+======================================================================
+STEP 2: Training Models
+----------------------------------------------------------------------
+
+======================================================================
+Training MiniVGG16
+======================================================================
+
+======================================================================
+EXTRACTING MFCC FEATURES FOR MiniVGG16
+======================================================================
+
+Computing training MFCCs...
+  Processed 50/39553 audios
+  Processed 100/39553 audios
+  Processed 150/39553 audios
+  Processed 200/39553 audios
+  Processed 250/39553 audios
+  Processed 300/39553 audios
+  Processed 350/39553 audios
+  Processed 400/39553 audios
+  Processed 450/39553 audios
+  Processed 500/39553 audios
+  Processed 550/39553 audios
+  Processed 600/39553 audios
+  Processed 650/39553 audios
+  Processed 700/39553 audios
+  Processed 750/39553 audios
+  Processed 800/39553 audios
+  Processed 850/39553 audios
+  Processed 900/39553 audios
+  Processed 950/39553 audios
+  Processed 1000/39553 audios
+  Processed 1050/39553 audios
+  Processed 1100/39553 audios
+  Processed 1150/39553 audios
+  Processed 1200/39553 audios
+  Processed 1250/39553 audios
+  Processed 1300/39553 audios
+  Processed 1350/39553 audios
+  Processed 1400/39553 audios
+  Processed 1450/39553 audios
+  Processed 1500/39553 audios
+  Processed 1550/39553 audios
+  Processed 1600/39553 audios
+  Processed 1650/39553 audios
+  Processed 1700/39553 audios
+  Processed 1750/39553 audios
+  Processed 1800/39553 audios
+  Processed 1850/39553 audios
+  Processed 1900/39553 audios
+  Processed 1950/39553 audios
+  Processed 2000/39553 audios
+  Processed 2050/39553 audios
+  Processed 2100/39553 audios
+  Processed 2150/39553 audios
+  Processed 2200/39553 audios
+  Processed 2250/39553 audios
+  Processed 2300/39553 audios
+  Processed 2350/39553 audios
+  Processed 2400/39553 audios
+  Processed 2450/39553 audios
+  Processed 2500/39553 audios
+  Processed 2550/39553 audios
+  Processed 2600/39553 audios
+  Processed 2650/39553 audios
+  Processed 2700/39553 audios
+  Processed 2750/39553 audios
+  Processed 2800/39553 audios
+  Processed 2850/39553 audios
+  Processed 2900/39553 audios
+  Processed 2950/39553 audios
+  Processed 3000/39553 audios
+  Processed 3050/39553 audios
+  Processed 3100/39553 audios
+  Processed 3150/39553 audios
+  Processed 3200/39553 audios
+  Processed 3250/39553 audios
+  Processed 3300/39553 audios
+  Processed 3350/39553 audios
+  Processed 3400/39553 audios
+  Processed 3450/39553 audios
+  Processed 3500/39553 audios
+  Processed 3550/39553 audios
+  Processed 3600/39553 audios
+  Processed 3650/39553 audios
+  Processed 3700/39553 audios
+  Processed 3750/39553 audios
+  Processed 3800/39553 audios
+  Processed 3850/39553 audios
+  Processed 3900/39553 audios
+  Processed 3950/39553 audios
+  Processed 4000/39553 audios
+  Processed 4050/39553 audios
+  Processed 4100/39553 audios
+  Processed 4150/39553 audios
+  Processed 4200/39553 audios
+  Processed 4250/39553 audios
+  Processed 4300/39553 audios
+  Processed 4350/39553 audios
+  Processed 4400/39553 audios
+  Processed 4450/39553 audios
+  Processed 4500/39553 audios
+  Processed 4550/39553 audios
+  Processed 4600/39553 audios
+  Processed 4650/39553 audios
+  Processed 4700/39553 audios
+  Processed 4750/39553 audios
+  Processed 4800/39553 audios
+  Processed 4850/39553 audios
+  Processed 4900/39553 audios
+  Processed 4950/39553 audios
+  Processed 5000/39553 audios
+  Processed 5050/39553 audios
+  Processed 5100/39553 audios
+  Processed 5150/39553 audios
+  Processed 5200/39553 audios
+  Processed 5250/39553 audios
+  Processed 5300/39553 audios
+  Processed 5350/39553 audios
+  Processed 5400/39553 audios
+  Processed 5450/39553 audios
+  Processed 5500/39553 audios
+  Processed 5550/39553 audios
+  Processed 5600/39553 audios
+  Processed 5650/39553 audios
+  Processed 5700/39553 audios
+  Processed 5750/39553 audios
+  Processed 5800/39553 audios
+  Processed 5850/39553 audios
+  Processed 5900/39553 audios
+  Processed 5950/39553 audios
+  Processed 6000/39553 audios
+  Processed 6050/39553 audios
+  Processed 6100/39553 audios
+  Processed 6150/39553 audios
+  Processed 6200/39553 audios
+  Processed 6250/39553 audios
+  Processed 6300/39553 audios
+  Processed 6350/39553 audios
+  Processed 6400/39553 audios
+  Processed 6450/39553 audios
+  Processed 6500/39553 audios
+  Processed 6550/39553 audios
+  Processed 6600/39553 audios
+  Processed 6650/39553 audios
+  Processed 6700/39553 audios
+  Processed 6750/39553 audios
+  Processed 6800/39553 audios
+  Processed 6850/39553 audios
+  Processed 6900/39553 audios
+  Processed 6950/39553 audios
+  Processed 7000/39553 audios
+  Processed 7050/39553 audios
+  Processed 7100/39553 audios
+  Processed 7150/39553 audios
+  Processed 7200/39553 audios
+  Processed 7250/39553 audios
+  Processed 7300/39553 audios
+  Processed 7350/39553 audios
+  Processed 7400/39553 audios
+  Processed 7450/39553 audios
+  Processed 7500/39553 audios
+  Processed 7550/39553 audios
+  Processed 7600/39553 audios
+  Processed 7650/39553 audios
+  Processed 7700/39553 audios
+  Processed 7750/39553 audios
+  Processed 7800/39553 audios
+  Processed 7850/39553 audios
+  Processed 7900/39553 audios
+  Processed 7950/39553 audios
+  Processed 8000/39553 audios
+  Processed 8050/39553 audios
+  Processed 8100/39553 audios
+  Processed 8150/39553 audios
+  Processed 8200/39553 audios
+  Processed 8250/39553 audios
+  Processed 8300/39553 audios
+  Processed 8350/39553 audios
+  Processed 8400/39553 audios
+  Processed 8450/39553 audios
+  Processed 8500/39553 audios
+  Processed 8550/39553 audios
+  Processed 8600/39553 audios
+  Processed 8650/39553 audios
+  Processed 8700/39553 audios
+  Processed 8750/39553 audios
+  Processed 8800/39553 audios
+  Processed 8850/39553 audios
+  Processed 8900/39553 audios
+  Processed 8950/39553 audios
+  Processed 9000/39553 audios
+  Processed 9050/39553 audios
+  Processed 9100/39553 audios
+  Processed 9150/39553 audios
+  Processed 9200/39553 audios
+  Processed 9250/39553 audios
+  Processed 9300/39553 audios
+  Processed 9350/39553 audios
+  Processed 9400/39553 audios
+  Processed 9450/39553 audios
+  Processed 9500/39553 audios
+  Processed 9550/39553 audios
+  Processed 9600/39553 audios
+  Processed 9650/39553 audios
+  Processed 9700/39553 audios
+  Processed 9750/39553 audios
+  Processed 9800/39553 audios
+  Processed 9850/39553 audios
+  Processed 9900/39553 audios
+  Processed 9950/39553 audios
+  Processed 10000/39553 audios
+  Processed 10050/39553 audios
+  Processed 10100/39553 audios
+  Processed 10150/39553 audios
+  Processed 10200/39553 audios
+  Processed 10250/39553 audios
+  Processed 10300/39553 audios
+  Processed 10350/39553 audios
+  Processed 10400/39553 audios
+  Processed 10450/39553 audios
+  Processed 10500/39553 audios
+  Processed 10550/39553 audios
+  Processed 10600/39553 audios
+  Processed 10650/39553 audios
+  Processed 10700/39553 audios
+  Processed 10750/39553 audios
+  Processed 10800/39553 audios
+  Processed 10850/39553 audios
+  Processed 10900/39553 audios
+  Processed 10950/39553 audios
+  Processed 11000/39553 audios
+  Processed 11050/39553 audios
+  Processed 11100/39553 audios
+  Processed 11150/39553 audios
+  Processed 11200/39553 audios
+  Processed 11250/39553 audios
+  Processed 11300/39553 audios
+  Processed 11350/39553 audios
+  Processed 11400/39553 audios
+  Processed 11450/39553 audios
+  Processed 11500/39553 audios
+  Processed 11550/39553 audios
+  Processed 11600/39553 audios
+  Processed 11650/39553 audios
+  Processed 11700/39553 audios
+  Processed 11750/39553 audios
+  Processed 11800/39553 audios
+  Processed 11850/39553 audios
+  Processed 11900/39553 audios
+  Processed 11950/39553 audios
+  Processed 12000/39553 audios
+  Processed 12050/39553 audios
+  Processed 12100/39553 audios
+  Processed 12150/39553 audios
+  Processed 12200/39553 audios
+  Processed 12250/39553 audios
+  Processed 12300/39553 audios
+  Processed 12350/39553 audios
+  Processed 12400/39553 audios
+  Processed 12450/39553 audios
+  Processed 12500/39553 audios
+  Processed 12550/39553 audios
+  Processed 12600/39553 audios
+  Processed 12650/39553 audios
+  Processed 12700/39553 audios
+  Processed 12750/39553 audios
+  Processed 12800/39553 audios
+  Processed 12850/39553 audios
+  Processed 12900/39553 audios
+  Processed 12950/39553 audios
+  Processed 13000/39553 audios
+  Processed 13050/39553 audios
+  Processed 13100/39553 audios
+  Processed 13150/39553 audios
+  Processed 13200/39553 audios
+  Processed 13250/39553 audios
+  Processed 13300/39553 audios
+  Processed 13350/39553 audios
+  Processed 13400/39553 audios
+  Processed 13450/39553 audios
+  Processed 13500/39553 audios
+  Processed 13550/39553 audios
+  Processed 13600/39553 audios
+  Processed 13650/39553 audios
+  Processed 13700/39553 audios
+  Processed 13750/39553 audios
+  Processed 13800/39553 audios
+  Processed 13850/39553 audios
+  Processed 13900/39553 audios
+  Processed 13950/39553 audios
+  Processed 14000/39553 audios
+  Processed 14050/39553 audios
+  Processed 14100/39553 audios
+  Processed 14150/39553 audios
+  Processed 14200/39553 audios
+  Processed 14250/39553 audios
+  Processed 14300/39553 audios
+  Processed 14350/39553 audios
+  Processed 14400/39553 audios
+  Processed 14450/39553 audios
+  Processed 14500/39553 audios
+  Processed 14550/39553 audios
+  Processed 14600/39553 audios
+  Processed 14650/39553 audios
+  Processed 14700/39553 audios
+  Processed 14750/39553 audios
+  Processed 14800/39553 audios
+  Processed 14850/39553 audios
+  Processed 14900/39553 audios
+  Processed 14950/39553 audios
+  Processed 15000/39553 audios
+  Processed 15050/39553 audios
+  Processed 15100/39553 audios
+  Processed 15150/39553 audios
+  Processed 15200/39553 audios
+  Processed 15250/39553 audios
+  Processed 15300/39553 audios
+  Processed 15350/39553 audios
+  Processed 15400/39553 audios
+  Processed 15450/39553 audios
+  Processed 15500/39553 audios
+  Processed 15550/39553 audios
+  Processed 15600/39553 audios
+  Processed 15650/39553 audios
+  Processed 15700/39553 audios
+  Processed 15750/39553 audios
+  Processed 15800/39553 audios
+  Processed 15850/39553 audios
+  Processed 15900/39553 audios
+  Processed 15950/39553 audios
+  Processed 16000/39553 audios
+  Processed 16050/39553 audios
+  Processed 16100/39553 audios
+  Processed 16150/39553 audios
+  Processed 16200/39553 audios
+  Processed 16250/39553 audios
+  Processed 16300/39553 audios
+  Processed 16350/39553 audios
+  Processed 16400/39553 audios
+  Processed 16450/39553 audios
+  Processed 16500/39553 audios
+  Processed 16550/39553 audios
+  Processed 16600/39553 audios
+  Processed 16650/39553 audios
+  Processed 16700/39553 audios
+  Processed 16750/39553 audios
+  Processed 16800/39553 audios
+  Processed 16850/39553 audios
+  Processed 16900/39553 audios
+  Processed 16950/39553 audios
+  Processed 17000/39553 audios
+  Processed 17050/39553 audios
+  Processed 17100/39553 audios
+  Processed 17150/39553 audios
+  Processed 17200/39553 audios
+  Processed 17250/39553 audios
+  Processed 17300/39553 audios
+  Processed 17350/39553 audios
+  Processed 17400/39553 audios
+  Processed 17450/39553 audios
+  Processed 17500/39553 audios
+  Processed 17550/39553 audios
+  Processed 17600/39553 audios
+  Processed 17650/39553 audios
+  Processed 17700/39553 audios
+  Processed 17750/39553 audios
+  Processed 17800/39553 audios
+  Processed 17850/39553 audios
+  Processed 17900/39553 audios
+  Processed 17950/39553 audios
+  Processed 18000/39553 audios
+  Processed 18050/39553 audios
+  Processed 18100/39553 audios
+  Processed 18150/39553 audios
+  Processed 18200/39553 audios
+  Processed 18250/39553 audios
+  Processed 18300/39553 audios
+  Processed 18350/39553 audios
+  Processed 18400/39553 audios
+  Processed 18450/39553 audios
+  Processed 18500/39553 audios
+  Processed 18550/39553 audios
+  Processed 18600/39553 audios
+  Processed 18650/39553 audios
+  Processed 18700/39553 audios
+  Processed 18750/39553 audios
+  Processed 18800/39553 audios
+  Processed 18850/39553 audios
+  Processed 18900/39553 audios
+  Processed 18950/39553 audios
+  Processed 19000/39553 audios
+  Processed 19050/39553 audios
+  Processed 19100/39553 audios
+  Processed 19150/39553 audios
+  Processed 19200/39553 audios
+  Processed 19250/39553 audios
+  Processed 19300/39553 audios
+  Processed 19350/39553 audios
+  Processed 19400/39553 audios
+  Processed 19450/39553 audios
+  Processed 19500/39553 audios
+  Processed 19550/39553 audios
+  Processed 19600/39553 audios
+  Processed 19650/39553 audios
+  Processed 19700/39553 audios
+  Processed 19750/39553 audios
+  Processed 19800/39553 audios
+  Processed 19850/39553 audios
+  Processed 19900/39553 audios
+  Processed 19950/39553 audios
+  Processed 20000/39553 audios
+  Processed 20050/39553 audios
+  Processed 20100/39553 audios
+  Processed 20150/39553 audios
+  Processed 20200/39553 audios
+  Processed 20250/39553 audios
+  Processed 20300/39553 audios
+  Processed 20350/39553 audios
+  Processed 20400/39553 audios
+  Processed 20450/39553 audios
+  Processed 20500/39553 audios
+  Processed 20550/39553 audios
+  Processed 20600/39553 audios
+  Processed 20650/39553 audios
+  Processed 20700/39553 audios
+  Processed 20750/39553 audios
+  Processed 20800/39553 audios
+  Processed 20850/39553 audios
+  Processed 20900/39553 audios
+  Processed 20950/39553 audios
+  Processed 21000/39553 audios
+  Processed 21050/39553 audios
+  Processed 21100/39553 audios
+  Processed 21150/39553 audios
+  Processed 21200/39553 audios
+  Processed 21250/39553 audios
+  Processed 21300/39553 audios
+  Processed 21350/39553 audios
+  Processed 21400/39553 audios
+  Processed 21450/39553 audios
+  Processed 21500/39553 audios
+  Processed 21550/39553 audios
+  Processed 21600/39553 audios
+  Processed 21650/39553 audios
+  Processed 21700/39553 audios
+  Processed 21750/39553 audios
+  Processed 21800/39553 audios
+  Processed 21850/39553 audios
+  Processed 21900/39553 audios
+  Processed 21950/39553 audios
+  Processed 22000/39553 audios
+  Processed 22050/39553 audios
+  Processed 22100/39553 audios
+  Processed 22150/39553 audios
+  Processed 22200/39553 audios
+  Processed 22250/39553 audios
+  Processed 22300/39553 audios
+  Processed 22350/39553 audios
+  Processed 22400/39553 audios
+  Processed 22450/39553 audios
+  Processed 22500/39553 audios
+  Processed 22550/39553 audios
+  Processed 22600/39553 audios
+  Processed 22650/39553 audios
+  Processed 22700/39553 audios
+  Processed 22750/39553 audios
+  Processed 22800/39553 audios
+  Processed 22850/39553 audios
+  Processed 22900/39553 audios
+  Processed 22950/39553 audios
+  Processed 23000/39553 audios
+  Processed 23050/39553 audios
+  Processed 23100/39553 audios
+  Processed 23150/39553 audios
+  Processed 23200/39553 audios
+  Processed 23250/39553 audios
+  Processed 23300/39553 audios
+  Processed 23350/39553 audios
+  Processed 23400/39553 audios
+  Processed 23450/39553 audios
+  Processed 23500/39553 audios
+  Processed 23550/39553 audios
+  Processed 23600/39553 audios
+  Processed 23650/39553 audios
+  Processed 23700/39553 audios
+  Processed 23750/39553 audios
+  Processed 23800/39553 audios
+  Processed 23850/39553 audios
+  Processed 23900/39553 audios
+  Processed 23950/39553 audios
+  Processed 24000/39553 audios
+  Processed 24050/39553 audios
+  Processed 24100/39553 audios
+  Processed 24150/39553 audios
+  Processed 24200/39553 audios
+  Processed 24250/39553 audios
+  Processed 24300/39553 audios
+  Processed 24350/39553 audios
+  Processed 24400/39553 audios
+  Processed 24450/39553 audios
+  Processed 24500/39553 audios
+  Processed 24550/39553 audios
+  Processed 24600/39553 audios
+  Processed 24650/39553 audios
+  Processed 24700/39553 audios
+  Processed 24750/39553 audios
+  Processed 24800/39553 audios
+  Processed 24850/39553 audios
+  Processed 24900/39553 audios
+  Processed 24950/39553 audios
+  Processed 25000/39553 audios
+  Processed 25050/39553 audios
+  Processed 25100/39553 audios
+  Processed 25150/39553 audios
+  Processed 25200/39553 audios
+  Processed 25250/39553 audios
+  Processed 25300/39553 audios
+  Processed 25350/39553 audios
+  Processed 25400/39553 audios
+  Processed 25450/39553 audios
+  Processed 25500/39553 audios
+  Processed 25550/39553 audios
+  Processed 25600/39553 audios
+  Processed 25650/39553 audios
+  Processed 25700/39553 audios
+  Processed 25750/39553 audios
+  Processed 25800/39553 audios
+  Processed 25850/39553 audios
+  Processed 25900/39553 audios
+  Processed 25950/39553 audios
+  Processed 26000/39553 audios
+  Processed 26050/39553 audios
+  Processed 26100/39553 audios
+  Processed 26150/39553 audios
+  Processed 26200/39553 audios
+  Processed 26250/39553 audios
+  Processed 26300/39553 audios
+  Processed 26350/39553 audios
+  Processed 26400/39553 audios
+  Processed 26450/39553 audios
+  Processed 26500/39553 audios
+  Processed 26550/39553 audios
+  Processed 26600/39553 audios
+  Processed 26650/39553 audios
+  Processed 26700/39553 audios
+  Processed 26750/39553 audios
+  Processed 26800/39553 audios
+  Processed 26850/39553 audios
+  Processed 26900/39553 audios
+  Processed 26950/39553 audios
+  Processed 27000/39553 audios
+  Processed 27050/39553 audios
+  Processed 27100/39553 audios
+  Processed 27150/39553 audios
+  Processed 27200/39553 audios
+  Processed 27250/39553 audios
+  Processed 27300/39553 audios
+  Processed 27350/39553 audios
+  Processed 27400/39553 audios
+  Processed 27450/39553 audios
+  Processed 27500/39553 audios
+  Processed 27550/39553 audios
+  Processed 27600/39553 audios
+  Processed 27650/39553 audios
+  Processed 27700/39553 audios
+  Processed 27750/39553 audios
+  Processed 27800/39553 audios
+  Processed 27850/39553 audios
+  Processed 27900/39553 audios
+  Processed 27950/39553 audios
+  Processed 28000/39553 audios
+  Processed 28050/39553 audios
+  Processed 28100/39553 audios
+  Processed 28150/39553 audios
+  Processed 28200/39553 audios
+  Processed 28250/39553 audios
+  Processed 28300/39553 audios
+  Processed 28350/39553 audios
+  Processed 28400/39553 audios
+  Processed 28450/39553 audios
+  Processed 28500/39553 audios
+  Processed 28550/39553 audios
+  Processed 28600/39553 audios
+  Processed 28650/39553 audios
+  Processed 28700/39553 audios
+  Processed 28750/39553 audios
+  Processed 28800/39553 audios
+  Processed 28850/39553 audios
+  Processed 28900/39553 audios
+  Processed 28950/39553 audios
+  Processed 29000/39553 audios
+  Processed 29050/39553 audios
+  Processed 29100/39553 audios
+  Processed 29150/39553 audios
+  Processed 29200/39553 audios
+  Processed 29250/39553 audios
+  Processed 29300/39553 audios
+  Processed 29350/39553 audios
+  Processed 29400/39553 audios
+  Processed 29450/39553 audios
+  Processed 29500/39553 audios
+  Processed 29550/39553 audios
+  Processed 29600/39553 audios
+  Processed 29650/39553 audios
+  Processed 29700/39553 audios
+  Processed 29750/39553 audios
+  Processed 29800/39553 audios
+  Processed 29850/39553 audios
+  Processed 29900/39553 audios
+  Processed 29950/39553 audios
+  Processed 30000/39553 audios
+  Processed 30050/39553 audios
+  Processed 30100/39553 audios
+  Processed 30150/39553 audios
+  Processed 30200/39553 audios
+  Processed 30250/39553 audios
+  Processed 30300/39553 audios
+  Processed 30350/39553 audios
+  Processed 30400/39553 audios
+  Processed 30450/39553 audios
+  Processed 30500/39553 audios
+  Processed 30550/39553 audios
+  Processed 30600/39553 audios
+  Processed 30650/39553 audios
+  Processed 30700/39553 audios
+  Processed 30750/39553 audios
+  Processed 30800/39553 audios
+  Processed 30850/39553 audios
+  Processed 30900/39553 audios
+  Processed 30950/39553 audios
+  Processed 31000/39553 audios
+  Processed 31050/39553 audios
+  Processed 31100/39553 audios
+  Processed 31150/39553 audios
+  Processed 31200/39553 audios
+  Processed 31250/39553 audios
+  Processed 31300/39553 audios
+  Processed 31350/39553 audios
+  Processed 31400/39553 audios
+  Processed 31450/39553 audios
+  Processed 31500/39553 audios
+  Processed 31550/39553 audios
+  Processed 31600/39553 audios
+  Processed 31650/39553 audios
+  Processed 31700/39553 audios
+  Processed 31750/39553 audios
+  Processed 31800/39553 audios
+  Processed 31850/39553 audios
+  Processed 31900/39553 audios
+  Processed 31950/39553 audios
+  Processed 32000/39553 audios
+  Processed 32050/39553 audios
+  Processed 32100/39553 audios
+  Processed 32150/39553 audios
+  Processed 32200/39553 audios
+  Processed 32250/39553 audios
+  Processed 32300/39553 audios
+  Processed 32350/39553 audios
+  Processed 32400/39553 audios
+  Processed 32450/39553 audios
+  Processed 32500/39553 audios
+  Processed 32550/39553 audios
+  Processed 32600/39553 audios
+  Processed 32650/39553 audios
+  Processed 32700/39553 audios
+  Processed 32750/39553 audios
+  Processed 32800/39553 audios
+  Processed 32850/39553 audios
+  Processed 32900/39553 audios
+  Processed 32950/39553 audios
+  Processed 33000/39553 audios
+  Processed 33050/39553 audios
+  Processed 33100/39553 audios
+  Processed 33150/39553 audios
+  Processed 33200/39553 audios
+  Processed 33250/39553 audios
+  Processed 33300/39553 audios
+  Processed 33350/39553 audios
+  Processed 33400/39553 audios
+  Processed 33450/39553 audios
+  Processed 33500/39553 audios
+  Processed 33550/39553 audios
+  Processed 33600/39553 audios
+  Processed 33650/39553 audios
+  Processed 33700/39553 audios
+  Processed 33750/39553 audios
+  Processed 33800/39553 audios
+  Processed 33850/39553 audios
+  Processed 33900/39553 audios
+  Processed 33950/39553 audios
+  Processed 34000/39553 audios
+  Processed 34050/39553 audios
+  Processed 34100/39553 audios
+  Processed 34150/39553 audios
+  Processed 34200/39553 audios
+  Processed 34250/39553 audios
+  Processed 34300/39553 audios
+  Processed 34350/39553 audios
+  Processed 34400/39553 audios
+  Processed 34450/39553 audios
+  Processed 34500/39553 audios
+  Processed 34550/39553 audios
+  Processed 34600/39553 audios
+  Processed 34650/39553 audios
+  Processed 34700/39553 audios
+  Processed 34750/39553 audios
+  Processed 34800/39553 audios
+  Processed 34850/39553 audios
+  Processed 34900/39553 audios
+  Processed 34950/39553 audios
+  Processed 35000/39553 audios
+  Processed 35050/39553 audios
+  Processed 35100/39553 audios
+  Processed 35150/39553 audios
+  Processed 35200/39553 audios
+  Processed 35250/39553 audios
+  Processed 35300/39553 audios
+  Processed 35350/39553 audios
+  Processed 35400/39553 audios
+  Processed 35450/39553 audios
+  Processed 35500/39553 audios
+  Processed 35550/39553 audios
+  Processed 35600/39553 audios
+  Processed 35650/39553 audios
+  Processed 35700/39553 audios
+  Processed 35750/39553 audios
+  Processed 35800/39553 audios
+  Processed 35850/39553 audios
+  Processed 35900/39553 audios
+  Processed 35950/39553 audios
+  Processed 36000/39553 audios
+  Processed 36050/39553 audios
+  Processed 36100/39553 audios
+  Processed 36150/39553 audios
+  Processed 36200/39553 audios
+  Processed 36250/39553 audios
+  Processed 36300/39553 audios
+  Processed 36350/39553 audios
+  Processed 36400/39553 audios
+  Processed 36450/39553 audios
+  Processed 36500/39553 audios
+  Processed 36550/39553 audios
+  Processed 36600/39553 audios
+  Processed 36650/39553 audios
+  Processed 36700/39553 audios
+  Processed 36750/39553 audios
+  Processed 36800/39553 audios
+  Processed 36850/39553 audios
+  Processed 36900/39553 audios
+  Processed 36950/39553 audios
+  Processed 37000/39553 audios
+  Processed 37050/39553 audios
+  Processed 37100/39553 audios
+  Processed 37150/39553 audios
+  Processed 37200/39553 audios
+  Processed 37250/39553 audios
+  Processed 37300/39553 audios
+  Processed 37350/39553 audios
+  Processed 37400/39553 audios
+  Processed 37450/39553 audios
+  Processed 37500/39553 audios
+  Processed 37550/39553 audios
+  Processed 37600/39553 audios
+  Processed 37650/39553 audios
+  Processed 37700/39553 audios
+  Processed 37750/39553 audios
+  Processed 37800/39553 audios
+  Processed 37850/39553 audios
+  Processed 37900/39553 audios
+  Processed 37950/39553 audios
+  Processed 38000/39553 audios
+  Processed 38050/39553 audios
+  Processed 38100/39553 audios
+  Processed 38150/39553 audios
+  Processed 38200/39553 audios
+  Processed 38250/39553 audios
+  Processed 38300/39553 audios
+  Processed 38350/39553 audios
+  Processed 38400/39553 audios
+  Processed 38450/39553 audios
+  Processed 38500/39553 audios
+  Processed 38550/39553 audios
+  Processed 38600/39553 audios
+  Processed 38650/39553 audios
+  Processed 38700/39553 audios
+  Processed 38750/39553 audios
+  Processed 38800/39553 audios
+  Processed 38850/39553 audios
+  Processed 38900/39553 audios
+  Processed 38950/39553 audios
+  Processed 39000/39553 audios
+  Processed 39050/39553 audios
+  Processed 39100/39553 audios
+  Processed 39150/39553 audios
+  Processed 39200/39553 audios
+  Processed 39250/39553 audios
+  Processed 39300/39553 audios
+  Processed 39350/39553 audios
+  Processed 39400/39553 audios
+  Processed 39450/39553 audios
+  Processed 39500/39553 audios
+  Processed 39550/39553 audios
+
+Computing test MFCCs...
+  Processed 50/9889 audios
+  Processed 100/9889 audios
+  Processed 150/9889 audios
+  Processed 200/9889 audios
+  Processed 250/9889 audios
+  Processed 300/9889 audios
+  Processed 350/9889 audios
+  Processed 400/9889 audios
+  Processed 450/9889 audios
+  Processed 500/9889 audios
+  Processed 550/9889 audios
+  Processed 600/9889 audios
+  Processed 650/9889 audios
+  Processed 700/9889 audios
+  Processed 750/9889 audios
+  Processed 800/9889 audios
+  Processed 850/9889 audios
+  Processed 900/9889 audios
+  Processed 950/9889 audios
+  Processed 1000/9889 audios
+  Processed 1050/9889 audios
+  Processed 1100/9889 audios
+  Processed 1150/9889 audios
+  Processed 1200/9889 audios
+  Processed 1250/9889 audios
+  Processed 1300/9889 audios
+  Processed 1350/9889 audios
+  Processed 1400/9889 audios
+  Processed 1450/9889 audios
+  Processed 1500/9889 audios
+  Processed 1550/9889 audios
+  Processed 1600/9889 audios
+  Processed 1650/9889 audios
+  Processed 1700/9889 audios
+  Processed 1750/9889 audios
+  Processed 1800/9889 audios
+  Processed 1850/9889 audios
+  Processed 1900/9889 audios
+  Processed 1950/9889 audios
+  Processed 2000/9889 audios
+  Processed 2050/9889 audios
+  Processed 2100/9889 audios
+  Processed 2150/9889 audios
+  Processed 2200/9889 audios
+  Processed 2250/9889 audios
+  Processed 2300/9889 audios
+  Processed 2350/9889 audios
+  Processed 2400/9889 audios
+  Processed 2450/9889 audios
+  Processed 2500/9889 audios
+  Processed 2550/9889 audios
+  Processed 2600/9889 audios
+  Processed 2650/9889 audios
+  Processed 2700/9889 audios
+  Processed 2750/9889 audios
+  Processed 2800/9889 audios
+  Processed 2850/9889 audios
+  Processed 2900/9889 audios
+  Processed 2950/9889 audios
+  Processed 3000/9889 audios
+  Processed 3050/9889 audios
+  Processed 3100/9889 audios
+  Processed 3150/9889 audios
+  Processed 3200/9889 audios
+  Processed 3250/9889 audios
+  Processed 3300/9889 audios
+  Processed 3350/9889 audios
+  Processed 3400/9889 audios
+  Processed 3450/9889 audios
+  Processed 3500/9889 audios
+  Processed 3550/9889 audios
+  Processed 3600/9889 audios
+  Processed 3650/9889 audios
+  Processed 3700/9889 audios
+  Processed 3750/9889 audios
+  Processed 3800/9889 audios
+  Processed 3850/9889 audios
+  Processed 3900/9889 audios
+  Processed 3950/9889 audios
+  Processed 4000/9889 audios
+  Processed 4050/9889 audios
+  Processed 4100/9889 audios
+  Processed 4150/9889 audios
+  Processed 4200/9889 audios
+  Processed 4250/9889 audios
+  Processed 4300/9889 audios
+  Processed 4350/9889 audios
+  Processed 4400/9889 audios
+  Processed 4450/9889 audios
+  Processed 4500/9889 audios
+  Processed 4550/9889 audios
+  Processed 4600/9889 audios
+  Processed 4650/9889 audios
+  Processed 4700/9889 audios
+  Processed 4750/9889 audios
+  Processed 4800/9889 audios
+  Processed 4850/9889 audios
+  Processed 4900/9889 audios
+  Processed 4950/9889 audios
+  Processed 5000/9889 audios
+  Processed 5050/9889 audios
+  Processed 5100/9889 audios
+  Processed 5150/9889 audios
+  Processed 5200/9889 audios
+  Processed 5250/9889 audios
+  Processed 5300/9889 audios
+  Processed 5350/9889 audios
+  Processed 5400/9889 audios
+  Processed 5450/9889 audios
+  Processed 5500/9889 audios
+  Processed 5550/9889 audios
+  Processed 5600/9889 audios
+  Processed 5650/9889 audios
+  Processed 5700/9889 audios
+  Processed 5750/9889 audios
+  Processed 5800/9889 audios
+  Processed 5850/9889 audios
+  Processed 5900/9889 audios
+  Processed 5950/9889 audios
+  Processed 6000/9889 audios
+  Processed 6050/9889 audios
+  Processed 6100/9889 audios
+  Processed 6150/9889 audios
+  Processed 6200/9889 audios
+  Processed 6250/9889 audios
+  Processed 6300/9889 audios
+  Processed 6350/9889 audios
+  Processed 6400/9889 audios
+  Processed 6450/9889 audios
+  Processed 6500/9889 audios
+  Processed 6550/9889 audios
+  Processed 6600/9889 audios
+  Processed 6650/9889 audios
+  Processed 6700/9889 audios
+  Processed 6750/9889 audios
+  Processed 6800/9889 audios
+  Processed 6850/9889 audios
+  Processed 6900/9889 audios
+  Processed 6950/9889 audios
+  Processed 7000/9889 audios
+  Processed 7050/9889 audios
+  Processed 7100/9889 audios
+  Processed 7150/9889 audios
+  Processed 7200/9889 audios
+  Processed 7250/9889 audios
+  Processed 7300/9889 audios
+  Processed 7350/9889 audios
+  Processed 7400/9889 audios
+  Processed 7450/9889 audios
+  Processed 7500/9889 audios
+  Processed 7550/9889 audios
+  Processed 7600/9889 audios
+  Processed 7650/9889 audios
+  Processed 7700/9889 audios
+  Processed 7750/9889 audios
+  Processed 7800/9889 audios
+  Processed 7850/9889 audios
+  Processed 7900/9889 audios
+  Processed 7950/9889 audios
+  Processed 8000/9889 audios
+  Processed 8050/9889 audios
+  Processed 8100/9889 audios
+  Processed 8150/9889 audios
+  Processed 8200/9889 audios
+  Processed 8250/9889 audios
+  Processed 8300/9889 audios
+  Processed 8350/9889 audios
+  Processed 8400/9889 audios
+  Processed 8450/9889 audios
+  Processed 8500/9889 audios
+  Processed 8550/9889 audios
+  Processed 8600/9889 audios
+  Processed 8650/9889 audios
+  Processed 8700/9889 audios
+  Processed 8750/9889 audios
+  Processed 8800/9889 audios
+  Processed 8850/9889 audios
+  Processed 8900/9889 audios
+  Processed 8950/9889 audios
+  Processed 9000/9889 audios
+  Processed 9050/9889 audios
+  Processed 9100/9889 audios
+  Processed 9150/9889 audios
+  Processed 9200/9889 audios
+  Processed 9250/9889 audios
+  Processed 9300/9889 audios
+  Processed 9350/9889 audios
+  Processed 9400/9889 audios
+  Processed 9450/9889 audios
+  Processed 9500/9889 audios
+  Processed 9550/9889 audios
+  Processed 9600/9889 audios
+  Processed 9650/9889 audios
+  Processed 9700/9889 audios
+  Processed 9750/9889 audios
+  Processed 9800/9889 audios
+  Processed 9850/9889 audios
+
+Training MFCCs shape: (39553, 20, 65)
+Test MFCCs shape: (9889, 20, 65)
+
+======================================================================
+TRAINING MiniVGG16
+======================================================================
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 20, 65, 32)        320       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 6, 21, 32)        0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, 6, 21, 16)         4624      
+                                                                 
+ conv2d_2 (Conv2D)           (None, 6, 21, 16)         2320      
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 2, 7, 16)         0         
+ 2D)                                                             
+                                                                 
+ flatten (Flatten)           (None, 224)               0         
+                                                                 
+ dense (Dense)               (None, 32)                7200      
+                                                                 
+ dropout (Dropout)           (None, 32)                0         
+                                                                 
+ dense_1 (Dense)             (None, 32)                1056      
+                                                                 
+ dropout_1 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_2 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 15,553
+Trainable params: 15,553
+Non-trainable params: 0
+_________________________________________________________________
+
+Starting training with 39553 samples...
+Epoch 1/150
+
+Epoch 1: val_loss improved from inf to 0.45505, saving model to models\MiniVGG16\checkpoints\best_model_01.h5
+1237/1237 - 16s - loss: 3.4523 - accuracy: 0.8262 - val_loss: 0.4550 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 16s/epoch - 13ms/step
+Epoch 2/150
+
+Epoch 2: val_loss improved from 0.45505 to 0.44278, saving model to models\MiniVGG16\checkpoints\best_model_02.h5
+1237/1237 - 14s - loss: 0.4579 - accuracy: 0.8327 - val_loss: 0.4428 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 3/150
+
+Epoch 3: val_loss improved from 0.44278 to 0.43742, saving model to models\MiniVGG16\checkpoints\best_model_03.h5
+1237/1237 - 14s - loss: 0.4506 - accuracy: 0.8327 - val_loss: 0.4374 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 4/150
+
+Epoch 4: val_loss improved from 0.43742 to 0.43046, saving model to models\MiniVGG16\checkpoints\best_model_04.h5
+1237/1237 - 14s - loss: 0.4430 - accuracy: 0.8327 - val_loss: 0.4305 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 5/150
+
+Epoch 5: val_loss did not improve from 0.43046
+1237/1237 - 14s - loss: 0.4342 - accuracy: 0.8327 - val_loss: 0.4368 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 6/150
+
+Epoch 6: val_loss improved from 0.43046 to 0.42440, saving model to models\MiniVGG16\checkpoints\best_model_06.h5
+1237/1237 - 14s - loss: 0.4278 - accuracy: 0.8327 - val_loss: 0.4244 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 7/150
+
+Epoch 7: val_loss did not improve from 0.42440
+1237/1237 - 14s - loss: 0.4213 - accuracy: 0.8327 - val_loss: 0.4464 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 8/150
+
+Epoch 8: val_loss improved from 0.42440 to 0.41254, saving model to models\MiniVGG16\checkpoints\best_model_08.h5
+1237/1237 - 14s - loss: 0.4188 - accuracy: 0.8327 - val_loss: 0.4125 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 9/150
+
+Epoch 9: val_loss did not improve from 0.41254
+1237/1237 - 14s - loss: 0.4320 - accuracy: 0.8327 - val_loss: 0.4611 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 10/150
+
+Epoch 10: val_loss improved from 0.41254 to 0.39678, saving model to models\MiniVGG16\checkpoints\best_model_10.h5
+1237/1237 - 14s - loss: 0.4114 - accuracy: 0.8327 - val_loss: 0.3968 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 11/150
+
+Epoch 11: val_loss did not improve from 0.39678
+1237/1237 - 14s - loss: 0.4100 - accuracy: 0.8327 - val_loss: 0.4012 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 12/150
+
+Epoch 12: val_loss did not improve from 0.39678
+1237/1237 - 14s - loss: 0.4081 - accuracy: 0.8327 - val_loss: 0.4165 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 13/150
+
+Epoch 13: val_loss improved from 0.39678 to 0.39138, saving model to models\MiniVGG16\checkpoints\best_model_13.h5
+1237/1237 - 14s - loss: 0.4053 - accuracy: 0.8327 - val_loss: 0.3914 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 14/150
+
+Epoch 14: val_loss did not improve from 0.39138
+1237/1237 - 14s - loss: 0.4059 - accuracy: 0.8327 - val_loss: 0.3940 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 15/150
+
+Epoch 15: val_loss did not improve from 0.39138
+1237/1237 - 14s - loss: 0.4048 - accuracy: 0.8327 - val_loss: 0.3971 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 16/150
+
+Epoch 16: val_loss did not improve from 0.39138
+1237/1237 - 14s - loss: 0.3991 - accuracy: 0.8327 - val_loss: 0.4091 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 17/150
+
+Epoch 17: val_loss did not improve from 0.39138
+1237/1237 - 14s - loss: 0.3987 - accuracy: 0.8327 - val_loss: 0.3948 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 18/150
+
+Epoch 18: val_loss improved from 0.39138 to 0.38570, saving model to models\MiniVGG16\checkpoints\best_model_18.h5
+1237/1237 - 14s - loss: 0.3997 - accuracy: 0.8327 - val_loss: 0.3857 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 19/150
+
+Epoch 19: val_loss did not improve from 0.38570
+1237/1237 - 14s - loss: 0.3979 - accuracy: 0.8327 - val_loss: 0.3906 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 20/150
+
+Epoch 20: val_loss did not improve from 0.38570
+1237/1237 - 14s - loss: 0.3960 - accuracy: 0.8327 - val_loss: 0.3974 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 21/150
+
+Epoch 21: val_loss did not improve from 0.38570
+1237/1237 - 14s - loss: 0.3961 - accuracy: 0.8327 - val_loss: 0.4012 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 22/150
+
+Epoch 22: val_loss improved from 0.38570 to 0.38316, saving model to models\MiniVGG16\checkpoints\best_model_22.h5
+1237/1237 - 14s - loss: 0.3949 - accuracy: 0.8327 - val_loss: 0.3832 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 23/150
+
+Epoch 23: val_loss did not improve from 0.38316
+1237/1237 - 14s - loss: 0.3909 - accuracy: 0.8327 - val_loss: 0.3833 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 24/150
+
+Epoch 24: val_loss did not improve from 0.38316
+1237/1237 - 14s - loss: 0.3949 - accuracy: 0.8327 - val_loss: 0.3878 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 25/150
+
+Epoch 25: val_loss did not improve from 0.38316
+1237/1237 - 14s - loss: 0.3911 - accuracy: 0.8327 - val_loss: 0.4536 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 26/150
+
+Epoch 26: val_loss did not improve from 0.38316
+1237/1237 - 14s - loss: 0.3932 - accuracy: 0.8327 - val_loss: 0.3843 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 27/150
+
+Epoch 27: val_loss improved from 0.38316 to 0.38211, saving model to models\MiniVGG16\checkpoints\best_model_27.h5
+1237/1237 - 14s - loss: 0.3907 - accuracy: 0.8327 - val_loss: 0.3821 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 28/150
+
+Epoch 28: val_loss did not improve from 0.38211
+1237/1237 - 14s - loss: 0.3880 - accuracy: 0.8327 - val_loss: 0.3929 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 29/150
+
+Epoch 29: val_loss did not improve from 0.38211
+1237/1237 - 14s - loss: 0.3911 - accuracy: 0.8327 - val_loss: 0.3837 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 30/150
+
+Epoch 30: val_loss did not improve from 0.38211
+1237/1237 - 14s - loss: 0.3899 - accuracy: 0.8327 - val_loss: 0.4088 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 31/150
+
+Epoch 31: val_loss improved from 0.38211 to 0.37685, saving model to models\MiniVGG16\checkpoints\best_model_31.h5
+1237/1237 - 14s - loss: 0.3868 - accuracy: 0.8327 - val_loss: 0.3768 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 32/150
+
+Epoch 32: val_loss did not improve from 0.37685
+1237/1237 - 14s - loss: 0.3875 - accuracy: 0.8327 - val_loss: 0.3803 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 33/150
+
+Epoch 33: val_loss did not improve from 0.37685
+1237/1237 - 14s - loss: 0.3877 - accuracy: 0.8327 - val_loss: 0.3804 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 34/150
+
+Epoch 34: val_loss did not improve from 0.37685
+1237/1237 - 14s - loss: 0.3867 - accuracy: 0.8327 - val_loss: 0.3871 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 35/150
+
+Epoch 35: val_loss did not improve from 0.37685
+1237/1237 - 14s - loss: 0.3860 - accuracy: 0.8327 - val_loss: 0.3925 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 36/150
+
+Epoch 36: val_loss improved from 0.37685 to 0.37315, saving model to models\MiniVGG16\checkpoints\best_model_36.h5
+1237/1237 - 14s - loss: 0.3843 - accuracy: 0.8327 - val_loss: 0.3731 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 37/150
+
+Epoch 37: val_loss did not improve from 0.37315
+1237/1237 - 14s - loss: 0.3833 - accuracy: 0.8327 - val_loss: 0.3850 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 38/150
+
+Epoch 38: val_loss improved from 0.37315 to 0.37293, saving model to models\MiniVGG16\checkpoints\best_model_38.h5
+1237/1237 - 14s - loss: 0.3856 - accuracy: 0.8327 - val_loss: 0.3729 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 39/150
+
+Epoch 39: val_loss did not improve from 0.37293
+1237/1237 - 14s - loss: 0.3934 - accuracy: 0.8327 - val_loss: 0.3881 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 40/150
+
+Epoch 40: val_loss did not improve from 0.37293
+1237/1237 - 14s - loss: 0.3815 - accuracy: 0.8327 - val_loss: 0.3762 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 41/150
+
+Epoch 41: val_loss did not improve from 0.37293
+1237/1237 - 14s - loss: 0.3810 - accuracy: 0.8327 - val_loss: 0.3817 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 42/150
+
+Epoch 42: val_loss did not improve from 0.37293
+1237/1237 - 14s - loss: 0.3804 - accuracy: 0.8327 - val_loss: 0.3853 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 43/150
+
+Epoch 43: val_loss did not improve from 0.37293
+1237/1237 - 14s - loss: 0.3811 - accuracy: 0.8327 - val_loss: 0.3825 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 44/150
+
+Epoch 44: val_loss improved from 0.37293 to 0.36728, saving model to models\MiniVGG16\checkpoints\best_model_44.h5
+1237/1237 - 14s - loss: 0.3802 - accuracy: 0.8327 - val_loss: 0.3673 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 45/150
+
+Epoch 45: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3813 - accuracy: 0.8327 - val_loss: 0.3695 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 46/150
+
+Epoch 46: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3782 - accuracy: 0.8327 - val_loss: 0.3694 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 47/150
+
+Epoch 47: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3793 - accuracy: 0.8327 - val_loss: 0.3838 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 48/150
+
+Epoch 48: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3774 - accuracy: 0.8327 - val_loss: 0.3712 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 49/150
+
+Epoch 49: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3797 - accuracy: 0.8327 - val_loss: 0.3849 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 50/150
+
+Epoch 50: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3784 - accuracy: 0.8327 - val_loss: 0.3800 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 51/150
+
+Epoch 51: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3835 - accuracy: 0.8327 - val_loss: 0.3884 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 52/150
+
+Epoch 52: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3785 - accuracy: 0.8327 - val_loss: 0.3692 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 53/150
+
+Epoch 53: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3746 - accuracy: 0.8327 - val_loss: 0.3740 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 54/150
+
+Epoch 54: val_loss did not improve from 0.36728
+
+Epoch 54: ReduceLROnPlateau reducing learning rate to 0.00023499999952036887.
+1237/1237 - 14s - loss: 0.3771 - accuracy: 0.8327 - val_loss: 0.3704 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 14s/epoch - 11ms/step
+Epoch 55/150
+
+Epoch 55: val_loss did not improve from 0.36728
+1237/1237 - 14s - loss: 0.3637 - accuracy: 0.8327 - val_loss: 0.3681 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 56/150
+
+Epoch 56: val_loss improved from 0.36728 to 0.36245, saving model to models\MiniVGG16\checkpoints\best_model_56.h5
+1237/1237 - 14s - loss: 0.3603 - accuracy: 0.8327 - val_loss: 0.3624 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 57/150
+
+Epoch 57: val_loss did not improve from 0.36245
+1237/1237 - 14s - loss: 0.3603 - accuracy: 0.8327 - val_loss: 0.3685 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 58/150
+
+Epoch 58: val_loss did not improve from 0.36245
+1237/1237 - 14s - loss: 0.3595 - accuracy: 0.8327 - val_loss: 0.3643 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 59/150
+
+Epoch 59: val_loss did not improve from 0.36245
+1237/1237 - 14s - loss: 0.3606 - accuracy: 0.8327 - val_loss: 0.3833 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 60/150
+
+Epoch 60: val_loss did not improve from 0.36245
+1237/1237 - 14s - loss: 0.3588 - accuracy: 0.8327 - val_loss: 0.3660 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 61/150
+
+Epoch 61: val_loss did not improve from 0.36245
+1237/1237 - 14s - loss: 0.3561 - accuracy: 0.8327 - val_loss: 0.3671 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 62/150
+
+Epoch 62: val_loss improved from 0.36245 to 0.36109, saving model to models\MiniVGG16\checkpoints\best_model_62.h5
+1237/1237 - 14s - loss: 0.3559 - accuracy: 0.8327 - val_loss: 0.3611 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 63/150
+
+Epoch 63: val_loss improved from 0.36109 to 0.35788, saving model to models\MiniVGG16\checkpoints\best_model_63.h5
+1237/1237 - 14s - loss: 0.3568 - accuracy: 0.8327 - val_loss: 0.3579 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 64/150
+
+Epoch 64: val_loss did not improve from 0.35788
+1237/1237 - 14s - loss: 0.3560 - accuracy: 0.8327 - val_loss: 0.3639 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 65/150
+
+Epoch 65: val_loss did not improve from 0.35788
+1237/1237 - 14s - loss: 0.3574 - accuracy: 0.8327 - val_loss: 0.3609 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 66/150
+
+Epoch 66: val_loss did not improve from 0.35788
+1237/1237 - 14s - loss: 0.3555 - accuracy: 0.8327 - val_loss: 0.3603 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 67/150
+
+Epoch 67: val_loss did not improve from 0.35788
+1237/1237 - 14s - loss: 0.3621 - accuracy: 0.8327 - val_loss: 0.3615 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 68/150
+
+Epoch 68: val_loss did not improve from 0.35788
+1237/1237 - 14s - loss: 0.3552 - accuracy: 0.8327 - val_loss: 0.3642 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 69/150
+
+Epoch 69: val_loss improved from 0.35788 to 0.35768, saving model to models\MiniVGG16\checkpoints\best_model_69.h5
+1237/1237 - 14s - loss: 0.3552 - accuracy: 0.8327 - val_loss: 0.3577 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 70/150
+
+Epoch 70: val_loss did not improve from 0.35768
+1237/1237 - 14s - loss: 0.3558 - accuracy: 0.8327 - val_loss: 0.3622 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 71/150
+
+Epoch 71: val_loss did not improve from 0.35768
+1237/1237 - 14s - loss: 0.3544 - accuracy: 0.8327 - val_loss: 0.3577 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 72/150
+
+Epoch 72: val_loss did not improve from 0.35768
+1237/1237 - 14s - loss: 0.3552 - accuracy: 0.8327 - val_loss: 0.3593 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 73/150
+
+Epoch 73: val_loss did not improve from 0.35768
+1237/1237 - 14s - loss: 0.3533 - accuracy: 0.8327 - val_loss: 0.3662 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 74/150
+
+Epoch 74: val_loss improved from 0.35768 to 0.35546, saving model to models\MiniVGG16\checkpoints\best_model_74.h5
+1237/1237 - 14s - loss: 0.3531 - accuracy: 0.8327 - val_loss: 0.3555 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 75/150
+
+Epoch 75: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3550 - accuracy: 0.8327 - val_loss: 0.3650 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 76/150
+
+Epoch 76: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3520 - accuracy: 0.8327 - val_loss: 0.3652 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 77/150
+
+Epoch 77: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3534 - accuracy: 0.8327 - val_loss: 0.3657 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 78/150
+
+Epoch 78: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3541 - accuracy: 0.8327 - val_loss: 0.3583 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 79/150
+
+Epoch 79: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3527 - accuracy: 0.8327 - val_loss: 0.3566 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 80/150
+
+Epoch 80: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3515 - accuracy: 0.8327 - val_loss: 0.3610 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 81/150
+
+Epoch 81: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3530 - accuracy: 0.8327 - val_loss: 0.3583 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 82/150
+
+Epoch 82: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3507 - accuracy: 0.8327 - val_loss: 0.3597 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 83/150
+
+Epoch 83: val_loss did not improve from 0.35546
+1237/1237 - 14s - loss: 0.3518 - accuracy: 0.8327 - val_loss: 0.3606 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 84/150
+
+Epoch 84: val_loss did not improve from 0.35546
+
+Epoch 84: ReduceLROnPlateau reducing learning rate to 0.00011749999976018444.
+1237/1237 - 14s - loss: 0.3501 - accuracy: 0.8327 - val_loss: 0.3675 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 14s/epoch - 11ms/step
+Epoch 85/150
+
+Epoch 85: val_loss improved from 0.35546 to 0.35235, saving model to models\MiniVGG16\checkpoints\best_model_85.h5
+1237/1237 - 14s - loss: 0.3420 - accuracy: 0.8327 - val_loss: 0.3524 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 86/150
+
+Epoch 86: val_loss did not improve from 0.35235
+1237/1237 - 14s - loss: 0.3420 - accuracy: 0.8327 - val_loss: 0.3572 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 87/150
+
+Epoch 87: val_loss improved from 0.35235 to 0.35160, saving model to models\MiniVGG16\checkpoints\best_model_87.h5
+1237/1237 - 14s - loss: 0.3413 - accuracy: 0.8327 - val_loss: 0.3516 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 88/150
+
+Epoch 88: val_loss improved from 0.35160 to 0.35152, saving model to models\MiniVGG16\checkpoints\best_model_88.h5
+1237/1237 - 14s - loss: 0.3417 - accuracy: 0.8327 - val_loss: 0.3515 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 89/150
+
+Epoch 89: val_loss did not improve from 0.35152
+1237/1237 - 14s - loss: 0.3404 - accuracy: 0.8327 - val_loss: 0.3525 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 90/150
+
+Epoch 90: val_loss did not improve from 0.35152
+1237/1237 - 14s - loss: 0.3387 - accuracy: 0.8327 - val_loss: 0.3523 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 91/150
+
+Epoch 91: val_loss did not improve from 0.35152
+1237/1237 - 14s - loss: 0.3384 - accuracy: 0.8327 - val_loss: 0.3518 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 92/150
+
+Epoch 92: val_loss did not improve from 0.35152
+1237/1237 - 14s - loss: 0.3396 - accuracy: 0.8327 - val_loss: 0.3573 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 93/150
+
+Epoch 93: val_loss did not improve from 0.35152
+1237/1237 - 14s - loss: 0.3375 - accuracy: 0.8327 - val_loss: 0.3572 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 94/150
+
+Epoch 94: val_loss improved from 0.35152 to 0.35136, saving model to models\MiniVGG16\checkpoints\best_model_94.h5
+1237/1237 - 14s - loss: 0.3392 - accuracy: 0.8327 - val_loss: 0.3514 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 95/150
+
+Epoch 95: val_loss did not improve from 0.35136
+1237/1237 - 14s - loss: 0.3373 - accuracy: 0.8327 - val_loss: 0.3522 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 96/150
+
+Epoch 96: val_loss did not improve from 0.35136
+1237/1237 - 14s - loss: 0.3381 - accuracy: 0.8327 - val_loss: 0.3727 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 97/150
+
+Epoch 97: val_loss did not improve from 0.35136
+1237/1237 - 14s - loss: 0.3373 - accuracy: 0.8327 - val_loss: 0.3606 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 98/150
+
+Epoch 98: val_loss improved from 0.35136 to 0.35097, saving model to models\MiniVGG16\checkpoints\best_model_98.h5
+1237/1237 - 14s - loss: 0.3380 - accuracy: 0.8327 - val_loss: 0.3510 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 12ms/step
+Epoch 99/150
+
+Epoch 99: val_loss did not improve from 0.35097
+1237/1237 - 14s - loss: 0.3382 - accuracy: 0.8327 - val_loss: 0.3598 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 100/150
+
+Epoch 100: val_loss improved from 0.35097 to 0.34952, saving model to models\MiniVGG16\checkpoints\best_model_100.h5
+1237/1237 - 14s - loss: 0.3358 - accuracy: 0.8327 - val_loss: 0.3495 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 101/150
+
+Epoch 101: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3383 - accuracy: 0.8327 - val_loss: 0.3569 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 102/150
+
+Epoch 102: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3374 - accuracy: 0.8327 - val_loss: 0.3530 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 11ms/step
+Epoch 103/150
+
+Epoch 103: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3379 - accuracy: 0.8327 - val_loss: 0.3524 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 12ms/step
+Epoch 104/150
+
+Epoch 104: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3373 - accuracy: 0.8327 - val_loss: 0.3529 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 12ms/step
+Epoch 105/150
+
+Epoch 105: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3368 - accuracy: 0.8327 - val_loss: 0.3601 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 12ms/step
+Epoch 106/150
+
+Epoch 106: val_loss did not improve from 0.34952
+1237/1237 - 15s - loss: 0.3355 - accuracy: 0.8327 - val_loss: 0.3517 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 15s/epoch - 12ms/step
+Epoch 107/150
+
+Epoch 107: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3363 - accuracy: 0.8327 - val_loss: 0.3500 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 12ms/step
+Epoch 108/150
+
+Epoch 108: val_loss did not improve from 0.34952
+1237/1237 - 15s - loss: 0.3357 - accuracy: 0.8327 - val_loss: 0.3554 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 15s/epoch - 12ms/step
+Epoch 109/150
+
+Epoch 109: val_loss did not improve from 0.34952
+1237/1237 - 15s - loss: 0.3351 - accuracy: 0.8327 - val_loss: 0.3631 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 15s/epoch - 12ms/step
+Epoch 110/150
+
+Epoch 110: val_loss did not improve from 0.34952
+
+Epoch 110: ReduceLROnPlateau reducing learning rate to 5.874999988009222e-05.
+1237/1237 - 14s - loss: 0.3371 - accuracy: 0.8327 - val_loss: 0.3527 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 14s/epoch - 12ms/step
+Epoch 111/150
+
+Epoch 111: val_loss did not improve from 0.34952
+1237/1237 - 14s - loss: 0.3287 - accuracy: 0.8327 - val_loss: 0.3510 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 112/150
+
+Epoch 112: val_loss improved from 0.34952 to 0.34932, saving model to models\MiniVGG16\checkpoints\best_model_112.h5
+1237/1237 - 14s - loss: 0.3283 - accuracy: 0.8327 - val_loss: 0.3493 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 113/150
+
+Epoch 113: val_loss did not improve from 0.34932
+1237/1237 - 14s - loss: 0.3271 - accuracy: 0.8327 - val_loss: 0.3504 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 114/150
+
+Epoch 114: val_loss did not improve from 0.34932
+1237/1237 - 14s - loss: 0.3273 - accuracy: 0.8327 - val_loss: 0.3533 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 115/150
+
+Epoch 115: val_loss did not improve from 0.34932
+1237/1237 - 14s - loss: 0.3280 - accuracy: 0.8327 - val_loss: 0.3506 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 116/150
+
+Epoch 116: val_loss did not improve from 0.34932
+1237/1237 - 14s - loss: 0.3266 - accuracy: 0.8327 - val_loss: 0.3573 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 117/150
+
+Epoch 117: val_loss improved from 0.34932 to 0.34929, saving model to models\MiniVGG16\checkpoints\best_model_117.h5
+1237/1237 - 14s - loss: 0.3267 - accuracy: 0.8327 - val_loss: 0.3493 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 118/150
+
+Epoch 118: val_loss did not improve from 0.34929
+1237/1237 - 14s - loss: 0.3274 - accuracy: 0.8327 - val_loss: 0.3513 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 119/150
+
+Epoch 119: val_loss improved from 0.34929 to 0.34919, saving model to models\MiniVGG16\checkpoints\best_model_119.h5
+1237/1237 - 14s - loss: 0.3269 - accuracy: 0.8327 - val_loss: 0.3492 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 12ms/step
+Epoch 120/150
+
+Epoch 120: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3274 - accuracy: 0.8327 - val_loss: 0.3507 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 121/150
+
+Epoch 121: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3260 - accuracy: 0.8327 - val_loss: 0.3517 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 122/150
+
+Epoch 122: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3269 - accuracy: 0.8327 - val_loss: 0.3513 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 123/150
+
+Epoch 123: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3267 - accuracy: 0.8327 - val_loss: 0.3505 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 124/150
+
+Epoch 124: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3260 - accuracy: 0.8327 - val_loss: 0.3501 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 125/150
+
+Epoch 125: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3262 - accuracy: 0.8327 - val_loss: 0.3542 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 126/150
+
+Epoch 126: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3257 - accuracy: 0.8327 - val_loss: 0.3509 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 127/150
+
+Epoch 127: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3257 - accuracy: 0.8327 - val_loss: 0.3510 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 128/150
+
+Epoch 128: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3250 - accuracy: 0.8327 - val_loss: 0.3504 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 129/150
+
+Epoch 129: val_loss did not improve from 0.34919
+
+Epoch 129: ReduceLROnPlateau reducing learning rate to 2.937499994004611e-05.
+1237/1237 - 14s - loss: 0.3270 - accuracy: 0.8327 - val_loss: 0.3499 - val_accuracy: 0.8327 - lr: 5.8750e-05 - 14s/epoch - 11ms/step
+Epoch 130/150
+
+Epoch 130: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3226 - accuracy: 0.8327 - val_loss: 0.3499 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 131/150
+
+Epoch 131: val_loss did not improve from 0.34919
+1237/1237 - 14s - loss: 0.3214 - accuracy: 0.8327 - val_loss: 0.3502 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 132/150
+
+Epoch 132: val_loss improved from 0.34919 to 0.34849, saving model to models\MiniVGG16\checkpoints\best_model_132.h5
+1237/1237 - 14s - loss: 0.3201 - accuracy: 0.8327 - val_loss: 0.3485 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 133/150
+
+Epoch 133: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3220 - accuracy: 0.8327 - val_loss: 0.3504 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 134/150
+
+Epoch 134: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3211 - accuracy: 0.8327 - val_loss: 0.3554 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 135/150
+
+Epoch 135: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3201 - accuracy: 0.8327 - val_loss: 0.3511 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 136/150
+
+Epoch 136: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3202 - accuracy: 0.8327 - val_loss: 0.3498 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 137/150
+
+Epoch 137: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3213 - accuracy: 0.8327 - val_loss: 0.3525 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 138/150
+
+Epoch 138: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3198 - accuracy: 0.8327 - val_loss: 0.3511 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 139/150
+
+Epoch 139: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3201 - accuracy: 0.8327 - val_loss: 0.3550 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 140/150
+
+Epoch 140: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3206 - accuracy: 0.8327 - val_loss: 0.3540 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 14s/epoch - 11ms/step
+Epoch 141/150
+
+Epoch 141: val_loss did not improve from 0.34849
+1237/1237 - 15s - loss: 0.3194 - accuracy: 0.8327 - val_loss: 0.3498 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 15s/epoch - 12ms/step
+Epoch 142/150
+
+Epoch 142: val_loss did not improve from 0.34849
+
+Epoch 142: ReduceLROnPlateau reducing learning rate to 1.4687499970023055e-05.
+1237/1237 - 15s - loss: 0.3205 - accuracy: 0.8327 - val_loss: 0.3502 - val_accuracy: 0.8327 - lr: 2.9375e-05 - 15s/epoch - 12ms/step
+Epoch 143/150
+
+Epoch 143: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3180 - accuracy: 0.8327 - val_loss: 0.3555 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 12ms/step
+Epoch 144/150
+
+Epoch 144: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3179 - accuracy: 0.8327 - val_loss: 0.3501 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+Epoch 145/150
+
+Epoch 145: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3180 - accuracy: 0.8327 - val_loss: 0.3508 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+Epoch 146/150
+
+Epoch 146: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3182 - accuracy: 0.8327 - val_loss: 0.3515 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+Epoch 147/150
+
+Epoch 147: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3175 - accuracy: 0.8327 - val_loss: 0.3514 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+Epoch 148/150
+
+Epoch 148: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3175 - accuracy: 0.8327 - val_loss: 0.3520 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+Epoch 149/150
+
+Epoch 149: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3165 - accuracy: 0.8327 - val_loss: 0.3543 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+Epoch 150/150
+
+Epoch 150: val_loss did not improve from 0.34849
+1237/1237 - 14s - loss: 0.3170 - accuracy: 0.8327 - val_loss: 0.3515 - val_accuracy: 0.8327 - lr: 1.4687e-05 - 14s/epoch - 11ms/step
+
+Model saved to models\MiniVGG16\MiniVGG16_final.keras
+Model also saved to models\MiniVGG16\MiniVGG16_final.h5
+Metrics plot saved to models\MiniVGG16\training_metrics.png
+Training summary saved to models\MiniVGG16\training_summary.txt
+
+======================================================================
+Training MobileNetV3Small
+======================================================================
+
+======================================================================
+EXTRACTING MFCC FEATURES FOR MobileNetV3Small
+======================================================================
+
+Computing training MFCCs...
+  Processed 50/39553 audios
+  Processed 100/39553 audios
+  Processed 150/39553 audios
+  Processed 200/39553 audios
+  Processed 250/39553 audios
+  Processed 300/39553 audios
+  Processed 350/39553 audios
+  Processed 400/39553 audios
+  Processed 450/39553 audios
+  Processed 500/39553 audios
+  Processed 550/39553 audios
+  Processed 600/39553 audios
+  Processed 650/39553 audios
+  Processed 700/39553 audios
+  Processed 750/39553 audios
+  Processed 800/39553 audios
+  Processed 850/39553 audios
+  Processed 900/39553 audios
+  Processed 950/39553 audios
+  Processed 1000/39553 audios
+  Processed 1050/39553 audios
+  Processed 1100/39553 audios
+  Processed 1150/39553 audios
+  Processed 1200/39553 audios
+  Processed 1250/39553 audios
+  Processed 1300/39553 audios
+  Processed 1350/39553 audios
+  Processed 1400/39553 audios
+  Processed 1450/39553 audios
+  Processed 1500/39553 audios
+  Processed 1550/39553 audios
+  Processed 1600/39553 audios
+  Processed 1650/39553 audios
+  Processed 1700/39553 audios
+  Processed 1750/39553 audios
+  Processed 1800/39553 audios
+  Processed 1850/39553 audios
+  Processed 1900/39553 audios
+  Processed 1950/39553 audios
+  Processed 2000/39553 audios
+  Processed 2050/39553 audios
+  Processed 2100/39553 audios
+  Processed 2150/39553 audios
+  Processed 2200/39553 audios
+  Processed 2250/39553 audios
+  Processed 2300/39553 audios
+  Processed 2350/39553 audios
+  Processed 2400/39553 audios
+  Processed 2450/39553 audios
+  Processed 2500/39553 audios
+  Processed 2550/39553 audios
+  Processed 2600/39553 audios
+  Processed 2650/39553 audios
+  Processed 2700/39553 audios
+  Processed 2750/39553 audios
+  Processed 2800/39553 audios
+  Processed 2850/39553 audios
+  Processed 2900/39553 audios
+  Processed 2950/39553 audios
+  Processed 3000/39553 audios
+  Processed 3050/39553 audios
+  Processed 3100/39553 audios
+  Processed 3150/39553 audios
+  Processed 3200/39553 audios
+  Processed 3250/39553 audios
+  Processed 3300/39553 audios
+  Processed 3350/39553 audios
+  Processed 3400/39553 audios
+  Processed 3450/39553 audios
+  Processed 3500/39553 audios
+  Processed 3550/39553 audios
+  Processed 3600/39553 audios
+  Processed 3650/39553 audios
+  Processed 3700/39553 audios
+  Processed 3750/39553 audios
+  Processed 3800/39553 audios
+  Processed 3850/39553 audios
+  Processed 3900/39553 audios
+  Processed 3950/39553 audios
+  Processed 4000/39553 audios
+  Processed 4050/39553 audios
+  Processed 4100/39553 audios
+  Processed 4150/39553 audios
+  Processed 4200/39553 audios
+  Processed 4250/39553 audios
+  Processed 4300/39553 audios
+  Processed 4350/39553 audios
+  Processed 4400/39553 audios
+  Processed 4450/39553 audios
+  Processed 4500/39553 audios
+  Processed 4550/39553 audios
+  Processed 4600/39553 audios
+  Processed 4650/39553 audios
+  Processed 4700/39553 audios
+  Processed 4750/39553 audios
+  Processed 4800/39553 audios
+  Processed 4850/39553 audios
+  Processed 4900/39553 audios
+  Processed 4950/39553 audios
+  Processed 5000/39553 audios
+  Processed 5050/39553 audios
+  Processed 5100/39553 audios
+  Processed 5150/39553 audios
+  Processed 5200/39553 audios
+  Processed 5250/39553 audios
+  Processed 5300/39553 audios
+  Processed 5350/39553 audios
+  Processed 5400/39553 audios
+  Processed 5450/39553 audios
+  Processed 5500/39553 audios
+  Processed 5550/39553 audios
+  Processed 5600/39553 audios
+  Processed 5650/39553 audios
+  Processed 5700/39553 audios
+  Processed 5750/39553 audios
+  Processed 5800/39553 audios
+  Processed 5850/39553 audios
+  Processed 5900/39553 audios
+  Processed 5950/39553 audios
+  Processed 6000/39553 audios
+  Processed 6050/39553 audios
+  Processed 6100/39553 audios
+  Processed 6150/39553 audios
+  Processed 6200/39553 audios
+  Processed 6250/39553 audios
+  Processed 6300/39553 audios
+  Processed 6350/39553 audios
+  Processed 6400/39553 audios
+  Processed 6450/39553 audios
+  Processed 6500/39553 audios
+  Processed 6550/39553 audios
+  Processed 6600/39553 audios
+  Processed 6650/39553 audios
+  Processed 6700/39553 audios
+  Processed 6750/39553 audios
+  Processed 6800/39553 audios
+  Processed 6850/39553 audios
+  Processed 6900/39553 audios
+  Processed 6950/39553 audios
+  Processed 7000/39553 audios
+  Processed 7050/39553 audios
+  Processed 7100/39553 audios
+  Processed 7150/39553 audios
+  Processed 7200/39553 audios
+  Processed 7250/39553 audios
+  Processed 7300/39553 audios
+  Processed 7350/39553 audios
+  Processed 7400/39553 audios
+  Processed 7450/39553 audios
+  Processed 7500/39553 audios
+  Processed 7550/39553 audios
+  Processed 7600/39553 audios
+  Processed 7650/39553 audios
+  Processed 7700/39553 audios
+  Processed 7750/39553 audios
+  Processed 7800/39553 audios
+  Processed 7850/39553 audios
+  Processed 7900/39553 audios
+  Processed 7950/39553 audios
+  Processed 8000/39553 audios
+  Processed 8050/39553 audios
+  Processed 8100/39553 audios
+  Processed 8150/39553 audios
+  Processed 8200/39553 audios
+  Processed 8250/39553 audios
+  Processed 8300/39553 audios
+  Processed 8350/39553 audios
+  Processed 8400/39553 audios
+  Processed 8450/39553 audios
+  Processed 8500/39553 audios
+  Processed 8550/39553 audios
+  Processed 8600/39553 audios
+  Processed 8650/39553 audios
+  Processed 8700/39553 audios
+  Processed 8750/39553 audios
+  Processed 8800/39553 audios
+  Processed 8850/39553 audios
+  Processed 8900/39553 audios
+  Processed 8950/39553 audios
+  Processed 9000/39553 audios
+  Processed 9050/39553 audios
+  Processed 9100/39553 audios
+  Processed 9150/39553 audios
+  Processed 9200/39553 audios
+  Processed 9250/39553 audios
+  Processed 9300/39553 audios
+  Processed 9350/39553 audios
+  Processed 9400/39553 audios
+  Processed 9450/39553 audios
+  Processed 9500/39553 audios
+  Processed 9550/39553 audios
+  Processed 9600/39553 audios
+  Processed 9650/39553 audios
+  Processed 9700/39553 audios
+  Processed 9750/39553 audios
+  Processed 9800/39553 audios
+  Processed 9850/39553 audios
+  Processed 9900/39553 audios
+  Processed 9950/39553 audios
+  Processed 10000/39553 audios
+  Processed 10050/39553 audios
+  Processed 10100/39553 audios
+  Processed 10150/39553 audios
+  Processed 10200/39553 audios
+  Processed 10250/39553 audios
+  Processed 10300/39553 audios
+  Processed 10350/39553 audios
+  Processed 10400/39553 audios
+  Processed 10450/39553 audios
+  Processed 10500/39553 audios
+  Processed 10550/39553 audios
+  Processed 10600/39553 audios
+  Processed 10650/39553 audios
+  Processed 10700/39553 audios
+  Processed 10750/39553 audios
+  Processed 10800/39553 audios
+  Processed 10850/39553 audios
+  Processed 10900/39553 audios
+  Processed 10950/39553 audios
+  Processed 11000/39553 audios
+  Processed 11050/39553 audios
+  Processed 11100/39553 audios
+  Processed 11150/39553 audios
+  Processed 11200/39553 audios
+  Processed 11250/39553 audios
+  Processed 11300/39553 audios
+  Processed 11350/39553 audios
+  Processed 11400/39553 audios
+  Processed 11450/39553 audios
+  Processed 11500/39553 audios
+  Processed 11550/39553 audios
+  Processed 11600/39553 audios
+  Processed 11650/39553 audios
+  Processed 11700/39553 audios
+  Processed 11750/39553 audios
+  Processed 11800/39553 audios
+  Processed 11850/39553 audios
+  Processed 11900/39553 audios
+  Processed 11950/39553 audios
+  Processed 12000/39553 audios
+  Processed 12050/39553 audios
+  Processed 12100/39553 audios
+  Processed 12150/39553 audios
+  Processed 12200/39553 audios
+  Processed 12250/39553 audios
+  Processed 12300/39553 audios
+  Processed 12350/39553 audios
+  Processed 12400/39553 audios
+  Processed 12450/39553 audios
+  Processed 12500/39553 audios
+  Processed 12550/39553 audios
+  Processed 12600/39553 audios
+  Processed 12650/39553 audios
+  Processed 12700/39553 audios
+  Processed 12750/39553 audios
+  Processed 12800/39553 audios
+  Processed 12850/39553 audios
+  Processed 12900/39553 audios
+  Processed 12950/39553 audios
+  Processed 13000/39553 audios
+  Processed 13050/39553 audios
+  Processed 13100/39553 audios
+  Processed 13150/39553 audios
+  Processed 13200/39553 audios
+  Processed 13250/39553 audios
+  Processed 13300/39553 audios
+  Processed 13350/39553 audios
+  Processed 13400/39553 audios
+  Processed 13450/39553 audios
+  Processed 13500/39553 audios
+  Processed 13550/39553 audios
+  Processed 13600/39553 audios
+  Processed 13650/39553 audios
+  Processed 13700/39553 audios
+  Processed 13750/39553 audios
+  Processed 13800/39553 audios
+  Processed 13850/39553 audios
+  Processed 13900/39553 audios
+  Processed 13950/39553 audios
+  Processed 14000/39553 audios
+  Processed 14050/39553 audios
+  Processed 14100/39553 audios
+  Processed 14150/39553 audios
+  Processed 14200/39553 audios
+  Processed 14250/39553 audios
+  Processed 14300/39553 audios
+  Processed 14350/39553 audios
+  Processed 14400/39553 audios
+  Processed 14450/39553 audios
+  Processed 14500/39553 audios
+  Processed 14550/39553 audios
+  Processed 14600/39553 audios
+  Processed 14650/39553 audios
+  Processed 14700/39553 audios
+  Processed 14750/39553 audios
+  Processed 14800/39553 audios
+  Processed 14850/39553 audios
+  Processed 14900/39553 audios
+  Processed 14950/39553 audios
+  Processed 15000/39553 audios
+  Processed 15050/39553 audios
+  Processed 15100/39553 audios
+  Processed 15150/39553 audios
+  Processed 15200/39553 audios
+  Processed 15250/39553 audios
+  Processed 15300/39553 audios
+  Processed 15350/39553 audios
+  Processed 15400/39553 audios
+  Processed 15450/39553 audios
+  Processed 15500/39553 audios
+  Processed 15550/39553 audios
+  Processed 15600/39553 audios
+  Processed 15650/39553 audios
+  Processed 15700/39553 audios
+  Processed 15750/39553 audios
+  Processed 15800/39553 audios
+  Processed 15850/39553 audios
+  Processed 15900/39553 audios
+  Processed 15950/39553 audios
+  Processed 16000/39553 audios
+  Processed 16050/39553 audios
+  Processed 16100/39553 audios
+  Processed 16150/39553 audios
+  Processed 16200/39553 audios
+  Processed 16250/39553 audios
+  Processed 16300/39553 audios
+  Processed 16350/39553 audios
+  Processed 16400/39553 audios
+  Processed 16450/39553 audios
+  Processed 16500/39553 audios
+  Processed 16550/39553 audios
+  Processed 16600/39553 audios
+  Processed 16650/39553 audios
+  Processed 16700/39553 audios
+  Processed 16750/39553 audios
+  Processed 16800/39553 audios
+  Processed 16850/39553 audios
+  Processed 16900/39553 audios
+  Processed 16950/39553 audios
+  Processed 17000/39553 audios
+  Processed 17050/39553 audios
+  Processed 17100/39553 audios
+  Processed 17150/39553 audios
+  Processed 17200/39553 audios
+  Processed 17250/39553 audios
+  Processed 17300/39553 audios
+  Processed 17350/39553 audios
+  Processed 17400/39553 audios
+  Processed 17450/39553 audios
+  Processed 17500/39553 audios
+  Processed 17550/39553 audios
+  Processed 17600/39553 audios
+  Processed 17650/39553 audios
+  Processed 17700/39553 audios
+  Processed 17750/39553 audios
+  Processed 17800/39553 audios
+  Processed 17850/39553 audios
+  Processed 17900/39553 audios
+  Processed 17950/39553 audios
+  Processed 18000/39553 audios
+  Processed 18050/39553 audios
+  Processed 18100/39553 audios
+  Processed 18150/39553 audios
+  Processed 18200/39553 audios
+  Processed 18250/39553 audios
+  Processed 18300/39553 audios
+  Processed 18350/39553 audios
+  Processed 18400/39553 audios
+  Processed 18450/39553 audios
+  Processed 18500/39553 audios
+  Processed 18550/39553 audios
+  Processed 18600/39553 audios
+  Processed 18650/39553 audios
+  Processed 18700/39553 audios
+  Processed 18750/39553 audios
+  Processed 18800/39553 audios
+  Processed 18850/39553 audios
+  Processed 18900/39553 audios
+  Processed 18950/39553 audios
+  Processed 19000/39553 audios
+  Processed 19050/39553 audios
+  Processed 19100/39553 audios
+  Processed 19150/39553 audios
+  Processed 19200/39553 audios
+  Processed 19250/39553 audios
+  Processed 19300/39553 audios
+  Processed 19350/39553 audios
+  Processed 19400/39553 audios
+  Processed 19450/39553 audios
+  Processed 19500/39553 audios
+  Processed 19550/39553 audios
+  Processed 19600/39553 audios
+  Processed 19650/39553 audios
+  Processed 19700/39553 audios
+  Processed 19750/39553 audios
+  Processed 19800/39553 audios
+  Processed 19850/39553 audios
+  Processed 19900/39553 audios
+  Processed 19950/39553 audios
+  Processed 20000/39553 audios
+  Processed 20050/39553 audios
+  Processed 20100/39553 audios
+  Processed 20150/39553 audios
+  Processed 20200/39553 audios
+  Processed 20250/39553 audios
+  Processed 20300/39553 audios
+  Processed 20350/39553 audios
+  Processed 20400/39553 audios
+  Processed 20450/39553 audios
+  Processed 20500/39553 audios
+  Processed 20550/39553 audios
+  Processed 20600/39553 audios
+  Processed 20650/39553 audios
+  Processed 20700/39553 audios
+  Processed 20750/39553 audios
+  Processed 20800/39553 audios
+  Processed 20850/39553 audios
+  Processed 20900/39553 audios
+  Processed 20950/39553 audios
+  Processed 21000/39553 audios
+  Processed 21050/39553 audios
+  Processed 21100/39553 audios
+  Processed 21150/39553 audios
+  Processed 21200/39553 audios
+  Processed 21250/39553 audios
+  Processed 21300/39553 audios
+  Processed 21350/39553 audios
+  Processed 21400/39553 audios
+  Processed 21450/39553 audios
+  Processed 21500/39553 audios
+  Processed 21550/39553 audios
+  Processed 21600/39553 audios
+  Processed 21650/39553 audios
+  Processed 21700/39553 audios
+  Processed 21750/39553 audios
+  Processed 21800/39553 audios
+  Processed 21850/39553 audios
+  Processed 21900/39553 audios
+  Processed 21950/39553 audios
+  Processed 22000/39553 audios
+  Processed 22050/39553 audios
+  Processed 22100/39553 audios
+  Processed 22150/39553 audios
+  Processed 22200/39553 audios
+  Processed 22250/39553 audios
+  Processed 22300/39553 audios
+  Processed 22350/39553 audios
+  Processed 22400/39553 audios
+  Processed 22450/39553 audios
+  Processed 22500/39553 audios
+  Processed 22550/39553 audios
+  Processed 22600/39553 audios
+  Processed 22650/39553 audios
+  Processed 22700/39553 audios
+  Processed 22750/39553 audios
+  Processed 22800/39553 audios
+  Processed 22850/39553 audios
+  Processed 22900/39553 audios
+  Processed 22950/39553 audios
+  Processed 23000/39553 audios
+  Processed 23050/39553 audios
+  Processed 23100/39553 audios
+  Processed 23150/39553 audios
+  Processed 23200/39553 audios
+  Processed 23250/39553 audios
+  Processed 23300/39553 audios
+  Processed 23350/39553 audios
+  Processed 23400/39553 audios
+  Processed 23450/39553 audios
+  Processed 23500/39553 audios
+  Processed 23550/39553 audios
+  Processed 23600/39553 audios
+  Processed 23650/39553 audios
+  Processed 23700/39553 audios
+  Processed 23750/39553 audios
+  Processed 23800/39553 audios
+  Processed 23850/39553 audios
+  Processed 23900/39553 audios
+  Processed 23950/39553 audios
+  Processed 24000/39553 audios
+  Processed 24050/39553 audios
+  Processed 24100/39553 audios
+  Processed 24150/39553 audios
+  Processed 24200/39553 audios
+  Processed 24250/39553 audios
+  Processed 24300/39553 audios
+  Processed 24350/39553 audios
+  Processed 24400/39553 audios
+  Processed 24450/39553 audios
+  Processed 24500/39553 audios
+  Processed 24550/39553 audios
+  Processed 24600/39553 audios
+  Processed 24650/39553 audios
+  Processed 24700/39553 audios
+  Processed 24750/39553 audios
+  Processed 24800/39553 audios
+  Processed 24850/39553 audios
+  Processed 24900/39553 audios
+  Processed 24950/39553 audios
+  Processed 25000/39553 audios
+  Processed 25050/39553 audios
+  Processed 25100/39553 audios
+  Processed 25150/39553 audios
+  Processed 25200/39553 audios
+  Processed 25250/39553 audios
+  Processed 25300/39553 audios
+  Processed 25350/39553 audios
+  Processed 25400/39553 audios
+  Processed 25450/39553 audios
+  Processed 25500/39553 audios
+  Processed 25550/39553 audios
+  Processed 25600/39553 audios
+  Processed 25650/39553 audios
+  Processed 25700/39553 audios
+  Processed 25750/39553 audios
+  Processed 25800/39553 audios
+  Processed 25850/39553 audios
+  Processed 25900/39553 audios
+  Processed 25950/39553 audios
+  Processed 26000/39553 audios
+  Processed 26050/39553 audios
+  Processed 26100/39553 audios
+  Processed 26150/39553 audios
+  Processed 26200/39553 audios
+  Processed 26250/39553 audios
+  Processed 26300/39553 audios
+  Processed 26350/39553 audios
+  Processed 26400/39553 audios
+  Processed 26450/39553 audios
+  Processed 26500/39553 audios
+  Processed 26550/39553 audios
+  Processed 26600/39553 audios
+  Processed 26650/39553 audios
+  Processed 26700/39553 audios
+  Processed 26750/39553 audios
+  Processed 26800/39553 audios
+  Processed 26850/39553 audios
+  Processed 26900/39553 audios
+  Processed 26950/39553 audios
+  Processed 27000/39553 audios
+  Processed 27050/39553 audios
+  Processed 27100/39553 audios
+  Processed 27150/39553 audios
+  Processed 27200/39553 audios
+  Processed 27250/39553 audios
+  Processed 27300/39553 audios
+  Processed 27350/39553 audios
+  Processed 27400/39553 audios
+  Processed 27450/39553 audios
+  Processed 27500/39553 audios
+  Processed 27550/39553 audios
+  Processed 27600/39553 audios
+  Processed 27650/39553 audios
+  Processed 27700/39553 audios
+  Processed 27750/39553 audios
+  Processed 27800/39553 audios
+  Processed 27850/39553 audios
+  Processed 27900/39553 audios
+  Processed 27950/39553 audios
+  Processed 28000/39553 audios
+  Processed 28050/39553 audios
+  Processed 28100/39553 audios
+  Processed 28150/39553 audios
+  Processed 28200/39553 audios
+  Processed 28250/39553 audios
+  Processed 28300/39553 audios
+  Processed 28350/39553 audios
+  Processed 28400/39553 audios
+  Processed 28450/39553 audios
+  Processed 28500/39553 audios
+  Processed 28550/39553 audios
+  Processed 28600/39553 audios
+  Processed 28650/39553 audios
+  Processed 28700/39553 audios
+  Processed 28750/39553 audios
+  Processed 28800/39553 audios
+  Processed 28850/39553 audios
+  Processed 28900/39553 audios
+  Processed 28950/39553 audios
+  Processed 29000/39553 audios
+  Processed 29050/39553 audios
+  Processed 29100/39553 audios
+  Processed 29150/39553 audios
+  Processed 29200/39553 audios
+  Processed 29250/39553 audios
+  Processed 29300/39553 audios
+  Processed 29350/39553 audios
+  Processed 29400/39553 audios
+  Processed 29450/39553 audios
+  Processed 29500/39553 audios
+  Processed 29550/39553 audios
+  Processed 29600/39553 audios
+  Processed 29650/39553 audios
+  Processed 29700/39553 audios
+  Processed 29750/39553 audios
+  Processed 29800/39553 audios
+  Processed 29850/39553 audios
+  Processed 29900/39553 audios
+  Processed 29950/39553 audios
+  Processed 30000/39553 audios
+  Processed 30050/39553 audios
+  Processed 30100/39553 audios
+  Processed 30150/39553 audios
+  Processed 30200/39553 audios
+  Processed 30250/39553 audios
+  Processed 30300/39553 audios
+  Processed 30350/39553 audios
+  Processed 30400/39553 audios
+  Processed 30450/39553 audios
+  Processed 30500/39553 audios
+  Processed 30550/39553 audios
+  Processed 30600/39553 audios
+  Processed 30650/39553 audios
+  Processed 30700/39553 audios
+  Processed 30750/39553 audios
+  Processed 30800/39553 audios
+  Processed 30850/39553 audios
+  Processed 30900/39553 audios
+  Processed 30950/39553 audios
+  Processed 31000/39553 audios
+  Processed 31050/39553 audios
+  Processed 31100/39553 audios
+  Processed 31150/39553 audios
+  Processed 31200/39553 audios
+  Processed 31250/39553 audios
+  Processed 31300/39553 audios
+  Processed 31350/39553 audios
+  Processed 31400/39553 audios
+  Processed 31450/39553 audios
+  Processed 31500/39553 audios
+  Processed 31550/39553 audios
+  Processed 31600/39553 audios
+  Processed 31650/39553 audios
+  Processed 31700/39553 audios
+  Processed 31750/39553 audios
+  Processed 31800/39553 audios
+  Processed 31850/39553 audios
+  Processed 31900/39553 audios
+  Processed 31950/39553 audios
+  Processed 32000/39553 audios
+  Processed 32050/39553 audios
+  Processed 32100/39553 audios
+  Processed 32150/39553 audios
+  Processed 32200/39553 audios
+  Processed 32250/39553 audios
+  Processed 32300/39553 audios
+  Processed 32350/39553 audios
+  Processed 32400/39553 audios
+  Processed 32450/39553 audios
+  Processed 32500/39553 audios
+  Processed 32550/39553 audios
+  Processed 32600/39553 audios
+  Processed 32650/39553 audios
+  Processed 32700/39553 audios
+  Processed 32750/39553 audios
+  Processed 32800/39553 audios
+  Processed 32850/39553 audios
+  Processed 32900/39553 audios
+  Processed 32950/39553 audios
+  Processed 33000/39553 audios
+  Processed 33050/39553 audios
+  Processed 33100/39553 audios
+  Processed 33150/39553 audios
+  Processed 33200/39553 audios
+  Processed 33250/39553 audios
+  Processed 33300/39553 audios
+  Processed 33350/39553 audios
+  Processed 33400/39553 audios
+  Processed 33450/39553 audios
+  Processed 33500/39553 audios
+  Processed 33550/39553 audios
+  Processed 33600/39553 audios
+  Processed 33650/39553 audios
+  Processed 33700/39553 audios
+  Processed 33750/39553 audios
+  Processed 33800/39553 audios
+  Processed 33850/39553 audios
+  Processed 33900/39553 audios
+  Processed 33950/39553 audios
+  Processed 34000/39553 audios
+  Processed 34050/39553 audios
+  Processed 34100/39553 audios
+  Processed 34150/39553 audios
+  Processed 34200/39553 audios
+  Processed 34250/39553 audios
+  Processed 34300/39553 audios
+  Processed 34350/39553 audios
+  Processed 34400/39553 audios
+  Processed 34450/39553 audios
+  Processed 34500/39553 audios
+  Processed 34550/39553 audios
+  Processed 34600/39553 audios
+  Processed 34650/39553 audios
+  Processed 34700/39553 audios
+  Processed 34750/39553 audios
+  Processed 34800/39553 audios
+  Processed 34850/39553 audios
+  Processed 34900/39553 audios
+  Processed 34950/39553 audios
+  Processed 35000/39553 audios
+  Processed 35050/39553 audios
+  Processed 35100/39553 audios
+  Processed 35150/39553 audios
+  Processed 35200/39553 audios
+  Processed 35250/39553 audios
+  Processed 35300/39553 audios
+  Processed 35350/39553 audios
+  Processed 35400/39553 audios
+  Processed 35450/39553 audios
+  Processed 35500/39553 audios
+  Processed 35550/39553 audios
+  Processed 35600/39553 audios
+  Processed 35650/39553 audios
+  Processed 35700/39553 audios
+  Processed 35750/39553 audios
+  Processed 35800/39553 audios
+  Processed 35850/39553 audios
+  Processed 35900/39553 audios
+  Processed 35950/39553 audios
+  Processed 36000/39553 audios
+  Processed 36050/39553 audios
+  Processed 36100/39553 audios
+  Processed 36150/39553 audios
+  Processed 36200/39553 audios
+  Processed 36250/39553 audios
+  Processed 36300/39553 audios
+  Processed 36350/39553 audios
+  Processed 36400/39553 audios
+  Processed 36450/39553 audios
+  Processed 36500/39553 audios
+  Processed 36550/39553 audios
+  Processed 36600/39553 audios
+  Processed 36650/39553 audios
+  Processed 36700/39553 audios
+  Processed 36750/39553 audios
+  Processed 36800/39553 audios
+  Processed 36850/39553 audios
+  Processed 36900/39553 audios
+  Processed 36950/39553 audios
+  Processed 37000/39553 audios
+  Processed 37050/39553 audios
+  Processed 37100/39553 audios
+  Processed 37150/39553 audios
+  Processed 37200/39553 audios
+  Processed 37250/39553 audios
+  Processed 37300/39553 audios
+  Processed 37350/39553 audios
+  Processed 37400/39553 audios
+  Processed 37450/39553 audios
+  Processed 37500/39553 audios
+  Processed 37550/39553 audios
+  Processed 37600/39553 audios
+  Processed 37650/39553 audios
+  Processed 37700/39553 audios
+  Processed 37750/39553 audios
+  Processed 37800/39553 audios
+  Processed 37850/39553 audios
+  Processed 37900/39553 audios
+  Processed 37950/39553 audios
+  Processed 38000/39553 audios
+  Processed 38050/39553 audios
+  Processed 38100/39553 audios
+  Processed 38150/39553 audios
+  Processed 38200/39553 audios
+  Processed 38250/39553 audios
+  Processed 38300/39553 audios
+  Processed 38350/39553 audios
+  Processed 38400/39553 audios
+  Processed 38450/39553 audios
+  Processed 38500/39553 audios
+  Processed 38550/39553 audios
+  Processed 38600/39553 audios
+  Processed 38650/39553 audios
+  Processed 38700/39553 audios
+  Processed 38750/39553 audios
+  Processed 38800/39553 audios
+  Processed 38850/39553 audios
+  Processed 38900/39553 audios
+  Processed 38950/39553 audios
+  Processed 39000/39553 audios
+  Processed 39050/39553 audios
+  Processed 39100/39553 audios
+  Processed 39150/39553 audios
+  Processed 39200/39553 audios
+  Processed 39250/39553 audios
+  Processed 39300/39553 audios
+  Processed 39350/39553 audios
+  Processed 39400/39553 audios
+  Processed 39450/39553 audios
+  Processed 39500/39553 audios
+  Processed 39550/39553 audios
+
+Computing test MFCCs...
+  Processed 50/9889 audios
+  Processed 100/9889 audios
+  Processed 150/9889 audios
+  Processed 200/9889 audios
+  Processed 250/9889 audios
+  Processed 300/9889 audios
+  Processed 350/9889 audios
+  Processed 400/9889 audios
+  Processed 450/9889 audios
+  Processed 500/9889 audios
+  Processed 550/9889 audios
+  Processed 600/9889 audios
+  Processed 650/9889 audios
+  Processed 700/9889 audios
+  Processed 750/9889 audios
+  Processed 800/9889 audios
+  Processed 850/9889 audios
+  Processed 900/9889 audios
+  Processed 950/9889 audios
+  Processed 1000/9889 audios
+  Processed 1050/9889 audios
+  Processed 1100/9889 audios
+  Processed 1150/9889 audios
+  Processed 1200/9889 audios
+  Processed 1250/9889 audios
+  Processed 1300/9889 audios
+  Processed 1350/9889 audios
+  Processed 1400/9889 audios
+  Processed 1450/9889 audios
+  Processed 1500/9889 audios
+  Processed 1550/9889 audios
+  Processed 1600/9889 audios
+  Processed 1650/9889 audios
+  Processed 1700/9889 audios
+  Processed 1750/9889 audios
+  Processed 1800/9889 audios
+  Processed 1850/9889 audios
+  Processed 1900/9889 audios
+  Processed 1950/9889 audios
+  Processed 2000/9889 audios
+  Processed 2050/9889 audios
+  Processed 2100/9889 audios
+  Processed 2150/9889 audios
+  Processed 2200/9889 audios
+  Processed 2250/9889 audios
+  Processed 2300/9889 audios
+  Processed 2350/9889 audios
+  Processed 2400/9889 audios
+  Processed 2450/9889 audios
+  Processed 2500/9889 audios
+  Processed 2550/9889 audios
+  Processed 2600/9889 audios
+  Processed 2650/9889 audios
+  Processed 2700/9889 audios
+  Processed 2750/9889 audios
+  Processed 2800/9889 audios
+  Processed 2850/9889 audios
+  Processed 2900/9889 audios
+  Processed 2950/9889 audios
+  Processed 3000/9889 audios
+  Processed 3050/9889 audios
+  Processed 3100/9889 audios
+  Processed 3150/9889 audios
+  Processed 3200/9889 audios
+  Processed 3250/9889 audios
+  Processed 3300/9889 audios
+  Processed 3350/9889 audios
+  Processed 3400/9889 audios
+  Processed 3450/9889 audios
+  Processed 3500/9889 audios
+  Processed 3550/9889 audios
+  Processed 3600/9889 audios
+  Processed 3650/9889 audios
+  Processed 3700/9889 audios
+  Processed 3750/9889 audios
+  Processed 3800/9889 audios
+  Processed 3850/9889 audios
+  Processed 3900/9889 audios
+  Processed 3950/9889 audios
+  Processed 4000/9889 audios
+  Processed 4050/9889 audios
+  Processed 4100/9889 audios
+  Processed 4150/9889 audios
+  Processed 4200/9889 audios
+  Processed 4250/9889 audios
+  Processed 4300/9889 audios
+  Processed 4350/9889 audios
+  Processed 4400/9889 audios
+  Processed 4450/9889 audios
+  Processed 4500/9889 audios
+  Processed 4550/9889 audios
+  Processed 4600/9889 audios
+  Processed 4650/9889 audios
+  Processed 4700/9889 audios
+  Processed 4750/9889 audios
+  Processed 4800/9889 audios
+  Processed 4850/9889 audios
+  Processed 4900/9889 audios
+  Processed 4950/9889 audios
+  Processed 5000/9889 audios
+  Processed 5050/9889 audios
+  Processed 5100/9889 audios
+  Processed 5150/9889 audios
+  Processed 5200/9889 audios
+  Processed 5250/9889 audios
+  Processed 5300/9889 audios
+  Processed 5350/9889 audios
+  Processed 5400/9889 audios
+  Processed 5450/9889 audios
+  Processed 5500/9889 audios
+  Processed 5550/9889 audios
+  Processed 5600/9889 audios
+  Processed 5650/9889 audios
+  Processed 5700/9889 audios
+  Processed 5750/9889 audios
+  Processed 5800/9889 audios
+  Processed 5850/9889 audios
+  Processed 5900/9889 audios
+  Processed 5950/9889 audios
+  Processed 6000/9889 audios
+  Processed 6050/9889 audios
+  Processed 6100/9889 audios
+  Processed 6150/9889 audios
+  Processed 6200/9889 audios
+  Processed 6250/9889 audios
+  Processed 6300/9889 audios
+  Processed 6350/9889 audios
+  Processed 6400/9889 audios
+  Processed 6450/9889 audios
+  Processed 6500/9889 audios
+  Processed 6550/9889 audios
+  Processed 6600/9889 audios
+  Processed 6650/9889 audios
+  Processed 6700/9889 audios
+  Processed 6750/9889 audios
+  Processed 6800/9889 audios
+  Processed 6850/9889 audios
+  Processed 6900/9889 audios
+  Processed 6950/9889 audios
+  Processed 7000/9889 audios
+  Processed 7050/9889 audios
+  Processed 7100/9889 audios
+  Processed 7150/9889 audios
+  Processed 7200/9889 audios
+  Processed 7250/9889 audios
+  Processed 7300/9889 audios
+  Processed 7350/9889 audios
+  Processed 7400/9889 audios
+  Processed 7450/9889 audios
+  Processed 7500/9889 audios
+  Processed 7550/9889 audios
+  Processed 7600/9889 audios
+  Processed 7650/9889 audios
+  Processed 7700/9889 audios
+  Processed 7750/9889 audios
+  Processed 7800/9889 audios
+  Processed 7850/9889 audios
+  Processed 7900/9889 audios
+  Processed 7950/9889 audios
+  Processed 8000/9889 audios
+  Processed 8050/9889 audios
+  Processed 8100/9889 audios
+  Processed 8150/9889 audios
+  Processed 8200/9889 audios
+  Processed 8250/9889 audios
+  Processed 8300/9889 audios
+  Processed 8350/9889 audios
+  Processed 8400/9889 audios
+  Processed 8450/9889 audios
+  Processed 8500/9889 audios
+  Processed 8550/9889 audios
+  Processed 8600/9889 audios
+  Processed 8650/9889 audios
+  Processed 8700/9889 audios
+  Processed 8750/9889 audios
+  Processed 8800/9889 audios
+  Processed 8850/9889 audios
+  Processed 8900/9889 audios
+  Processed 8950/9889 audios
+  Processed 9000/9889 audios
+  Processed 9050/9889 audios
+  Processed 9100/9889 audios
+  Processed 9150/9889 audios
+  Processed 9200/9889 audios
+  Processed 9250/9889 audios
+  Processed 9300/9889 audios
+  Processed 9350/9889 audios
+  Processed 9400/9889 audios
+  Processed 9450/9889 audios
+  Processed 9500/9889 audios
+  Processed 9550/9889 audios
+  Processed 9600/9889 audios
+  Processed 9650/9889 audios
+  Processed 9700/9889 audios
+  Processed 9750/9889 audios
+  Processed 9800/9889 audios
+  Processed 9850/9889 audios
+
+Training MFCCs shape: (39553, 20, 65)
+Test MFCCs shape: (9889, 20, 65)
+
+======================================================================
+TRAINING MobileNetV3Small
+======================================================================
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 20, 65, 1)]       0         
+                                                                 
+ zero_padding2d (ZeroPadding  (None, 32, 65, 1)        0         
+ 2D)                                                             
+                                                                 
+ MobilenetV3small (Functiona  (None, 1, 3, 288)        278496    
+ l)                                                              
+                                                                 
+ global_average_pooling2d (G  (None, 288)              0         
+ lobalAveragePooling2D)                                          
+                                                                 
+ dense_3 (Dense)             (None, 32)                9248      
+                                                                 
+ dropout_2 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_4 (Dense)             (None, 32)                1056      
+                                                                 
+ dropout_3 (Dropout)         (None, 32)                0         
+                                                                 
+ dense_5 (Dense)             (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 288,833
+Trainable params: 281,985
+Non-trainable params: 6,848
+_________________________________________________________________
+
+Starting training with 39553 samples...
+Epoch 1/150
+
+Epoch 1: val_loss improved from inf to 0.46454, saving model to models\MobileNetV3Small\checkpoints\best_model_01.h5
+1237/1237 - 56s - loss: 4.3631 - accuracy: 0.8256 - val_loss: 0.4645 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 56s/epoch - 45ms/step
+Epoch 2/150
+
+Epoch 2: val_loss did not improve from 0.46454
+1237/1237 - 44s - loss: 0.4467 - accuracy: 0.8327 - val_loss: 0.4729 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 44s/epoch - 36ms/step
+Epoch 3/150
+
+Epoch 3: val_loss did not improve from 0.46454
+1237/1237 - 44s - loss: 0.4335 - accuracy: 0.8327 - val_loss: 0.4761 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 44s/epoch - 36ms/step
+Epoch 4/150
+
+Epoch 4: val_loss improved from 0.46454 to 0.46363, saving model to models\MobileNetV3Small\checkpoints\best_model_04.h5
+1237/1237 - 45s - loss: 0.4194 - accuracy: 0.8327 - val_loss: 0.4636 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 5/150
+
+Epoch 5: val_loss improved from 0.46363 to 0.41566, saving model to models\MobileNetV3Small\checkpoints\best_model_05.h5
+1237/1237 - 45s - loss: 0.4068 - accuracy: 0.8327 - val_loss: 0.4157 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 37ms/step
+Epoch 6/150
+
+Epoch 6: val_loss did not improve from 0.41566
+1237/1237 - 44s - loss: 0.3963 - accuracy: 0.8327 - val_loss: 0.4316 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 44s/epoch - 36ms/step
+Epoch 7/150
+
+Epoch 7: val_loss improved from 0.41566 to 0.39767, saving model to models\MobileNetV3Small\checkpoints\best_model_07.h5
+1237/1237 - 45s - loss: 0.3899 - accuracy: 0.8327 - val_loss: 0.3977 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 8/150
+
+Epoch 8: val_loss did not improve from 0.39767
+1237/1237 - 44s - loss: 0.3844 - accuracy: 0.8327 - val_loss: 0.4553 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 44s/epoch - 36ms/step
+Epoch 9/150
+
+Epoch 9: val_loss did not improve from 0.39767
+1237/1237 - 45s - loss: 0.3790 - accuracy: 0.8327 - val_loss: 0.4084 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 10/150
+
+Epoch 10: val_loss did not improve from 0.39767
+1237/1237 - 45s - loss: 0.3739 - accuracy: 0.8327 - val_loss: 0.4456 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 11/150
+
+Epoch 11: val_loss did not improve from 0.39767
+1237/1237 - 45s - loss: 0.3711 - accuracy: 0.8327 - val_loss: 0.4950 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 12/150
+
+Epoch 12: val_loss did not improve from 0.39767
+1237/1237 - 51s - loss: 0.3672 - accuracy: 0.8327 - val_loss: 0.4093 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 51s/epoch - 41ms/step
+Epoch 13/150
+
+Epoch 13: val_loss did not improve from 0.39767
+1237/1237 - 47s - loss: 0.3619 - accuracy: 0.8327 - val_loss: 0.3993 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 47s/epoch - 38ms/step
+Epoch 14/150
+
+Epoch 14: val_loss improved from 0.39767 to 0.38342, saving model to models\MobileNetV3Small\checkpoints\best_model_14.h5
+1237/1237 - 46s - loss: 0.3636 - accuracy: 0.8327 - val_loss: 0.3834 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 46s/epoch - 37ms/step
+Epoch 15/150
+
+Epoch 15: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3540 - accuracy: 0.8327 - val_loss: 0.4536 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 16/150
+
+Epoch 16: val_loss did not improve from 0.38342
+1237/1237 - 46s - loss: 0.3525 - accuracy: 0.8327 - val_loss: 0.4033 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 46s/epoch - 38ms/step
+Epoch 17/150
+
+Epoch 17: val_loss did not improve from 0.38342
+1237/1237 - 46s - loss: 0.3492 - accuracy: 0.8327 - val_loss: 0.3946 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 46s/epoch - 37ms/step
+Epoch 18/150
+
+Epoch 18: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3496 - accuracy: 0.8327 - val_loss: 0.3930 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 37ms/step
+Epoch 19/150
+
+Epoch 19: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3462 - accuracy: 0.8327 - val_loss: 0.4007 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 20/150
+
+Epoch 20: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3409 - accuracy: 0.8327 - val_loss: 0.3974 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 21/150
+
+Epoch 21: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3360 - accuracy: 0.8327 - val_loss: 0.4040 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 36ms/step
+Epoch 22/150
+
+Epoch 22: val_loss did not improve from 0.38342
+1237/1237 - 51s - loss: 0.3339 - accuracy: 0.8327 - val_loss: 0.4105 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 51s/epoch - 41ms/step
+Epoch 23/150
+
+Epoch 23: val_loss did not improve from 0.38342
+1237/1237 - 47s - loss: 0.3315 - accuracy: 0.8327 - val_loss: 0.7164 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 47s/epoch - 38ms/step
+Epoch 24/150
+
+Epoch 24: val_loss did not improve from 0.38342
+
+Epoch 24: ReduceLROnPlateau reducing learning rate to 0.00023499999952036887.
+1237/1237 - 45s - loss: 0.3280 - accuracy: 0.8327 - val_loss: 0.4864 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 45s/epoch - 37ms/step
+Epoch 25/150
+
+Epoch 25: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3102 - accuracy: 0.8327 - val_loss: 0.4204 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 45s/epoch - 36ms/step
+Epoch 26/150
+
+Epoch 26: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3033 - accuracy: 0.8327 - val_loss: 0.4007 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 45s/epoch - 36ms/step
+Epoch 27/150
+
+Epoch 27: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.3021 - accuracy: 0.8327 - val_loss: 0.4026 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 45s/epoch - 36ms/step
+Epoch 28/150
+
+Epoch 28: val_loss did not improve from 0.38342
+1237/1237 - 44s - loss: 0.2980 - accuracy: 0.8327 - val_loss: 0.4060 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 44s/epoch - 36ms/step
+Epoch 29/150
+
+Epoch 29: val_loss did not improve from 0.38342
+1237/1237 - 44s - loss: 0.2938 - accuracy: 0.8327 - val_loss: 0.5023 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 44s/epoch - 36ms/step
+Epoch 30/150
+
+Epoch 30: val_loss did not improve from 0.38342
+1237/1237 - 44s - loss: 0.2905 - accuracy: 0.8327 - val_loss: 0.4322 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 44s/epoch - 36ms/step
+Epoch 31/150
+
+Epoch 31: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.2922 - accuracy: 0.8327 - val_loss: 0.4266 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 45s/epoch - 36ms/step
+Epoch 32/150
+
+Epoch 32: val_loss did not improve from 0.38342
+1237/1237 - 44s - loss: 0.2853 - accuracy: 0.8327 - val_loss: 0.5265 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 44s/epoch - 36ms/step
+Epoch 33/150
+
+Epoch 33: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.2848 - accuracy: 0.8327 - val_loss: 0.5401 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 45s/epoch - 36ms/step
+Epoch 34/150
+
+Epoch 34: val_loss did not improve from 0.38342
+
+Epoch 34: ReduceLROnPlateau reducing learning rate to 0.00011749999976018444.
+1237/1237 - 45s - loss: 0.2825 - accuracy: 0.8327 - val_loss: 0.4039 - val_accuracy: 0.8327 - lr: 2.3500e-04 - 45s/epoch - 36ms/step
+Epoch 35/150
+
+Epoch 35: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.2732 - accuracy: 0.8327 - val_loss: 0.4549 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 45s/epoch - 36ms/step
+Epoch 36/150
+
+Epoch 36: val_loss did not improve from 0.38342
+1237/1237 - 44s - loss: 0.2653 - accuracy: 0.8327 - val_loss: 0.4583 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 44s/epoch - 36ms/step
+Epoch 37/150
+
+Epoch 37: val_loss did not improve from 0.38342
+1237/1237 - 45s - loss: 0.2646 - accuracy: 0.8327 - val_loss: 0.5341 - val_accuracy: 0.8327 - lr: 1.1750e-04 - 45s/epoch - 36ms/step
+Epoch 38/150
+
+Epoch 38: val_loss did not improve from 0.38342
+1237/1237 - 44s - loss: 0.2639 - accuracy: 0.8371 - val_loss: 0.5570 - val_accuracy: 0.7995 - lr: 1.1750e-04 - 44s/epoch - 35ms/step
+Epoch 39/150
+
+Epoch 39: val_loss did not improve from 0.38342
+Restoring model weights from the end of the best epoch: 14.
+1237/1237 - 44s - loss: 0.2597 - accuracy: 0.8446 - val_loss: 0.5724 - val_accuracy: 0.8331 - lr: 1.1750e-04 - 44s/epoch - 36ms/step
+Epoch 39: early stopping
+
+Model saved to models\MobileNetV3Small\MobileNetV3Small_final.keras
+Model also saved to models\MobileNetV3Small\MobileNetV3Small_final.h5
+Metrics plot saved to models\MobileNetV3Small\training_metrics.png
+Training summary saved to models\MobileNetV3Small\training_summary.txt
+
+======================================================================
+Training SqueezeNet
+======================================================================
+
+======================================================================
+EXTRACTING MFCC FEATURES FOR SqueezeNet
+======================================================================
+
+Computing training MFCCs...
+  Processed 50/39553 audios
+  Processed 100/39553 audios
+  Processed 150/39553 audios
+  Processed 200/39553 audios
+  Processed 250/39553 audios
+  Processed 300/39553 audios
+  Processed 350/39553 audios
+  Processed 400/39553 audios
+  Processed 450/39553 audios
+  Processed 500/39553 audios
+  Processed 550/39553 audios
+  Processed 600/39553 audios
+  Processed 650/39553 audios
+  Processed 700/39553 audios
+  Processed 750/39553 audios
+  Processed 800/39553 audios
+  Processed 850/39553 audios
+  Processed 900/39553 audios
+  Processed 950/39553 audios
+  Processed 1000/39553 audios
+  Processed 1050/39553 audios
+  Processed 1100/39553 audios
+  Processed 1150/39553 audios
+  Processed 1200/39553 audios
+  Processed 1250/39553 audios
+  Processed 1300/39553 audios
+  Processed 1350/39553 audios
+  Processed 1400/39553 audios
+  Processed 1450/39553 audios
+  Processed 1500/39553 audios
+  Processed 1550/39553 audios
+  Processed 1600/39553 audios
+  Processed 1650/39553 audios
+  Processed 1700/39553 audios
+  Processed 1750/39553 audios
+  Processed 1800/39553 audios
+  Processed 1850/39553 audios
+  Processed 1900/39553 audios
+  Processed 1950/39553 audios
+  Processed 2000/39553 audios
+  Processed 2050/39553 audios
+  Processed 2100/39553 audios
+  Processed 2150/39553 audios
+  Processed 2200/39553 audios
+  Processed 2250/39553 audios
+  Processed 2300/39553 audios
+  Processed 2350/39553 audios
+  Processed 2400/39553 audios
+  Processed 2450/39553 audios
+  Processed 2500/39553 audios
+  Processed 2550/39553 audios
+  Processed 2600/39553 audios
+  Processed 2650/39553 audios
+  Processed 2700/39553 audios
+  Processed 2750/39553 audios
+  Processed 2800/39553 audios
+  Processed 2850/39553 audios
+  Processed 2900/39553 audios
+  Processed 2950/39553 audios
+  Processed 3000/39553 audios
+  Processed 3050/39553 audios
+  Processed 3100/39553 audios
+  Processed 3150/39553 audios
+  Processed 3200/39553 audios
+  Processed 3250/39553 audios
+  Processed 3300/39553 audios
+  Processed 3350/39553 audios
+  Processed 3400/39553 audios
+  Processed 3450/39553 audios
+  Processed 3500/39553 audios
+  Processed 3550/39553 audios
+  Processed 3600/39553 audios
+  Processed 3650/39553 audios
+  Processed 3700/39553 audios
+  Processed 3750/39553 audios
+  Processed 3800/39553 audios
+  Processed 3850/39553 audios
+  Processed 3900/39553 audios
+  Processed 3950/39553 audios
+  Processed 4000/39553 audios
+  Processed 4050/39553 audios
+  Processed 4100/39553 audios
+  Processed 4150/39553 audios
+  Processed 4200/39553 audios
+  Processed 4250/39553 audios
+  Processed 4300/39553 audios
+  Processed 4350/39553 audios
+  Processed 4400/39553 audios
+  Processed 4450/39553 audios
+  Processed 4500/39553 audios
+  Processed 4550/39553 audios
+  Processed 4600/39553 audios
+  Processed 4650/39553 audios
+  Processed 4700/39553 audios
+  Processed 4750/39553 audios
+  Processed 4800/39553 audios
+  Processed 4850/39553 audios
+  Processed 4900/39553 audios
+  Processed 4950/39553 audios
+  Processed 5000/39553 audios
+  Processed 5050/39553 audios
+  Processed 5100/39553 audios
+  Processed 5150/39553 audios
+  Processed 5200/39553 audios
+  Processed 5250/39553 audios
+  Processed 5300/39553 audios
+  Processed 5350/39553 audios
+  Processed 5400/39553 audios
+  Processed 5450/39553 audios
+  Processed 5500/39553 audios
+  Processed 5550/39553 audios
+  Processed 5600/39553 audios
+  Processed 5650/39553 audios
+  Processed 5700/39553 audios
+  Processed 5750/39553 audios
+  Processed 5800/39553 audios
+  Processed 5850/39553 audios
+  Processed 5900/39553 audios
+  Processed 5950/39553 audios
+  Processed 6000/39553 audios
+  Processed 6050/39553 audios
+  Processed 6100/39553 audios
+  Processed 6150/39553 audios
+  Processed 6200/39553 audios
+  Processed 6250/39553 audios
+  Processed 6300/39553 audios
+  Processed 6350/39553 audios
+  Processed 6400/39553 audios
+  Processed 6450/39553 audios
+  Processed 6500/39553 audios
+  Processed 6550/39553 audios
+  Processed 6600/39553 audios
+  Processed 6650/39553 audios
+  Processed 6700/39553 audios
+  Processed 6750/39553 audios
+  Processed 6800/39553 audios
+  Processed 6850/39553 audios
+  Processed 6900/39553 audios
+  Processed 6950/39553 audios
+  Processed 7000/39553 audios
+  Processed 7050/39553 audios
+  Processed 7100/39553 audios
+  Processed 7150/39553 audios
+  Processed 7200/39553 audios
+  Processed 7250/39553 audios
+  Processed 7300/39553 audios
+  Processed 7350/39553 audios
+  Processed 7400/39553 audios
+  Processed 7450/39553 audios
+  Processed 7500/39553 audios
+  Processed 7550/39553 audios
+  Processed 7600/39553 audios
+  Processed 7650/39553 audios
+  Processed 7700/39553 audios
+  Processed 7750/39553 audios
+  Processed 7800/39553 audios
+  Processed 7850/39553 audios
+  Processed 7900/39553 audios
+  Processed 7950/39553 audios
+  Processed 8000/39553 audios
+  Processed 8050/39553 audios
+  Processed 8100/39553 audios
+  Processed 8150/39553 audios
+  Processed 8200/39553 audios
+  Processed 8250/39553 audios
+  Processed 8300/39553 audios
+  Processed 8350/39553 audios
+  Processed 8400/39553 audios
+  Processed 8450/39553 audios
+  Processed 8500/39553 audios
+  Processed 8550/39553 audios
+  Processed 8600/39553 audios
+  Processed 8650/39553 audios
+  Processed 8700/39553 audios
+  Processed 8750/39553 audios
+  Processed 8800/39553 audios
+  Processed 8850/39553 audios
+  Processed 8900/39553 audios
+  Processed 8950/39553 audios
+  Processed 9000/39553 audios
+  Processed 9050/39553 audios
+  Processed 9100/39553 audios
+  Processed 9150/39553 audios
+  Processed 9200/39553 audios
+  Processed 9250/39553 audios
+  Processed 9300/39553 audios
+  Processed 9350/39553 audios
+  Processed 9400/39553 audios
+  Processed 9450/39553 audios
+  Processed 9500/39553 audios
+  Processed 9550/39553 audios
+  Processed 9600/39553 audios
+  Processed 9650/39553 audios
+  Processed 9700/39553 audios
+  Processed 9750/39553 audios
+  Processed 9800/39553 audios
+  Processed 9850/39553 audios
+  Processed 9900/39553 audios
+  Processed 9950/39553 audios
+  Processed 10000/39553 audios
+  Processed 10050/39553 audios
+  Processed 10100/39553 audios
+  Processed 10150/39553 audios
+  Processed 10200/39553 audios
+  Processed 10250/39553 audios
+  Processed 10300/39553 audios
+  Processed 10350/39553 audios
+  Processed 10400/39553 audios
+  Processed 10450/39553 audios
+  Processed 10500/39553 audios
+  Processed 10550/39553 audios
+  Processed 10600/39553 audios
+  Processed 10650/39553 audios
+  Processed 10700/39553 audios
+  Processed 10750/39553 audios
+  Processed 10800/39553 audios
+  Processed 10850/39553 audios
+  Processed 10900/39553 audios
+  Processed 10950/39553 audios
+  Processed 11000/39553 audios
+  Processed 11050/39553 audios
+  Processed 11100/39553 audios
+  Processed 11150/39553 audios
+  Processed 11200/39553 audios
+  Processed 11250/39553 audios
+  Processed 11300/39553 audios
+  Processed 11350/39553 audios
+  Processed 11400/39553 audios
+  Processed 11450/39553 audios
+  Processed 11500/39553 audios
+  Processed 11550/39553 audios
+  Processed 11600/39553 audios
+  Processed 11650/39553 audios
+  Processed 11700/39553 audios
+  Processed 11750/39553 audios
+  Processed 11800/39553 audios
+  Processed 11850/39553 audios
+  Processed 11900/39553 audios
+  Processed 11950/39553 audios
+  Processed 12000/39553 audios
+  Processed 12050/39553 audios
+  Processed 12100/39553 audios
+  Processed 12150/39553 audios
+  Processed 12200/39553 audios
+  Processed 12250/39553 audios
+  Processed 12300/39553 audios
+  Processed 12350/39553 audios
+  Processed 12400/39553 audios
+  Processed 12450/39553 audios
+  Processed 12500/39553 audios
+  Processed 12550/39553 audios
+  Processed 12600/39553 audios
+  Processed 12650/39553 audios
+  Processed 12700/39553 audios
+  Processed 12750/39553 audios
+  Processed 12800/39553 audios
+  Processed 12850/39553 audios
+  Processed 12900/39553 audios
+  Processed 12950/39553 audios
+  Processed 13000/39553 audios
+  Processed 13050/39553 audios
+  Processed 13100/39553 audios
+  Processed 13150/39553 audios
+  Processed 13200/39553 audios
+  Processed 13250/39553 audios
+  Processed 13300/39553 audios
+  Processed 13350/39553 audios
+  Processed 13400/39553 audios
+  Processed 13450/39553 audios
+  Processed 13500/39553 audios
+  Processed 13550/39553 audios
+  Processed 13600/39553 audios
+  Processed 13650/39553 audios
+  Processed 13700/39553 audios
+  Processed 13750/39553 audios
+  Processed 13800/39553 audios
+  Processed 13850/39553 audios
+  Processed 13900/39553 audios
+  Processed 13950/39553 audios
+  Processed 14000/39553 audios
+  Processed 14050/39553 audios
+  Processed 14100/39553 audios
+  Processed 14150/39553 audios
+  Processed 14200/39553 audios
+  Processed 14250/39553 audios
+  Processed 14300/39553 audios
+  Processed 14350/39553 audios
+  Processed 14400/39553 audios
+  Processed 14450/39553 audios
+  Processed 14500/39553 audios
+  Processed 14550/39553 audios
+  Processed 14600/39553 audios
+  Processed 14650/39553 audios
+  Processed 14700/39553 audios
+  Processed 14750/39553 audios
+  Processed 14800/39553 audios
+  Processed 14850/39553 audios
+  Processed 14900/39553 audios
+  Processed 14950/39553 audios
+  Processed 15000/39553 audios
+  Processed 15050/39553 audios
+  Processed 15100/39553 audios
+  Processed 15150/39553 audios
+  Processed 15200/39553 audios
+  Processed 15250/39553 audios
+  Processed 15300/39553 audios
+  Processed 15350/39553 audios
+  Processed 15400/39553 audios
+  Processed 15450/39553 audios
+  Processed 15500/39553 audios
+  Processed 15550/39553 audios
+  Processed 15600/39553 audios
+  Processed 15650/39553 audios
+  Processed 15700/39553 audios
+  Processed 15750/39553 audios
+  Processed 15800/39553 audios
+  Processed 15850/39553 audios
+  Processed 15900/39553 audios
+  Processed 15950/39553 audios
+  Processed 16000/39553 audios
+  Processed 16050/39553 audios
+  Processed 16100/39553 audios
+  Processed 16150/39553 audios
+  Processed 16200/39553 audios
+  Processed 16250/39553 audios
+  Processed 16300/39553 audios
+  Processed 16350/39553 audios
+  Processed 16400/39553 audios
+  Processed 16450/39553 audios
+  Processed 16500/39553 audios
+  Processed 16550/39553 audios
+  Processed 16600/39553 audios
+  Processed 16650/39553 audios
+  Processed 16700/39553 audios
+  Processed 16750/39553 audios
+  Processed 16800/39553 audios
+  Processed 16850/39553 audios
+  Processed 16900/39553 audios
+  Processed 16950/39553 audios
+  Processed 17000/39553 audios
+  Processed 17050/39553 audios
+  Processed 17100/39553 audios
+  Processed 17150/39553 audios
+  Processed 17200/39553 audios
+  Processed 17250/39553 audios
+  Processed 17300/39553 audios
+  Processed 17350/39553 audios
+  Processed 17400/39553 audios
+  Processed 17450/39553 audios
+  Processed 17500/39553 audios
+  Processed 17550/39553 audios
+  Processed 17600/39553 audios
+  Processed 17650/39553 audios
+  Processed 17700/39553 audios
+  Processed 17750/39553 audios
+  Processed 17800/39553 audios
+  Processed 17850/39553 audios
+  Processed 17900/39553 audios
+  Processed 17950/39553 audios
+  Processed 18000/39553 audios
+  Processed 18050/39553 audios
+  Processed 18100/39553 audios
+  Processed 18150/39553 audios
+  Processed 18200/39553 audios
+  Processed 18250/39553 audios
+  Processed 18300/39553 audios
+  Processed 18350/39553 audios
+  Processed 18400/39553 audios
+  Processed 18450/39553 audios
+  Processed 18500/39553 audios
+  Processed 18550/39553 audios
+  Processed 18600/39553 audios
+  Processed 18650/39553 audios
+  Processed 18700/39553 audios
+  Processed 18750/39553 audios
+  Processed 18800/39553 audios
+  Processed 18850/39553 audios
+  Processed 18900/39553 audios
+  Processed 18950/39553 audios
+  Processed 19000/39553 audios
+  Processed 19050/39553 audios
+  Processed 19100/39553 audios
+  Processed 19150/39553 audios
+  Processed 19200/39553 audios
+  Processed 19250/39553 audios
+  Processed 19300/39553 audios
+  Processed 19350/39553 audios
+  Processed 19400/39553 audios
+  Processed 19450/39553 audios
+  Processed 19500/39553 audios
+  Processed 19550/39553 audios
+  Processed 19600/39553 audios
+  Processed 19650/39553 audios
+  Processed 19700/39553 audios
+  Processed 19750/39553 audios
+  Processed 19800/39553 audios
+  Processed 19850/39553 audios
+  Processed 19900/39553 audios
+  Processed 19950/39553 audios
+  Processed 20000/39553 audios
+  Processed 20050/39553 audios
+  Processed 20100/39553 audios
+  Processed 20150/39553 audios
+  Processed 20200/39553 audios
+  Processed 20250/39553 audios
+  Processed 20300/39553 audios
+  Processed 20350/39553 audios
+  Processed 20400/39553 audios
+  Processed 20450/39553 audios
+  Processed 20500/39553 audios
+  Processed 20550/39553 audios
+  Processed 20600/39553 audios
+  Processed 20650/39553 audios
+  Processed 20700/39553 audios
+  Processed 20750/39553 audios
+  Processed 20800/39553 audios
+  Processed 20850/39553 audios
+  Processed 20900/39553 audios
+  Processed 20950/39553 audios
+  Processed 21000/39553 audios
+  Processed 21050/39553 audios
+  Processed 21100/39553 audios
+  Processed 21150/39553 audios
+  Processed 21200/39553 audios
+  Processed 21250/39553 audios
+  Processed 21300/39553 audios
+  Processed 21350/39553 audios
+  Processed 21400/39553 audios
+  Processed 21450/39553 audios
+  Processed 21500/39553 audios
+  Processed 21550/39553 audios
+  Processed 21600/39553 audios
+  Processed 21650/39553 audios
+  Processed 21700/39553 audios
+  Processed 21750/39553 audios
+  Processed 21800/39553 audios
+  Processed 21850/39553 audios
+  Processed 21900/39553 audios
+  Processed 21950/39553 audios
+  Processed 22000/39553 audios
+  Processed 22050/39553 audios
+  Processed 22100/39553 audios
+  Processed 22150/39553 audios
+  Processed 22200/39553 audios
+  Processed 22250/39553 audios
+  Processed 22300/39553 audios
+  Processed 22350/39553 audios
+  Processed 22400/39553 audios
+  Processed 22450/39553 audios
+  Processed 22500/39553 audios
+  Processed 22550/39553 audios
+  Processed 22600/39553 audios
+  Processed 22650/39553 audios
+  Processed 22700/39553 audios
+  Processed 22750/39553 audios
+  Processed 22800/39553 audios
+  Processed 22850/39553 audios
+  Processed 22900/39553 audios
+  Processed 22950/39553 audios
+  Processed 23000/39553 audios
+  Processed 23050/39553 audios
+  Processed 23100/39553 audios
+  Processed 23150/39553 audios
+  Processed 23200/39553 audios
+  Processed 23250/39553 audios
+  Processed 23300/39553 audios
+  Processed 23350/39553 audios
+  Processed 23400/39553 audios
+  Processed 23450/39553 audios
+  Processed 23500/39553 audios
+  Processed 23550/39553 audios
+  Processed 23600/39553 audios
+  Processed 23650/39553 audios
+  Processed 23700/39553 audios
+  Processed 23750/39553 audios
+  Processed 23800/39553 audios
+  Processed 23850/39553 audios
+  Processed 23900/39553 audios
+  Processed 23950/39553 audios
+  Processed 24000/39553 audios
+  Processed 24050/39553 audios
+  Processed 24100/39553 audios
+  Processed 24150/39553 audios
+  Processed 24200/39553 audios
+  Processed 24250/39553 audios
+  Processed 24300/39553 audios
+  Processed 24350/39553 audios
+  Processed 24400/39553 audios
+  Processed 24450/39553 audios
+  Processed 24500/39553 audios
+  Processed 24550/39553 audios
+  Processed 24600/39553 audios
+  Processed 24650/39553 audios
+  Processed 24700/39553 audios
+  Processed 24750/39553 audios
+  Processed 24800/39553 audios
+  Processed 24850/39553 audios
+  Processed 24900/39553 audios
+  Processed 24950/39553 audios
+  Processed 25000/39553 audios
+  Processed 25050/39553 audios
+  Processed 25100/39553 audios
+  Processed 25150/39553 audios
+  Processed 25200/39553 audios
+  Processed 25250/39553 audios
+  Processed 25300/39553 audios
+  Processed 25350/39553 audios
+  Processed 25400/39553 audios
+  Processed 25450/39553 audios
+  Processed 25500/39553 audios
+  Processed 25550/39553 audios
+  Processed 25600/39553 audios
+  Processed 25650/39553 audios
+  Processed 25700/39553 audios
+  Processed 25750/39553 audios
+  Processed 25800/39553 audios
+  Processed 25850/39553 audios
+  Processed 25900/39553 audios
+  Processed 25950/39553 audios
+  Processed 26000/39553 audios
+  Processed 26050/39553 audios
+  Processed 26100/39553 audios
+  Processed 26150/39553 audios
+  Processed 26200/39553 audios
+  Processed 26250/39553 audios
+  Processed 26300/39553 audios
+  Processed 26350/39553 audios
+  Processed 26400/39553 audios
+  Processed 26450/39553 audios
+  Processed 26500/39553 audios
+  Processed 26550/39553 audios
+  Processed 26600/39553 audios
+  Processed 26650/39553 audios
+  Processed 26700/39553 audios
+  Processed 26750/39553 audios
+  Processed 26800/39553 audios
+  Processed 26850/39553 audios
+  Processed 26900/39553 audios
+  Processed 26950/39553 audios
+  Processed 27000/39553 audios
+  Processed 27050/39553 audios
+  Processed 27100/39553 audios
+  Processed 27150/39553 audios
+  Processed 27200/39553 audios
+  Processed 27250/39553 audios
+  Processed 27300/39553 audios
+  Processed 27350/39553 audios
+  Processed 27400/39553 audios
+  Processed 27450/39553 audios
+  Processed 27500/39553 audios
+  Processed 27550/39553 audios
+  Processed 27600/39553 audios
+  Processed 27650/39553 audios
+  Processed 27700/39553 audios
+  Processed 27750/39553 audios
+  Processed 27800/39553 audios
+  Processed 27850/39553 audios
+  Processed 27900/39553 audios
+  Processed 27950/39553 audios
+  Processed 28000/39553 audios
+  Processed 28050/39553 audios
+  Processed 28100/39553 audios
+  Processed 28150/39553 audios
+  Processed 28200/39553 audios
+  Processed 28250/39553 audios
+  Processed 28300/39553 audios
+  Processed 28350/39553 audios
+  Processed 28400/39553 audios
+  Processed 28450/39553 audios
+  Processed 28500/39553 audios
+  Processed 28550/39553 audios
+  Processed 28600/39553 audios
+  Processed 28650/39553 audios
+  Processed 28700/39553 audios
+  Processed 28750/39553 audios
+  Processed 28800/39553 audios
+  Processed 28850/39553 audios
+  Processed 28900/39553 audios
+  Processed 28950/39553 audios
+  Processed 29000/39553 audios
+  Processed 29050/39553 audios
+  Processed 29100/39553 audios
+  Processed 29150/39553 audios
+  Processed 29200/39553 audios
+  Processed 29250/39553 audios
+  Processed 29300/39553 audios
+  Processed 29350/39553 audios
+  Processed 29400/39553 audios
+  Processed 29450/39553 audios
+  Processed 29500/39553 audios
+  Processed 29550/39553 audios
+  Processed 29600/39553 audios
+  Processed 29650/39553 audios
+  Processed 29700/39553 audios
+  Processed 29750/39553 audios
+  Processed 29800/39553 audios
+  Processed 29850/39553 audios
+  Processed 29900/39553 audios
+  Processed 29950/39553 audios
+  Processed 30000/39553 audios
+  Processed 30050/39553 audios
+  Processed 30100/39553 audios
+  Processed 30150/39553 audios
+  Processed 30200/39553 audios
+  Processed 30250/39553 audios
+  Processed 30300/39553 audios
+  Processed 30350/39553 audios
+  Processed 30400/39553 audios
+  Processed 30450/39553 audios
+  Processed 30500/39553 audios
+  Processed 30550/39553 audios
+  Processed 30600/39553 audios
+  Processed 30650/39553 audios
+  Processed 30700/39553 audios
+  Processed 30750/39553 audios
+  Processed 30800/39553 audios
+  Processed 30850/39553 audios
+  Processed 30900/39553 audios
+  Processed 30950/39553 audios
+  Processed 31000/39553 audios
+  Processed 31050/39553 audios
+  Processed 31100/39553 audios
+  Processed 31150/39553 audios
+  Processed 31200/39553 audios
+  Processed 31250/39553 audios
+  Processed 31300/39553 audios
+  Processed 31350/39553 audios
+  Processed 31400/39553 audios
+  Processed 31450/39553 audios
+  Processed 31500/39553 audios
+  Processed 31550/39553 audios
+  Processed 31600/39553 audios
+  Processed 31650/39553 audios
+  Processed 31700/39553 audios
+  Processed 31750/39553 audios
+  Processed 31800/39553 audios
+  Processed 31850/39553 audios
+  Processed 31900/39553 audios
+  Processed 31950/39553 audios
+  Processed 32000/39553 audios
+  Processed 32050/39553 audios
+  Processed 32100/39553 audios
+  Processed 32150/39553 audios
+  Processed 32200/39553 audios
+  Processed 32250/39553 audios
+  Processed 32300/39553 audios
+  Processed 32350/39553 audios
+  Processed 32400/39553 audios
+  Processed 32450/39553 audios
+  Processed 32500/39553 audios
+  Processed 32550/39553 audios
+  Processed 32600/39553 audios
+  Processed 32650/39553 audios
+  Processed 32700/39553 audios
+  Processed 32750/39553 audios
+  Processed 32800/39553 audios
+  Processed 32850/39553 audios
+  Processed 32900/39553 audios
+  Processed 32950/39553 audios
+  Processed 33000/39553 audios
+  Processed 33050/39553 audios
+  Processed 33100/39553 audios
+  Processed 33150/39553 audios
+  Processed 33200/39553 audios
+  Processed 33250/39553 audios
+  Processed 33300/39553 audios
+  Processed 33350/39553 audios
+  Processed 33400/39553 audios
+  Processed 33450/39553 audios
+  Processed 33500/39553 audios
+  Processed 33550/39553 audios
+  Processed 33600/39553 audios
+  Processed 33650/39553 audios
+  Processed 33700/39553 audios
+  Processed 33750/39553 audios
+  Processed 33800/39553 audios
+  Processed 33850/39553 audios
+  Processed 33900/39553 audios
+  Processed 33950/39553 audios
+  Processed 34000/39553 audios
+  Processed 34050/39553 audios
+  Processed 34100/39553 audios
+  Processed 34150/39553 audios
+  Processed 34200/39553 audios
+  Processed 34250/39553 audios
+  Processed 34300/39553 audios
+  Processed 34350/39553 audios
+  Processed 34400/39553 audios
+  Processed 34450/39553 audios
+  Processed 34500/39553 audios
+  Processed 34550/39553 audios
+  Processed 34600/39553 audios
+  Processed 34650/39553 audios
+  Processed 34700/39553 audios
+  Processed 34750/39553 audios
+  Processed 34800/39553 audios
+  Processed 34850/39553 audios
+  Processed 34900/39553 audios
+  Processed 34950/39553 audios
+  Processed 35000/39553 audios
+  Processed 35050/39553 audios
+  Processed 35100/39553 audios
+  Processed 35150/39553 audios
+  Processed 35200/39553 audios
+  Processed 35250/39553 audios
+  Processed 35300/39553 audios
+  Processed 35350/39553 audios
+  Processed 35400/39553 audios
+  Processed 35450/39553 audios
+  Processed 35500/39553 audios
+  Processed 35550/39553 audios
+  Processed 35600/39553 audios
+  Processed 35650/39553 audios
+  Processed 35700/39553 audios
+  Processed 35750/39553 audios
+  Processed 35800/39553 audios
+  Processed 35850/39553 audios
+  Processed 35900/39553 audios
+  Processed 35950/39553 audios
+  Processed 36000/39553 audios
+  Processed 36050/39553 audios
+  Processed 36100/39553 audios
+  Processed 36150/39553 audios
+  Processed 36200/39553 audios
+  Processed 36250/39553 audios
+  Processed 36300/39553 audios
+  Processed 36350/39553 audios
+  Processed 36400/39553 audios
+  Processed 36450/39553 audios
+  Processed 36500/39553 audios
+  Processed 36550/39553 audios
+  Processed 36600/39553 audios
+  Processed 36650/39553 audios
+  Processed 36700/39553 audios
+  Processed 36750/39553 audios
+  Processed 36800/39553 audios
+  Processed 36850/39553 audios
+  Processed 36900/39553 audios
+  Processed 36950/39553 audios
+  Processed 37000/39553 audios
+  Processed 37050/39553 audios
+  Processed 37100/39553 audios
+  Processed 37150/39553 audios
+  Processed 37200/39553 audios
+  Processed 37250/39553 audios
+  Processed 37300/39553 audios
+  Processed 37350/39553 audios
+  Processed 37400/39553 audios
+  Processed 37450/39553 audios
+  Processed 37500/39553 audios
+  Processed 37550/39553 audios
+  Processed 37600/39553 audios
+  Processed 37650/39553 audios
+  Processed 37700/39553 audios
+  Processed 37750/39553 audios
+  Processed 37800/39553 audios
+  Processed 37850/39553 audios
+  Processed 37900/39553 audios
+  Processed 37950/39553 audios
+  Processed 38000/39553 audios
+  Processed 38050/39553 audios
+  Processed 38100/39553 audios
+  Processed 38150/39553 audios
+  Processed 38200/39553 audios
+  Processed 38250/39553 audios
+  Processed 38300/39553 audios
+  Processed 38350/39553 audios
+  Processed 38400/39553 audios
+  Processed 38450/39553 audios
+  Processed 38500/39553 audios
+  Processed 38550/39553 audios
+  Processed 38600/39553 audios
+  Processed 38650/39553 audios
+  Processed 38700/39553 audios
+  Processed 38750/39553 audios
+  Processed 38800/39553 audios
+  Processed 38850/39553 audios
+  Processed 38900/39553 audios
+  Processed 38950/39553 audios
+  Processed 39000/39553 audios
+  Processed 39050/39553 audios
+  Processed 39100/39553 audios
+  Processed 39150/39553 audios
+  Processed 39200/39553 audios
+  Processed 39250/39553 audios
+  Processed 39300/39553 audios
+  Processed 39350/39553 audios
+  Processed 39400/39553 audios
+  Processed 39450/39553 audios
+  Processed 39500/39553 audios
+  Processed 39550/39553 audios
+
+Computing test MFCCs...
+  Processed 50/9889 audios
+  Processed 100/9889 audios
+  Processed 150/9889 audios
+  Processed 200/9889 audios
+  Processed 250/9889 audios
+  Processed 300/9889 audios
+  Processed 350/9889 audios
+  Processed 400/9889 audios
+  Processed 450/9889 audios
+  Processed 500/9889 audios
+  Processed 550/9889 audios
+  Processed 600/9889 audios
+  Processed 650/9889 audios
+  Processed 700/9889 audios
+  Processed 750/9889 audios
+  Processed 800/9889 audios
+  Processed 850/9889 audios
+  Processed 900/9889 audios
+  Processed 950/9889 audios
+  Processed 1000/9889 audios
+  Processed 1050/9889 audios
+  Processed 1100/9889 audios
+  Processed 1150/9889 audios
+  Processed 1200/9889 audios
+  Processed 1250/9889 audios
+  Processed 1300/9889 audios
+  Processed 1350/9889 audios
+  Processed 1400/9889 audios
+  Processed 1450/9889 audios
+  Processed 1500/9889 audios
+  Processed 1550/9889 audios
+  Processed 1600/9889 audios
+  Processed 1650/9889 audios
+  Processed 1700/9889 audios
+  Processed 1750/9889 audios
+  Processed 1800/9889 audios
+  Processed 1850/9889 audios
+  Processed 1900/9889 audios
+  Processed 1950/9889 audios
+  Processed 2000/9889 audios
+  Processed 2050/9889 audios
+  Processed 2100/9889 audios
+  Processed 2150/9889 audios
+  Processed 2200/9889 audios
+  Processed 2250/9889 audios
+  Processed 2300/9889 audios
+  Processed 2350/9889 audios
+  Processed 2400/9889 audios
+  Processed 2450/9889 audios
+  Processed 2500/9889 audios
+  Processed 2550/9889 audios
+  Processed 2600/9889 audios
+  Processed 2650/9889 audios
+  Processed 2700/9889 audios
+  Processed 2750/9889 audios
+  Processed 2800/9889 audios
+  Processed 2850/9889 audios
+  Processed 2900/9889 audios
+  Processed 2950/9889 audios
+  Processed 3000/9889 audios
+  Processed 3050/9889 audios
+  Processed 3100/9889 audios
+  Processed 3150/9889 audios
+  Processed 3200/9889 audios
+  Processed 3250/9889 audios
+  Processed 3300/9889 audios
+  Processed 3350/9889 audios
+  Processed 3400/9889 audios
+  Processed 3450/9889 audios
+  Processed 3500/9889 audios
+  Processed 3550/9889 audios
+  Processed 3600/9889 audios
+  Processed 3650/9889 audios
+  Processed 3700/9889 audios
+  Processed 3750/9889 audios
+  Processed 3800/9889 audios
+  Processed 3850/9889 audios
+  Processed 3900/9889 audios
+  Processed 3950/9889 audios
+  Processed 4000/9889 audios
+  Processed 4050/9889 audios
+  Processed 4100/9889 audios
+  Processed 4150/9889 audios
+  Processed 4200/9889 audios
+  Processed 4250/9889 audios
+  Processed 4300/9889 audios
+  Processed 4350/9889 audios
+  Processed 4400/9889 audios
+  Processed 4450/9889 audios
+  Processed 4500/9889 audios
+  Processed 4550/9889 audios
+  Processed 4600/9889 audios
+  Processed 4650/9889 audios
+  Processed 4700/9889 audios
+  Processed 4750/9889 audios
+  Processed 4800/9889 audios
+  Processed 4850/9889 audios
+  Processed 4900/9889 audios
+  Processed 4950/9889 audios
+  Processed 5000/9889 audios
+  Processed 5050/9889 audios
+  Processed 5100/9889 audios
+  Processed 5150/9889 audios
+  Processed 5200/9889 audios
+  Processed 5250/9889 audios
+  Processed 5300/9889 audios
+  Processed 5350/9889 audios
+  Processed 5400/9889 audios
+  Processed 5450/9889 audios
+  Processed 5500/9889 audios
+  Processed 5550/9889 audios
+  Processed 5600/9889 audios
+  Processed 5650/9889 audios
+  Processed 5700/9889 audios
+  Processed 5750/9889 audios
+  Processed 5800/9889 audios
+  Processed 5850/9889 audios
+  Processed 5900/9889 audios
+  Processed 5950/9889 audios
+  Processed 6000/9889 audios
+  Processed 6050/9889 audios
+  Processed 6100/9889 audios
+  Processed 6150/9889 audios
+  Processed 6200/9889 audios
+  Processed 6250/9889 audios
+  Processed 6300/9889 audios
+  Processed 6350/9889 audios
+  Processed 6400/9889 audios
+  Processed 6450/9889 audios
+  Processed 6500/9889 audios
+  Processed 6550/9889 audios
+  Processed 6600/9889 audios
+  Processed 6650/9889 audios
+  Processed 6700/9889 audios
+  Processed 6750/9889 audios
+  Processed 6800/9889 audios
+  Processed 6850/9889 audios
+  Processed 6900/9889 audios
+  Processed 6950/9889 audios
+  Processed 7000/9889 audios
+  Processed 7050/9889 audios
+  Processed 7100/9889 audios
+  Processed 7150/9889 audios
+  Processed 7200/9889 audios
+  Processed 7250/9889 audios
+  Processed 7300/9889 audios
+  Processed 7350/9889 audios
+  Processed 7400/9889 audios
+  Processed 7450/9889 audios
+  Processed 7500/9889 audios
+  Processed 7550/9889 audios
+  Processed 7600/9889 audios
+  Processed 7650/9889 audios
+  Processed 7700/9889 audios
+  Processed 7750/9889 audios
+  Processed 7800/9889 audios
+  Processed 7850/9889 audios
+  Processed 7900/9889 audios
+  Processed 7950/9889 audios
+  Processed 8000/9889 audios
+  Processed 8050/9889 audios
+  Processed 8100/9889 audios
+  Processed 8150/9889 audios
+  Processed 8200/9889 audios
+  Processed 8250/9889 audios
+  Processed 8300/9889 audios
+  Processed 8350/9889 audios
+  Processed 8400/9889 audios
+  Processed 8450/9889 audios
+  Processed 8500/9889 audios
+  Processed 8550/9889 audios
+  Processed 8600/9889 audios
+  Processed 8650/9889 audios
+  Processed 8700/9889 audios
+  Processed 8750/9889 audios
+  Processed 8800/9889 audios
+  Processed 8850/9889 audios
+  Processed 8900/9889 audios
+  Processed 8950/9889 audios
+  Processed 9000/9889 audios
+  Processed 9050/9889 audios
+  Processed 9100/9889 audios
+  Processed 9150/9889 audios
+  Processed 9200/9889 audios
+  Processed 9250/9889 audios
+  Processed 9300/9889 audios
+  Processed 9350/9889 audios
+  Processed 9400/9889 audios
+  Processed 9450/9889 audios
+  Processed 9500/9889 audios
+  Processed 9550/9889 audios
+  Processed 9600/9889 audios
+  Processed 9650/9889 audios
+  Processed 9700/9889 audios
+  Processed 9750/9889 audios
+  Processed 9800/9889 audios
+  Processed 9850/9889 audios
+
+Training MFCCs shape: (39553, 20, 65)
+Test MFCCs shape: (9889, 20, 65)
+
+======================================================================
+TRAINING SqueezeNet
+======================================================================
+Model: "model_1"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_3 (InputLayer)           [(None, 20, 65, 1)]  0           []                               
+                                                                                                  
+ zero_padding2d_1 (ZeroPadding2  (None, 32, 65, 1)   0           ['input_3[0][0]']                
+ D)                                                                                               
+                                                                                                  
+ conv2d_3 (Conv2D)              (None, 32, 65, 3)    6           ['zero_padding2d_1[0][0]']       
+                                                                                                  
+ conv2d_4 (Conv2D)              (None, 32, 65, 96)   14208       ['conv2d_3[0][0]']               
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 32, 65, 96)  384         ['conv2d_4[0][0]']               
+ alization)                                                                                       
+                                                                                                  
+ activation (Activation)        (None, 32, 65, 96)   0           ['batch_normalization[0][0]']    
+                                                                                                  
+ max_pooling2d_2 (MaxPooling2D)  (None, 16, 33, 96)  0           ['activation[0][0]']             
+                                                                                                  
+ conv2d_5 (Conv2D)              (None, 16, 33, 16)   1552        ['max_pooling2d_2[0][0]']        
+                                                                                                  
+ batch_normalization_1 (BatchNo  (None, 16, 33, 16)  64          ['conv2d_5[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_1 (Activation)      (None, 16, 33, 16)   0           ['batch_normalization_1[0][0]']  
+                                                                                                  
+ conv2d_6 (Conv2D)              (None, 16, 33, 64)   1088        ['activation_1[0][0]']           
+                                                                                                  
+ conv2d_7 (Conv2D)              (None, 16, 33, 64)   9280        ['activation_1[0][0]']           
+                                                                                                  
+ batch_normalization_2 (BatchNo  (None, 16, 33, 64)  256         ['conv2d_6[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_3 (BatchNo  (None, 16, 33, 64)  256         ['conv2d_7[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_2 (Activation)      (None, 16, 33, 64)   0           ['batch_normalization_2[0][0]']  
+                                                                                                  
+ activation_3 (Activation)      (None, 16, 33, 64)   0           ['batch_normalization_3[0][0]']  
+                                                                                                  
+ concatenate (Concatenate)      (None, 16, 33, 128)  0           ['activation_2[0][0]',           
+                                                                  'activation_3[0][0]']           
+                                                                                                  
+ conv2d_8 (Conv2D)              (None, 16, 33, 16)   2064        ['concatenate[0][0]']            
+                                                                                                  
+ batch_normalization_4 (BatchNo  (None, 16, 33, 16)  64          ['conv2d_8[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ activation_4 (Activation)      (None, 16, 33, 16)   0           ['batch_normalization_4[0][0]']  
+                                                                                                  
+ conv2d_9 (Conv2D)              (None, 16, 33, 64)   1088        ['activation_4[0][0]']           
+                                                                                                  
+ conv2d_10 (Conv2D)             (None, 16, 33, 64)   9280        ['activation_4[0][0]']           
+                                                                                                  
+ batch_normalization_5 (BatchNo  (None, 16, 33, 64)  256         ['conv2d_9[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_6 (BatchNo  (None, 16, 33, 64)  256         ['conv2d_10[0][0]']              
+ rmalization)                                                                                     
+                                                                                                  
+ activation_5 (Activation)      (None, 16, 33, 64)   0           ['batch_normalization_5[0][0]']  
+                                                                                                  
+ activation_6 (Activation)      (None, 16, 33, 64)   0           ['batch_normalization_6[0][0]']  
+                                                                                                  
+ concatenate_1 (Concatenate)    (None, 16, 33, 128)  0           ['activation_5[0][0]',           
+                                                                  'activation_6[0][0]']           
+                                                                                                  
+ conv2d_11 (Conv2D)             (None, 16, 33, 32)   4128        ['concatenate_1[0][0]']          
+                                                                                                  
+ batch_normalization_7 (BatchNo  (None, 16, 33, 32)  128         ['conv2d_11[0][0]']              
+ rmalization)                                                                                     
+                                                                                                  
+ activation_7 (Activation)      (None, 16, 33, 32)   0           ['batch_normalization_7[0][0]']  
+                                                                                                  
+ conv2d_12 (Conv2D)             (None, 16, 33, 128)  4224        ['activation_7[0][0]']           
+                                                                                                  
+ conv2d_13 (Conv2D)             (None, 16, 33, 128)  36992       ['activation_7[0][0]']           
+                                                                                                  
+ batch_normalization_8 (BatchNo  (None, 16, 33, 128)  512        ['conv2d_12[0][0]']              
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_9 (BatchNo  (None, 16, 33, 128)  512        ['conv2d_13[0][0]']              
+ rmalization)                                                                                     
+                                                                                                  
+ activation_8 (Activation)      (None, 16, 33, 128)  0           ['batch_normalization_8[0][0]']  
+                                                                                                  
+ activation_9 (Activation)      (None, 16, 33, 128)  0           ['batch_normalization_9[0][0]']  
+                                                                                                  
+ concatenate_2 (Concatenate)    (None, 16, 33, 256)  0           ['activation_8[0][0]',           
+                                                                  'activation_9[0][0]']           
+                                                                                                  
+ max_pooling2d_3 (MaxPooling2D)  (None, 8, 17, 256)  0           ['concatenate_2[0][0]']          
+                                                                                                  
+ conv2d_14 (Conv2D)             (None, 8, 17, 32)    8224        ['max_pooling2d_3[0][0]']        
+                                                                                                  
+ batch_normalization_10 (BatchN  (None, 8, 17, 32)   128         ['conv2d_14[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_10 (Activation)     (None, 8, 17, 32)    0           ['batch_normalization_10[0][0]'] 
+                                                                                                  
+ conv2d_15 (Conv2D)             (None, 8, 17, 128)   4224        ['activation_10[0][0]']          
+                                                                                                  
+ conv2d_16 (Conv2D)             (None, 8, 17, 128)   36992       ['activation_10[0][0]']          
+                                                                                                  
+ batch_normalization_11 (BatchN  (None, 8, 17, 128)  512         ['conv2d_15[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_12 (BatchN  (None, 8, 17, 128)  512         ['conv2d_16[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_11 (Activation)     (None, 8, 17, 128)   0           ['batch_normalization_11[0][0]'] 
+                                                                                                  
+ activation_12 (Activation)     (None, 8, 17, 128)   0           ['batch_normalization_12[0][0]'] 
+                                                                                                  
+ concatenate_3 (Concatenate)    (None, 8, 17, 256)   0           ['activation_11[0][0]',          
+                                                                  'activation_12[0][0]']          
+                                                                                                  
+ conv2d_17 (Conv2D)             (None, 8, 17, 48)    12336       ['concatenate_3[0][0]']          
+                                                                                                  
+ batch_normalization_13 (BatchN  (None, 8, 17, 48)   192         ['conv2d_17[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_13 (Activation)     (None, 8, 17, 48)    0           ['batch_normalization_13[0][0]'] 
+                                                                                                  
+ conv2d_18 (Conv2D)             (None, 8, 17, 192)   9408        ['activation_13[0][0]']          
+                                                                                                  
+ conv2d_19 (Conv2D)             (None, 8, 17, 192)   83136       ['activation_13[0][0]']          
+                                                                                                  
+ batch_normalization_14 (BatchN  (None, 8, 17, 192)  768         ['conv2d_18[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_15 (BatchN  (None, 8, 17, 192)  768         ['conv2d_19[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_14 (Activation)     (None, 8, 17, 192)   0           ['batch_normalization_14[0][0]'] 
+                                                                                                  
+ activation_15 (Activation)     (None, 8, 17, 192)   0           ['batch_normalization_15[0][0]'] 
+                                                                                                  
+ concatenate_4 (Concatenate)    (None, 8, 17, 384)   0           ['activation_14[0][0]',          
+                                                                  'activation_15[0][0]']          
+                                                                                                  
+ conv2d_20 (Conv2D)             (None, 8, 17, 48)    18480       ['concatenate_4[0][0]']          
+                                                                                                  
+ batch_normalization_16 (BatchN  (None, 8, 17, 48)   192         ['conv2d_20[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_16 (Activation)     (None, 8, 17, 48)    0           ['batch_normalization_16[0][0]'] 
+                                                                                                  
+ conv2d_21 (Conv2D)             (None, 8, 17, 192)   9408        ['activation_16[0][0]']          
+                                                                                                  
+ conv2d_22 (Conv2D)             (None, 8, 17, 192)   83136       ['activation_16[0][0]']          
+                                                                                                  
+ batch_normalization_17 (BatchN  (None, 8, 17, 192)  768         ['conv2d_21[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_18 (BatchN  (None, 8, 17, 192)  768         ['conv2d_22[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_17 (Activation)     (None, 8, 17, 192)   0           ['batch_normalization_17[0][0]'] 
+                                                                                                  
+ activation_18 (Activation)     (None, 8, 17, 192)   0           ['batch_normalization_18[0][0]'] 
+                                                                                                  
+ concatenate_5 (Concatenate)    (None, 8, 17, 384)   0           ['activation_17[0][0]',          
+                                                                  'activation_18[0][0]']          
+                                                                                                  
+ conv2d_23 (Conv2D)             (None, 8, 17, 64)    24640       ['concatenate_5[0][0]']          
+                                                                                                  
+ batch_normalization_19 (BatchN  (None, 8, 17, 64)   256         ['conv2d_23[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_19 (Activation)     (None, 8, 17, 64)    0           ['batch_normalization_19[0][0]'] 
+                                                                                                  
+ conv2d_24 (Conv2D)             (None, 8, 17, 256)   16640       ['activation_19[0][0]']          
+                                                                                                  
+ conv2d_25 (Conv2D)             (None, 8, 17, 256)   147712      ['activation_19[0][0]']          
+                                                                                                  
+ batch_normalization_20 (BatchN  (None, 8, 17, 256)  1024        ['conv2d_24[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_21 (BatchN  (None, 8, 17, 256)  1024        ['conv2d_25[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_20 (Activation)     (None, 8, 17, 256)   0           ['batch_normalization_20[0][0]'] 
+                                                                                                  
+ activation_21 (Activation)     (None, 8, 17, 256)   0           ['batch_normalization_21[0][0]'] 
+                                                                                                  
+ concatenate_6 (Concatenate)    (None, 8, 17, 512)   0           ['activation_20[0][0]',          
+                                                                  'activation_21[0][0]']          
+                                                                                                  
+ dropout_4 (Dropout)            (None, 8, 17, 512)   0           ['concatenate_6[0][0]']          
+                                                                                                  
+ conv2d_26 (Conv2D)             (None, 8, 17, 1)     513         ['dropout_4[0][0]']              
+                                                                                                  
+ batch_normalization_22 (BatchN  (None, 8, 17, 1)    4           ['conv2d_26[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_22 (Activation)     (None, 8, 17, 1)     0           ['batch_normalization_22[0][0]'] 
+                                                                                                  
+ global_average_pooling2d_1 (Gl  (None, 1)           0           ['activation_22[0][0]']          
+ obalAveragePooling2D)                                                                            
+                                                                                                  
+ dense_6 (Dense)                (None, 1)            2           ['global_average_pooling2d_1[0][0
+                                                                 ]']                              
+                                                                                                  
+==================================================================================================
+Total params: 548,365
+Trainable params: 543,563
+Non-trainable params: 4,802
+__________________________________________________________________________________________________
+
+Starting training with 39553 samples...
+Epoch 1/150
+
+Epoch 1: val_loss improved from inf to 0.55589, saving model to models\SqueezeNet\checkpoints\best_model_01.h5
+1237/1237 - 445s - loss: 0.6186 - accuracy: 0.7983 - val_loss: 0.5559 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 445s/epoch - 360ms/step
+Epoch 2/150
+
+Epoch 2: val_loss improved from 0.55589 to 0.49005, saving model to models\SqueezeNet\checkpoints\best_model_02.h5
+1237/1237 - 436s - loss: 0.5187 - accuracy: 0.8327 - val_loss: 0.4901 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 436s/epoch - 352ms/step
+Epoch 3/150
+
+Epoch 3: val_loss improved from 0.49005 to 0.46245, saving model to models\SqueezeNet\checkpoints\best_model_03.h5
+1237/1237 - 434s - loss: 0.4740 - accuracy: 0.8327 - val_loss: 0.4624 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 434s/epoch - 351ms/step
+Epoch 4/150
+
+Epoch 4: val_loss improved from 0.46245 to 0.45370, saving model to models\SqueezeNet\checkpoints\best_model_04.h5
+1237/1237 - 441s - loss: 0.4572 - accuracy: 0.8327 - val_loss: 0.4537 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 441s/epoch - 356ms/step
+Epoch 5/150
+
+Epoch 5: val_loss improved from 0.45370 to 0.45181, saving model to models\SqueezeNet\checkpoints\best_model_05.h5
+1237/1237 - 451s - loss: 0.4525 - accuracy: 0.8327 - val_loss: 0.4518 - val_accuracy: 0.8327 - lr: 4.7000e-04 - 451s/epoch - 364ms/step
+Epoch 6/150
+
+Epoch 6: val_loss improved from 0.45181 to 0.43290, saving model to models\SqueezeNet\checkpoints\best_model_06.h5
+1237/1237 - 439s - loss: 0.4447 - accuracy: 0.8328 - val_loss: 0.4329 - val_accuracy: 0.8330 - lr: 4.7000e-04 - 439s/epoch - 355ms/step
+Epoch 7/150
+
+Epoch 7: val_loss improved from 0.43290 to 0.41054, saving model to models\SqueezeNet\checkpoints\best_model_07.h5
+1237/1237 - 441s - loss: 0.4235 - accuracy: 0.8332 - val_loss: 0.4105 - val_accuracy: 0.8368 - lr: 4.7000e-04 - 441s/epoch - 356ms/step
+Epoch 8/150
+
+Epoch 8: val_loss improved from 0.41054 to 0.40701, saving model to models\SqueezeNet\checkpoints\best_model_08.h5
+1237/1237 - 436s - loss: 0.4007 - accuracy: 0.8345 - val_loss: 0.4070 - val_accuracy: 0.8397 - lr: 4.7000e-04 - 436s/epoch - 352ms/step
+Epoch 9/150
+
+Epoch 9: val_loss improved from 0.40701 to 0.39381, saving model to models\SqueezeNet\checkpoints\best_model_09.h5
+1237/1237 - 437s - loss: 0.3838 - accuracy: 0.8351 - val_loss: 0.3938 - val_accuracy: 0.8362 - lr: 4.7000e-04 - 437s/epoch - 353ms/step
+Epoch 10/150
+
+Epoch 10: val_loss improved from 0.39381 to 0.36279, saving model to models\SqueezeNet\checkpoints\best_model_10.h5
+1237/1237 - 440s - loss: 0.3697 - accuracy: 0.8363 - val_loss: 0.3628 - val_accuracy: 0.8348 - lr: 4.7000e-04 - 440s/epoch - 356ms/step
+Epoch 11/150
+
+Epoch 11: val_loss did not improve from 0.36279
+1237/1237 - 441s - loss: 0.3591 - accuracy: 0.8391 - val_loss: 0.3794 - val_accuracy: 0.8320 - lr: 4.7000e-04 - 441s/epoch - 357ms/step
+Epoch 12/150
+
+Epoch 12: val_loss improved from 0.36279 to 0.36105, saving model to models\SqueezeNet\checkpoints\best_model_12.h5
+1237/1237 - 442s - loss: 0.3528 - accuracy: 0.8381 - val_loss: 0.3611 - val_accuracy: 0.8266 - lr: 4.7000e-04 - 442s/epoch - 357ms/step
+Epoch 13/150
+
+Epoch 13: val_loss improved from 0.36105 to 0.35810, saving model to models\SqueezeNet\checkpoints\best_model_13.h5
+1237/1237 - 441s - loss: 0.3468 - accuracy: 0.8391 - val_loss: 0.3581 - val_accuracy: 0.8319 - lr: 4.7000e-04 - 441s/epoch - 356ms/step
+Epoch 14/150
+
+Epoch 14: val_loss improved from 0.35810 to 0.34364, saving model to models\SqueezeNet\checkpoints\best_model_14.h5
+1237/1237 - 441s - loss: 0.3405 - accuracy: 0.8388 - val_loss: 0.3436 - val_accuracy: 0.8346 - lr: 4.7000e-04 - 441s/epoch - 357ms/step
+Epoch 15/150
+
+Epoch 15: val_loss did not improve from 0.34364
+1237/1237 - 436s - loss: 0.3366 - accuracy: 0.8397 - val_loss: 0.3441 - val_accuracy: 0.8294 - lr: 4.7000e-04 - 436s/epoch - 353ms/step
+Epoch 16/150
+
+Epoch 16: val_loss did not improve from 0.34364
+1237/1237 - 439s - loss: 0.3321 - accuracy: 0.8407 - val_loss: 0.4045 - val_accuracy: 0.8392 - lr: 4.7000e-04 - 439s/epoch - 355ms/step
+Epoch 17/150
+
+Epoch 17: val_loss did not improve from 0.34364
+1237/1237 - 440s - loss: 0.3279 - accuracy: 0.8417 - val_loss: 0.4030 - val_accuracy: 0.8369 - lr: 4.7000e-04 - 440s/epoch - 355ms/step
+Epoch 18/150
+
+Epoch 18: val_loss did not improve from 0.34364
+1237/1237 - 439s - loss: 0.3266 - accuracy: 0.8420 - val_loss: 0.4056 - val_accuracy: 0.7914 - lr: 4.7000e-04 - 439s/epoch - 355ms/step
+Epoch 19/150
+
+Epoch 19: val_loss did not improve from 0.34364
+1237/1237 - 460s - loss: 0.3232 - accuracy: 0.8415 - val_loss: 0.4716 - val_accuracy: 0.8377 - lr: 4.7000e-04 - 460s/epoch - 372ms/step
+Epoch 20/150
+
+Epoch 20: val_loss improved from 0.34364 to 0.33843, saving model to models\SqueezeNet\checkpoints\best_model_20.h5
+1237/1237 - 448s - loss: 0.3201 - accuracy: 0.8419 - val_loss: 0.3384 - val_accuracy: 0.8250 - lr: 4.7000e-04 - 448s/epoch - 363ms/step
+Epoch 21/150
+
+Epoch 21: val_loss did not improve from 0.33843
+1237/1237 - 442s - loss: 0.3161 - accuracy: 0.8417 - val_loss: 0.4182 - val_accuracy: 0.7725 - lr: 4.7000e-04 - 442s/epoch - 358ms/step
+Epoch 22/150
+
+Epoch 22: val_loss improved from 0.33843 to 0.33529, saving model to models\SqueezeNet\checkpoints\best_model_22.h5
+1237/1237 - 445s - loss: 0.3151 - accuracy: 0.8415 - val_loss: 0.3353 - val_accuracy: 0.8351 - lr: 4.7000e-04 - 445s/epoch - 360ms/step
+Epoch 23/150
+
+Epoch 23: val_loss did not improve from 0.33529
+1237/1237 - 435s - loss: 0.3116 - accuracy: 0.8419 - val_loss: 0.3682 - val_accuracy: 0.8049 - lr: 4.7000e-04 - 435s/epoch - 352ms/step
+Epoch 24/150
+
+Epoch 24: val_loss did not improve from 0.33529
+1237/1237 - 438s - loss: 0.3082 - accuracy: 0.8438 - val_loss: 0.3649 - val_accuracy: 0.8393 - lr: 4.7000e-04 - 438s/epoch - 354ms/step
+Epoch 25/150
+
+Epoch 25: val_loss did not improve from 0.33529
+1237/1237 - 449s - loss: 0.3083 - accuracy: 0.8419 - val_loss: 0.3845 - val_accuracy: 0.8378 - lr: 4.7000e-04 - 449s/epoch - 363ms/step
+Epoch 26/150
+
+Epoch 26: val_loss did not improve from 0.33529
+1237/1237 - 438s - loss: 0.3050 - accuracy: 0.8418 - val_loss: 0.3825 - val_accuracy: 0.8398 - lr: 4.7000e-04 - 438s/epoch - 354ms/step
+Epoch 27/150
+
+Epoch 27: val_loss did not improve from 0.33529
+1237/1237 - 433s - loss: 0.3031 - accuracy: 0.8429 - val_loss: 0.3559 - val_accuracy: 0.8054 - lr: 4.7000e-04 - 433s/epoch - 350ms/step
+Epoch 28/150
+
+Epoch 28: val_loss improved from 0.33529 to 0.33430, saving model to models\SqueezeNet\checkpoints\best_model_28.h5
+1237/1237 - 436s - loss: 0.3017 - accuracy: 0.8419 - val_loss: 0.3343 - val_accuracy: 0.8202 - lr: 4.7000e-04 - 436s/epoch - 353ms/step
+Epoch 29/150
+
+Epoch 29: val_loss did not improve from 0.33430
+1237/1237 - 433s - loss: 0.2976 - accuracy: 0.8438 - val_loss: 0.3370 - val_accuracy: 0.8363 - lr: 4.7000e-04 - 433s/epoch - 350ms/step
+Epoch 30/150
+
+Epoch 30: val_loss did not improve from 0.33430
+1237/1237 - 431s - loss: 0.2970 - accuracy: 0.8431 - val_loss: 0.3637 - val_accuracy: 0.8252 - lr: 4.7000e-04 - 431s/epoch - 349ms/step
+Epoch 31/150
+
+Epoch 31: val_loss did not improve from 0.33430
+1237/1237 - 431s - loss: 0.2941 - accuracy: 0.8440 - val_loss: 0.3559 - val_accuracy: 0.8236 - lr: 4.7000e-04 - 431s/epoch - 349ms/step
+Epoch 32/150
+
+Epoch 32: val_loss did not improve from 0.33430
+1237/1237 - 431s - loss: 0.2907 - accuracy: 0.8452 - val_loss: 0.3887 - val_accuracy: 0.8339 - lr: 4.7000e-04 - 431s/epoch - 348ms/step
+Epoch 33/150
+
+Epoch 33: val_loss did not improve from 0.33430
+1237/1237 - 430s - loss: 0.2902 - accuracy: 0.8451 - val_loss: 0.3515 - val_accuracy: 0.8249 - lr: 4.7000e-04 - 430s/epoch - 348ms/step
+Epoch 34/150
+
+Epoch 34: val_loss did not improve from 0.33430
+1237/1237 - 431s - loss: 0.2878 - accuracy: 0.8461 - val_loss: 0.3384 - val_accuracy: 0.8259 - lr: 4.7000e-04 - 431s/epoch - 348ms/step
+Epoch 35/150
+
+Epoch 35: val_loss did not improve from 0.33430
+1237/1237 - 429s - loss: 0.2854 - accuracy: 0.8455 - val_loss: 0.3513 - val_accuracy: 0.8358 - lr: 4.7000e-04 - 429s/epoch - 347ms/step
+Epoch 36/150
+
+Epoch 36: val_loss did not improve from 0.33430
+1237/1237 - 428s - loss: 0.2842 - accuracy: 0.8471 - val_loss: 0.3784 - val_accuracy: 0.8133 - lr: 4.7000e-04 - 428s/epoch - 346ms/step
+Epoch 37/150
+
+Epoch 37: val_loss did not improve from 0.33430
+1237/1237 - 438s - loss: 0.2807 - accuracy: 0.8468 - val_loss: 0.3365 - val_accuracy: 0.8053 - lr: 4.7000e-04 - 438s/epoch - 354ms/step
+Epoch 38/150
+
+Epoch 38: val_loss did not improve from 0.33430
+
+Epoch 38: ReduceLROnPlateau reducing learning rate to 0.00023499999952036887.
+1237/1237 - 426s - loss: 0.2814 - accuracy: 0.8466 - val_loss: 0.3769 - val_accuracy: 0.8177 - lr: 4.7000e-04 - 426s/epoch - 344ms/step
+Epoch 39/150
+
+Epoch 39: val_loss did not improve from 0.33430
+1237/1237 - 427s - loss: 0.2686 - accuracy: 0.8511 - val_loss: 0.3432 - val_accuracy: 0.8283 - lr: 2.3500e-04 - 427s/epoch - 345ms/step
+Epoch 40/150
+
+Epoch 40: val_loss did not improve from 0.33430
+1237/1237 - 428s - loss: 0.2643 - accuracy: 0.8531 - val_loss: 0.3625 - val_accuracy: 0.8001 - lr: 2.3500e-04 - 428s/epoch - 346ms/step
+Epoch 41/150
+
+Epoch 41: val_loss did not improve from 0.33430
+1237/1237 - 430s - loss: 0.2634 - accuracy: 0.8527 - val_loss: 0.3475 - val_accuracy: 0.8024 - lr: 2.3500e-04 - 430s/epoch - 347ms/step
+Epoch 42/150
+
+Epoch 42: val_loss did not improve from 0.33430
+1237/1237 - 434s - loss: 0.2608 - accuracy: 0.8542 - val_loss: 0.3571 - val_accuracy: 0.8022 - lr: 2.3500e-04 - 434s/epoch - 351ms/step
+Epoch 43/150
+
+Epoch 43: val_loss did not improve from 0.33430
+1237/1237 - 431s - loss: 0.2593 - accuracy: 0.8541 - val_loss: 0.3475 - val_accuracy: 0.8041 - lr: 2.3500e-04 - 431s/epoch - 348ms/step
+Epoch 44/150
+
+Epoch 44: val_loss did not improve from 0.33430
+1237/1237 - 427s - loss: 0.2570 - accuracy: 0.8555 - val_loss: 0.3633 - val_accuracy: 0.7776 - lr: 2.3500e-04 - 427s/epoch - 345ms/step
+Epoch 45/150
+
+Epoch 45: val_loss did not improve from 0.33430
+1237/1237 - 454s - loss: 0.2557 - accuracy: 0.8546 - val_loss: 0.3855 - val_accuracy: 0.8285 - lr: 2.3500e-04 - 454s/epoch - 367ms/step
+Epoch 46/150
+
+Epoch 46: val_loss did not improve from 0.33430
+1237/1237 - 441s - loss: 0.2537 - accuracy: 0.8559 - val_loss: 0.3818 - val_accuracy: 0.7890 - lr: 2.3500e-04 - 441s/epoch - 357ms/step
+Epoch 47/150
+
+Epoch 47: val_loss did not improve from 0.33430
+1237/1237 - 432s - loss: 0.2517 - accuracy: 0.8583 - val_loss: 0.3588 - val_accuracy: 0.7728 - lr: 2.3500e-04 - 432s/epoch - 349ms/step
+Epoch 48/150
+
+Epoch 48: val_loss did not improve from 0.33430
+
+Epoch 48: ReduceLROnPlateau reducing learning rate to 0.00011749999976018444.
+1237/1237 - 430s - loss: 0.2496 - accuracy: 0.8592 - val_loss: 0.4233 - val_accuracy: 0.8036 - lr: 2.3500e-04 - 430s/epoch - 347ms/step
+Epoch 49/150
+
+Epoch 49: val_loss did not improve from 0.33430
+1237/1237 - 428s - loss: 0.2420 - accuracy: 0.8612 - val_loss: 0.3657 - val_accuracy: 0.7792 - lr: 1.1750e-04 - 428s/epoch - 346ms/step
+Epoch 50/150
+
+Epoch 50: val_loss did not improve from 0.33430
+1237/1237 - 429s - loss: 0.2414 - accuracy: 0.8583 - val_loss: 0.4363 - val_accuracy: 0.8071 - lr: 1.1750e-04 - 429s/epoch - 347ms/step
+Epoch 51/150
+
+Epoch 51: val_loss did not improve from 0.33430
+1237/1237 - 429s - loss: 0.2387 - accuracy: 0.8633 - val_loss: 0.3757 - val_accuracy: 0.7894 - lr: 1.1750e-04 - 429s/epoch - 346ms/step
+Epoch 52/150
+
+Epoch 52: val_loss did not improve from 0.33430
+1237/1237 - 437s - loss: 0.2371 - accuracy: 0.8649 - val_loss: 0.3785 - val_accuracy: 0.7674 - lr: 1.1750e-04 - 437s/epoch - 354ms/step
+Epoch 53/150
+
+Epoch 53: val_loss did not improve from 0.33430
+Restoring model weights from the end of the best epoch: 28.
+1237/1237 - 440s - loss: 0.2365 - accuracy: 0.8644 - val_loss: 0.4324 - val_accuracy: 0.7773 - lr: 1.1750e-04 - 440s/epoch - 356ms/step
+Epoch 53: early stopping
+
+Model saved to models\SqueezeNet\SqueezeNet_final.keras
+Model also saved to models\SqueezeNet\SqueezeNet_final.h5
+Metrics plot saved to models\SqueezeNet\training_metrics.png
+Training summary saved to models\SqueezeNet\training_summary.txt
+
+======================================================================
+STEP 3: Computing Test Features for Evaluation
+----------------------------------------------------------------------
+
+Computing test MFCCs...
+  Processed 50/9889 audios
+  Processed 100/9889 audios
+  Processed 150/9889 audios
+  Processed 200/9889 audios
+  Processed 250/9889 audios
+  Processed 300/9889 audios
+  Processed 350/9889 audios
+  Processed 400/9889 audios
+  Processed 450/9889 audios
+  Processed 500/9889 audios
+  Processed 550/9889 audios
+  Processed 600/9889 audios
+  Processed 650/9889 audios
+  Processed 700/9889 audios
+  Processed 750/9889 audios
+  Processed 800/9889 audios
+  Processed 850/9889 audios
+  Processed 900/9889 audios
+  Processed 950/9889 audios
+  Processed 1000/9889 audios
+  Processed 1050/9889 audios
+  Processed 1100/9889 audios
+  Processed 1150/9889 audios
+  Processed 1200/9889 audios
+  Processed 1250/9889 audios
+  Processed 1300/9889 audios
+  Processed 1350/9889 audios
+  Processed 1400/9889 audios
+  Processed 1450/9889 audios
+  Processed 1500/9889 audios
+  Processed 1550/9889 audios
+  Processed 1600/9889 audios
+  Processed 1650/9889 audios
+  Processed 1700/9889 audios
+  Processed 1750/9889 audios
+  Processed 1800/9889 audios
+  Processed 1850/9889 audios
+  Processed 1900/9889 audios
+  Processed 1950/9889 audios
+  Processed 2000/9889 audios
+  Processed 2050/9889 audios
+  Processed 2100/9889 audios
+  Processed 2150/9889 audios
+  Processed 2200/9889 audios
+  Processed 2250/9889 audios
+  Processed 2300/9889 audios
+  Processed 2350/9889 audios
+  Processed 2400/9889 audios
+  Processed 2450/9889 audios
+  Processed 2500/9889 audios
+  Processed 2550/9889 audios
+  Processed 2600/9889 audios
+  Processed 2650/9889 audios
+  Processed 2700/9889 audios
+  Processed 2750/9889 audios
+  Processed 2800/9889 audios
+  Processed 2850/9889 audios
+  Processed 2900/9889 audios
+  Processed 2950/9889 audios
+  Processed 3000/9889 audios
+  Processed 3050/9889 audios
+  Processed 3100/9889 audios
+  Processed 3150/9889 audios
+  Processed 3200/9889 audios
+  Processed 3250/9889 audios
+  Processed 3300/9889 audios
+  Processed 3350/9889 audios
+  Processed 3400/9889 audios
+  Processed 3450/9889 audios
+  Processed 3500/9889 audios
+  Processed 3550/9889 audios
+  Processed 3600/9889 audios
+  Processed 3650/9889 audios
+  Processed 3700/9889 audios
+  Processed 3750/9889 audios
+  Processed 3800/9889 audios
+  Processed 3850/9889 audios
+  Processed 3900/9889 audios
+  Processed 3950/9889 audios
+  Processed 4000/9889 audios
+  Processed 4050/9889 audios
+  Processed 4100/9889 audios
+  Processed 4150/9889 audios
+  Processed 4200/9889 audios
+  Processed 4250/9889 audios
+  Processed 4300/9889 audios
+  Processed 4350/9889 audios
+  Processed 4400/9889 audios
+  Processed 4450/9889 audios
+  Processed 4500/9889 audios
+  Processed 4550/9889 audios
+  Processed 4600/9889 audios
+  Processed 4650/9889 audios
+  Processed 4700/9889 audios
+  Processed 4750/9889 audios
+  Processed 4800/9889 audios
+  Processed 4850/9889 audios
+  Processed 4900/9889 audios
+  Processed 4950/9889 audios
+  Processed 5000/9889 audios
+  Processed 5050/9889 audios
+  Processed 5100/9889 audios
+  Processed 5150/9889 audios
+  Processed 5200/9889 audios
+  Processed 5250/9889 audios
+  Processed 5300/9889 audios
+  Processed 5350/9889 audios
+  Processed 5400/9889 audios
+  Processed 5450/9889 audios
+  Processed 5500/9889 audios
+  Processed 5550/9889 audios
+  Processed 5600/9889 audios
+  Processed 5650/9889 audios
+  Processed 5700/9889 audios
+  Processed 5750/9889 audios
+  Processed 5800/9889 audios
+  Processed 5850/9889 audios
+  Processed 5900/9889 audios
+  Processed 5950/9889 audios
+  Processed 6000/9889 audios
+  Processed 6050/9889 audios
+  Processed 6100/9889 audios
+  Processed 6150/9889 audios
+  Processed 6200/9889 audios
+  Processed 6250/9889 audios
+  Processed 6300/9889 audios
+  Processed 6350/9889 audios
+  Processed 6400/9889 audios
+  Processed 6450/9889 audios
+  Processed 6500/9889 audios
+  Processed 6550/9889 audios
+  Processed 6600/9889 audios
+  Processed 6650/9889 audios
+  Processed 6700/9889 audios
+  Processed 6750/9889 audios
+  Processed 6800/9889 audios
+  Processed 6850/9889 audios
+  Processed 6900/9889 audios
+  Processed 6950/9889 audios
+  Processed 7000/9889 audios
+  Processed 7050/9889 audios
+  Processed 7100/9889 audios
+  Processed 7150/9889 audios
+  Processed 7200/9889 audios
+  Processed 7250/9889 audios
+  Processed 7300/9889 audios
+  Processed 7350/9889 audios
+  Processed 7400/9889 audios
+  Processed 7450/9889 audios
+  Processed 7500/9889 audios
+  Processed 7550/9889 audios
+  Processed 7600/9889 audios
+  Processed 7650/9889 audios
+  Processed 7700/9889 audios
+  Processed 7750/9889 audios
+  Processed 7800/9889 audios
+  Processed 7850/9889 audios
+  Processed 7900/9889 audios
+  Processed 7950/9889 audios
+  Processed 8000/9889 audios
+  Processed 8050/9889 audios
+  Processed 8100/9889 audios
+  Processed 8150/9889 audios
+  Processed 8200/9889 audios
+  Processed 8250/9889 audios
+  Processed 8300/9889 audios
+  Processed 8350/9889 audios
+  Processed 8400/9889 audios
+  Processed 8450/9889 audios
+  Processed 8500/9889 audios
+  Processed 8550/9889 audios
+  Processed 8600/9889 audios
+  Processed 8650/9889 audios
+  Processed 8700/9889 audios
+  Processed 8750/9889 audios
+  Processed 8800/9889 audios
+  Processed 8850/9889 audios
+  Processed 8900/9889 audios
+  Processed 8950/9889 audios
+  Processed 9000/9889 audios
+  Processed 9050/9889 audios
+  Processed 9100/9889 audios
+  Processed 9150/9889 audios
+  Processed 9200/9889 audios
+  Processed 9250/9889 audios
+  Processed 9300/9889 audios
+  Processed 9350/9889 audios
+  Processed 9400/9889 audios
+  Processed 9450/9889 audios
+  Processed 9500/9889 audios
+  Processed 9550/9889 audios
+  Processed 9600/9889 audios
+  Processed 9650/9889 audios
+  Processed 9700/9889 audios
+  Processed 9750/9889 audios
+  Processed 9800/9889 audios
+  Processed 9850/9889 audios
+
+======================================================================
+STEP 4: Evaluating Models on Test Set
+----------------------------------------------------------------------
+
+Evaluating MobileNetV3Small...
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+
+======================================================================
+MobileNetV3Small - Evaluation Metrics
+======================================================================
+Accuracy:  0.8327
+Precision: 0.6935
+Recall:    0.8327
+F1-Score:  0.7567
+ROC AUC:   0.7993
+
+Per-Class Metrics:
+----------------------------------------------------------------------
+Class           Precision       Recall          F1-Score       
+----------------------------------------------------------------------
+Other           0.8327          1.0000          0.9087         
+Angry           0.0000          0.0000          0.0000         
+======================================================================
+
+
+Evaluating MiniVGG16...
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+C:\Users\o.mahmud\AppData\Local\anaconda3\Lib\site-packages\sklearn\metrics\_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+
+======================================================================
+MiniVGG16 - Evaluation Metrics
+======================================================================
+Accuracy:  0.8327
+Precision: 0.6935
+Recall:    0.8327
+F1-Score:  0.7567
+ROC AUC:   0.8353
+
+Per-Class Metrics:
+----------------------------------------------------------------------
+Class           Precision       Recall          F1-Score       
+----------------------------------------------------------------------
+Other           0.8327          1.0000          0.9087         
+Angry           0.0000          0.0000          0.0000         
+======================================================================
+
+
+Evaluating SqueezeNet...
+
+======================================================================
+SqueezeNet - Evaluation Metrics
+======================================================================
+Accuracy:  0.8202
+Precision: 0.7907
+Recall:    0.8202
+F1-Score:  0.8003
+ROC AUC:   0.8436
+
+Per-Class Metrics:
+----------------------------------------------------------------------
+Class           Precision       Recall          F1-Score       
+----------------------------------------------------------------------
+Other           0.8619          0.9337          0.8964         
+Angry           0.4360          0.2551          0.3219         
+======================================================================
+
+
+======================================================================
+MODEL COMPARISON - FINAL RESULTS
+======================================================================
+
+Model                Accuracy     Precision    Recall       F1-Score     ROC-AUC     
+--------------------------------------------------------------------------------
+MobileNetV3Small     0.8327       0.6935       0.8327       0.7567       0.7993      
+MiniVGG16            0.8327       0.6935       0.8327       0.7567       0.8353      
+SqueezeNet           0.8202       0.7907       0.8202       0.8003       0.8436      
+--------------------------------------------------------------------------------
+
+Best Model: MobileNetV3Small with 0.8327 accuracy
+
+======================================================================
+Pipeline completed successfully!
+Models saved to: ./models
+======================================================================
+
+
+Process finished with exit code 0

@@ -1,0 +1,8 @@
+Training Summary for MiniVGG16
+==================================================
+
+Total Epochs: 130
+Best Validation Accuracy: 0.7910 (Epoch 90)
+Final Training Accuracy: 0.8126
+Final Validation Accuracy: 0.7863
+Total Parameters: 15553

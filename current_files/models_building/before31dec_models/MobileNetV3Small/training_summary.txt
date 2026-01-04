@@ -1,0 +1,8 @@
+Training Summary for MobileNetV3Small
+==================================================
+
+Total Epochs: 39
+Best Validation Accuracy: 0.8331 (Epoch 39)
+Final Training Accuracy: 0.8446
+Final Validation Accuracy: 0.8331
+Total Parameters: 288833

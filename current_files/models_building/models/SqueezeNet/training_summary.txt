@@ -1,0 +1,8 @@
+Training Summary for SqueezeNet
+==================================================
+
+Total Epochs: 43
+Best Validation Accuracy: 0.8188 (Epoch 41)
+Final Training Accuracy: 0.8742
+Final Validation Accuracy: 0.8072
+Total Parameters: 548365

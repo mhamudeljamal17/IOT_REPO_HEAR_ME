@@ -1,0 +1,1424 @@
+C:\Users\o.mahmud\AppData\Local\anaconda3\python.exe C:\Users\o.mahmud\Desktop\IOT\testing_and_learning_directions\sketch_dec2a\feeding_files2esp\feed.py 
+
+Sending: ./data/other\0001_0001_000010.wav
+ESP32: Free heap before MFCC: 357880 bytes
+ESP32: Raw audio range: min=-29018 max=26174
+ESP32: Normalized audio range: min=-0.885586 max=0.798791
+ESP32: MFCC range: min=-330.857330 max=47.299015
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -286.809814, -290.980530, -290.824219, -289.156342, -287.078491, -287.041718, -296.183044, -317.430359, -325.915344, -321.028046, -313.899567, -324.118988, -330.857330, -323.123474, -324.934784, -179.493011, -81.986702, -59.023083, -12.547944, 28.532433, 29.565882, 14.897103, -19.938494, -28.239494, -54.809265, -41.918175, -83.802353, -69.837914, -143.010910, -201.486130,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.41
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0001_0001_000022.wav
+ESP32: MFCC calc time: 151.72 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 874.64 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-27901 max=30611
+ESP32: Normalized audio range: min=-0.851497 max=0.934202
+ESP32: MFCC range: min=-360.722626 max=53.585464
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -296.676025, -290.877014, -299.427612, -304.009277, -298.556305, -291.448395, -292.024353, -299.920624, -317.306183, -348.149994, -360.722626, -338.880219, -316.288269, -290.717865, -264.305206, -129.976501, -53.379539, -51.419930, -54.440819, -70.571426, -60.133747, -128.788422, -148.448257, -84.064407, -18.256685, -12.267371, -19.681961, -69.175758, -71.217911, -32.982712,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.84
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/other\0001_0001_000169.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.39 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-28302 max=29825
+ESP32: Normalized audio range: min=-0.863735 max=0.910215
+ESP32: MFCC range: min=-331.767670 max=41.450901
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -274.714417, -279.563507, -285.331726, -289.963409, -295.649689, -292.951233, -303.105927, -309.592285, -329.649261, -324.366913, -327.707520, -331.767670, -309.993561, -268.034058, -243.294022, -163.921524, -110.810638, -26.818430, -40.206718, -59.693687, -26.028730, -19.257463, -43.763432, -65.638626, -45.104946, -52.764027, -80.612785, -131.333435, -14.874387, -16.889332,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.65
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/other\0001_0001_001529.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.34 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-3162 max=3107
+ESP32: Normalized audio range: min=-0.096500 max=0.094821
+ESP32: MFCC range: min=-419.499481 max=56.729656
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -398.844177, -396.032776, -401.253601, -391.141785, -409.820435, -392.984894, -419.499481, -390.696808, -336.408264, -245.491516, -223.102997, -201.958405, -168.221680, -198.921860, -164.922684, -198.714127, -317.645782, -296.596558, -168.361252, -170.130356, -165.690262, -160.308655, -130.716293, -136.325409, -141.245529, -127.200287, -142.503143, -165.916779, -136.815811, -136.384918,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.21
+ESP32: score1: 0.09
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0001_0001_001537.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.34 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-9546 max=10999
+ESP32: Normalized audio range: min=-0.291330 max=0.335673
+ESP32: MFCC range: min=-408.730896 max=62.355984
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -388.561035, -387.661102, -408.730896, -408.039276, -403.726501, -373.774200, -351.739960, -335.736694, -340.789825, -328.207184, -223.873505, -181.251297, -160.101257, -145.260483, -130.102203, -103.085449, -123.225182, -157.769394, -222.867142, -291.335876, -311.223206, -303.427521, -293.697632, -279.537262, -173.978210, -167.938736, -192.654907, -143.397034, -151.352341, -180.903244,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.46
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0011_0011_000869.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-7374 max=6288
+ESP32: Normalized audio range: min=-0.225043 max=0.191900
+ESP32: MFCC range: min=-371.483673 max=57.381756
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -357.199646, -360.531342, -355.403320, -358.859589, -348.008301, -343.413940, -335.904938, -354.402252, -367.716858, -363.899261, -320.600098, -281.679108, -264.606689, -196.457932, -111.889404, -132.890656, -122.587120, -138.226074, -197.828781, -177.097397, -190.342255, -140.188110, -180.409698, -150.158890, -147.648773, -175.949753, -151.178207, -129.242386, -172.530701, -138.153427,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.31
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0011_0011_000872.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.43 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8215 max=8359
+ESP32: Normalized audio range: min=-0.250710 max=0.255104
+ESP32: MFCC range: min=-1338.671265 max=34.408802
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -379.206085, -369.270721, -367.668640, -368.858398, -365.436127, -353.452850, -338.653809, -328.959045, -355.965302, -357.683807, -244.250107, -153.285599, -166.677490, -129.309326, -88.925323, -72.880447, -185.695877, -246.178391, -155.807693, -121.914642, -112.559906, -199.575684, -291.469574, -280.727234, -158.035645, -111.597694, -118.562141, -176.954758, -142.167908, -159.112701,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.32
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0011_0011_000875.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.44 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-6345 max=6144
+ESP32: Normalized audio range: min=-0.193640 max=0.187506
+ESP32: MFCC range: min=-1338.671265 max=47.518814
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -1338.671265, -428.776733, -355.718628, -356.835541, -369.207306, -357.401886, -358.002533, -377.876648, -376.798798, -378.063995, -184.436661, -112.841965, -141.332932, -107.621101, -164.791412, -167.721725, -121.231407, -142.511993, -160.081467, -155.185684, -199.797943, -197.215012, -161.530746, -174.500885, -208.589157, -138.093689, -94.068871, -119.080147, -184.456131, -246.196533,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.59
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0013_0013_000730.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.47 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8912 max=8292
+ESP32: Normalized audio range: min=-0.271981 max=0.253059
+ESP32: MFCC range: min=-293.610565 max=36.026333
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -283.500977, -287.441040, -286.335968, -278.686249, -288.856537, -289.958740, -284.497223, -293.610565, -288.977173, -282.416534, -183.888199, -139.676010, -46.280499, -59.268608, -49.835491, -175.093613, -264.051575, -274.992157, -204.187393, -88.459869, -83.648643, -111.044167, -173.828339, -138.968750, -102.926430, -86.433601, -82.019539, -84.793327, -93.713287, -132.867828,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.32
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0013_0013_000732.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.43 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-24445 max=22498
+ESP32: Normalized audio range: min=-0.746025 max=0.686605
+ESP32: MFCC range: min=-311.694763 max=41.452980
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -283.840729, -282.525208, -295.942780, -311.694763, -302.679932, -294.868866, -299.170898, -303.033386, -279.506653, -257.558105, -99.711403, -53.624454, -62.543377, -53.450474, -26.094633, -32.806271, -16.245825, -16.452028, -67.290543, -110.098145, -140.270691, -161.310104, -226.781784, -127.386185, -49.328518, -48.157097, -75.995575, -103.904366, -82.809181, -99.214943,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.55
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/other\0013_0013_000737.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.38 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10395 max=9072
+ESP32: Normalized audio range: min=-0.317240 max=0.276864
+ESP32: MFCC range: min=-314.737366 max=42.471851
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -303.068481, -314.737366, -311.852600, -314.003326, -303.984009, -303.528961, -304.179932, -310.205750, -300.983826, -239.727127, -119.739586, -135.840210, -84.462418, -131.779755, -92.085785, -71.980415, -57.789310, -121.727180, -204.480255, -235.123535, -96.830780, -62.779503, -78.684586, -129.091797, -158.851501, -173.520874, -116.693756, -85.621445, -96.679985, -38.363148,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.33
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0013_0013_000746.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-12894 max=14138
+ESP32: Normalized audio range: min=-0.393506 max=0.431471
+ESP32: MFCC range: min=-319.308136 max=48.731628
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -305.001984, -295.331268, -294.546448, -303.041962, -308.103363, -314.654388, -319.308136, -297.311615, -309.496490, -301.212982, -244.808578, -257.612335, -171.526154, -92.346252, -112.107735, -120.494225, -134.162720, -136.507462, -180.386765, -197.830124, -182.764053, -174.587753, -180.041595, -184.242767, -212.255569, -107.513153, -130.059250, -110.162018, -127.359573, -142.440292,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.45
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0016_0016_001030.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.34 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8704 max=8679
+ESP32: Normalized audio range: min=-0.265633 max=0.264870
+ESP32: MFCC range: min=-1338.671265 max=42.869431
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -310.247833, -288.356537, -290.871796, -286.760498, -295.222107, -307.559021, -330.843628, -345.005127, -328.423004, -294.283783, -210.614243, -147.261673, -180.233276, -244.548645, -174.326660, -142.513718, -130.865173, -126.686859, -190.149887, -256.913940, -285.881927, -202.790634, -119.363914, -118.131165, -137.051666, -149.530518, -143.484100, -141.959610, -125.196182, -88.536194,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.27
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0016_0016_001036.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.39 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-6302 max=6810
+ESP32: Normalized audio range: min=-0.192328 max=0.207831
+ESP32: MFCC range: min=-390.042297 max=49.963669
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -381.703949, -374.757629, -390.042297, -385.910736, -379.201019, -378.078796, -372.255096, -369.298615, -183.502304, -96.008400, -108.695282, -135.182831, -152.984451, -137.379593, -162.001984, -135.460205, -120.680206, -106.619957, -93.292648, -129.388046, -122.924698, -169.640030, -185.616302, -200.657013, -246.850769, -299.389130, -312.642731, -277.692383, -224.279526, -163.448929,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.58
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/other\0016_0016_001042.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.61 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-5359 max=6654
+ESP32: Normalized audio range: min=-0.163549 max=0.203070
+ESP32: MFCC range: min=-1338.671265 max=44.556931
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -288.837402, -270.680603, -283.332306, -286.609802, -288.840637, -301.884277, -316.880798, -340.178009, -239.552704, -130.233978, -132.447296, -172.024338, -136.507889, -195.274780, -268.312714, -199.731140, -125.185165, -126.527191, -108.048538, -118.672882, -103.764290, -134.746262, -227.510147, -166.846237, -150.084518, -157.126694, -148.748093, -215.757217, -236.721878, -162.744888,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.49
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0020_0020_000744.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.62 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-6219 max=5592
+ESP32: Normalized audio range: min=-0.189795 max=0.170660
+ESP32: MFCC range: min=-406.155640 max=45.237164
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -364.563995, -359.735443, -359.752777, -378.805328, -384.635620, -379.532715, -406.155640, -397.137115, -404.547272, -297.148743, -274.442413, -219.061142, -269.425079, -122.978279, -96.235527, -108.960152, -125.571495, -130.819611, -179.318054, -278.581299, -293.355957, -208.595886, -184.499542, -211.868134, -139.318939, -76.329277, -82.943146, -71.187317, -128.733414, -115.447121,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.37
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0020_0020_000748.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.40 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-5605 max=5595
+ESP32: Normalized audio range: min=-0.171056 max=0.170751
+ESP32: MFCC range: min=-415.104767 max=38.510395
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -386.214630, -379.154144, -373.105804, -360.427246, -375.297119, -377.455536, -405.291779, -414.400024, -415.104767, -335.393951, -237.862930, -149.753403, -133.686356, -119.339424, -145.755173, -166.376083, -196.889313, -110.780151, -120.224464, -96.092827, -78.371826, -70.663612, -99.486191, -104.959328, -115.774544, -123.911339, -120.982368, -125.411354, -125.669052, -106.008064,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.32
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0020_0020_000753.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.64 ms
+ESP32: Total calc time: 870.45 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-6591 max=6384
+ESP32: Normalized audio range: min=-0.201147 max=0.194830
+ESP32: MFCC range: min=-429.802246 max=38.062027
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -369.115540, -380.922241, -389.319336, -385.862305, -412.797729, -429.802246, -425.885254, -416.258240, -400.587524, -370.988708, -273.509552, -216.140808, -216.080994, -217.143936, -184.350571, -153.625290, -132.530258, -108.741104, -113.282837, -126.309769, -235.429459, -286.415802, -310.672943, -325.428162, -317.402527, -312.698639, -368.004883, -415.057831, -305.524628, -183.433899,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.08
+ESP32: score1: 0.15
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\0020_0020_000761.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.35 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-5733 max=4837
+ESP32: Normalized audio range: min=-0.174963 max=0.147618
+ESP32: MFCC range: min=-442.880920 max=39.222198
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -414.941956, -428.342529, -442.880920, -442.620819, -417.989166, -408.787964, -412.605103, -310.109589, -306.538788, -235.914017, -202.939606, -149.075729, -169.536484, -159.266525, -162.321579, -150.581360, -172.047516, -222.587219, -210.706802, -151.652023, -148.254913, -134.974304, -126.538651, -124.042183, -108.064186, -134.955200, -120.496887, -138.766922, -161.153244, -179.281113,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.02
+ESP32: score1: 0.23
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_DIS_HI.wav
+ESP32: MFCC calc time: 147.84 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.29 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10165 max=10002
+ESP32: Normalized audio range: min=-0.310221 max=0.305246
+ESP32: MFCC range: min=-211.160843 max=22.888491
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -189.299683, -197.827911, -196.038300, -187.678741, -195.007065, -204.641068, -189.855087, -211.160843, -190.522827, -184.565796, -198.255020, -145.008179, -85.239044, -83.821434, -105.966370, -74.089516, -51.069103, -46.217884, -20.190622, -24.456566, -30.092321, -57.747334, -79.952896, -83.673843, -76.792267, -93.932388, -110.008163, -126.813782, -142.034363, -75.724457,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.25
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_DIS_LO.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-1590 max=1499
+ESP32: Normalized audio range: min=-0.048524 max=0.045747
+ESP32: MFCC range: min=-212.931122 max=16.077639
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -198.940918, -206.995621, -200.523636, -185.487869, -199.234177, -187.202179, -195.357910, -199.258621, -199.080139, -196.538422, -188.301010, -196.473816, -212.931122, -168.982834, -140.303696, -114.245155, -109.947037, -116.028450, -119.424141, -113.036255, -119.644226, -138.431030, -161.556305, -151.847473, -163.214569, -165.284439, -134.265503, -123.136757, -140.814255, -142.494904,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.30
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_DIS_MD.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.60 ms
+ESP32: Total calc time: 870.32 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10095 max=5693
+ESP32: Normalized audio range: min=-0.308084 max=0.173742
+ESP32: MFCC range: min=-1338.671265 max=17.704374
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -191.073029, -201.926239, -205.290833, -205.536148, -208.403427, -196.764755, -185.200165, -122.415955, -105.548729, -136.262436, -156.608231, -115.250534, -60.391796, -71.384254, -67.677353, -52.057320, -41.322353, -51.723877, -81.872162, -81.830154, -83.320831, -95.548027, -116.031990, -155.265564, -144.733826, -158.792969, -164.550293, -169.715729, -120.086456, -126.816917,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.02
+ESP32: score1: 0.24
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_FEA_HI.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.40 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-26338 max=21285
+ESP32: Normalized audio range: min=-0.803797 max=0.649586
+ESP32: MFCC range: min=-1338.671265 max=23.731426
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -191.453979, -188.925491, -189.590729, -190.482712, -189.823059, -179.030792, -171.877960, -92.769371, -61.698170, -51.041431, -48.118942, -11.437343, 4.615379, 2.518814, -26.157619, -30.635887, -45.708073, -39.758846, -39.012924, -60.407265, -64.849144, -103.699577, -43.136105, -6.688588, -43.473595, -30.358772, -42.599285, -61.532185, -83.770248, -121.912704,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.27
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_FEA_LO.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.59 ms
+ESP32: Total calc time: 870.52 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8172 max=7846
+ESP32: Normalized audio range: min=-0.249397 max=0.239448
+ESP32: MFCC range: min=-1338.671265 max=21.393551
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -187.990173, -194.214996, -184.158829, -189.606049, -189.317398, -184.417236, -191.077576, -142.769974, -134.158737, -152.035385, -119.270653, -78.146805, -67.442886, -49.286453, -52.634502, -75.089706, -71.995804, -83.428978, -95.308952, -107.675331, -127.034805, -101.095596, -59.779060, -55.460094, -58.117187, -100.385376, -116.133446, -149.462540, -159.693390, -168.776993,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.02
+ESP32: score1: 0.24
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_FEA_MD.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.30 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11307 max=11179
+ESP32: Normalized audio range: min=-0.345073 max=0.341166
+ESP32: MFCC range: min=-1338.671265 max=22.640491
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -178.889359, -186.546265, -182.487854, -203.541000, -194.923660, -184.584885, -180.310547, -181.347687, -144.866928, -125.961990, -138.055435, -102.850983, -54.651192, -59.583405, -15.001518, -19.037935, -27.848215, -37.136765, -41.756477, -43.265202, -69.678146, -109.189064, -115.316414, -49.518852, -40.363174, -25.505239, -54.827194, -56.578903, -96.625755, -127.075684,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.02
+ESP32: score1: 0.22
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_HAP_HI.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.52 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-16559 max=19611
+ESP32: Normalized audio range: min=-0.505356 max=0.598498
+ESP32: MFCC range: min=-1338.671265 max=33.404591
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -91.328278, -63.768948, -58.594856, -71.892441, -96.303474, -43.440395, -16.049141, -15.339269, -36.401573, -55.385612, -73.212822, -42.977489, -17.065826, -48.679993, -44.042980, -57.325371, -78.905464, -89.846474, -84.388115, -64.108101, -80.337303, -84.387466, -111.001862, -118.625313, -51.009804, -44.968418, -41.994331, -62.764553, -62.644234, -66.043533,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.25
+ESP32: score1: 0.08
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_HAP_LO.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.31 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10089 max=7366
+ESP32: Normalized audio range: min=-0.307901 max=0.224799
+ESP32: MFCC range: min=-1338.671265 max=27.507494
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -195.457718, -199.806137, -200.697891, -195.726425, -193.362305, -204.772797, -170.745514, -109.938049, -108.886559, -122.401260, -144.060211, -81.558105, -66.512955, -45.027218, -40.348701, -41.583366, -65.052200, -77.989113, -75.727356, -90.091553, -119.547928, -132.904083, -88.542847, -79.053307, -80.785332, -71.716766, -82.543213, -109.884094, -155.206360, -162.119232,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.05
+ESP32: score1: 0.18
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_HAP_MD.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.40 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11316 max=11800
+ESP32: Normalized audio range: min=-0.345347 max=0.360118
+ESP32: MFCC range: min=-1338.671265 max=23.145720
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -198.946548, -192.148193, -196.584351, -194.936920, -168.541199, -97.907745, -98.721870, -120.752258, -119.166084, -69.938347, -45.968281, -47.113598, -53.465191, -62.190292, -76.567024, -57.801407, -60.426449, -92.057526, -96.515961, -51.904179, -40.620289, -57.167072, -65.716133, -63.408878, -91.868614, -116.635971, -145.118774, -173.603058, -177.515198, -192.166565,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.31
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_NEU_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.29 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-4064 max=2838
+ESP32: Normalized audio range: min=-0.124027 max=0.086612
+ESP32: MFCC range: min=-1338.671265 max=15.619973
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -197.271286, -178.683319, -184.267197, -192.819626, -196.192062, -201.940002, -196.423752, -194.963531, -194.467926, -206.878479, -194.266220, -137.498520, -113.106689, -120.299911, -137.524689, -145.888824, -103.112854, -93.182632, -106.771454, -81.150635, -73.587433, -108.949837, -92.655022, -94.946609, -79.168304, -95.888268, -124.701843, -142.271179, -148.293503, -133.844101,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.40
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_SAD_HI.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.46 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-5752 max=3731
+ESP32: Normalized audio range: min=-0.175542 max=0.113865
+ESP32: MFCC range: min=-208.051453 max=23.226854
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -187.690170, -187.180893, -194.497101, -208.051453, -200.625336, -193.319870, -190.238144, -194.198807, -183.596909, -196.981628, -199.409378, -184.900253, -188.260574, -191.713531, -128.594025, -130.727158, -161.563339, -150.291016, -96.323776, -83.772774, -84.651344, -61.123363, -52.640507, -79.332588, -80.747139, -89.592308, -102.926956, -97.449333, -126.983032, -145.188080,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.40
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_SAD_LO.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.43 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-2817 max=2539
+ESP32: Normalized audio range: min=-0.085971 max=0.077486
+ESP32: MFCC range: min=-1338.671265 max=23.507027
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -172.562027, -171.723083, -183.544128, -181.412140, -189.707428, -188.815414, -203.380569, -180.407379, -182.810837, -177.623535, -183.717514, -186.368698, -177.048752, -180.404114, -183.835281, -194.315308, -183.298630, -163.687149, -114.052490, -123.675491, -137.509262, -155.598160, -102.070587, -94.219757, -92.584167, -75.734985, -71.207672, -96.229568, -106.150131, -110.778023,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.29
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_IEO_SAD_MD.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.78 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-3021 max=3034
+ESP32: Normalized audio range: min=-0.092196 max=0.092593
+ESP32: MFCC range: min=-1338.671265 max=16.099083
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -187.302689, -178.380936, -179.967346, -184.747803, -180.632919, -175.942749, -177.767822, -172.281021, -168.415359, -178.715195, -182.987122, -176.685242, -168.430939, -150.777878, -111.071312, -95.789284, -75.732986, -84.179550, -90.882828, -86.802254, -106.813278, -101.824532, -130.767212, -133.113449, -140.947296, -118.326889, -89.989258, -100.003876, -119.345543, -123.161255,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.30
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_TAI_FEA_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.47 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-19453 max=18239
+ESP32: Normalized audio range: min=-0.593677 max=0.556627
+ESP32: MFCC range: min=-209.446747 max=36.548630
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -200.186050, -199.144760, -200.095398, -203.168640, -201.795761, -188.588028, -195.616501, -196.378098, -187.202499, -199.735519, -185.478439, -187.294220, -209.446747, -138.343597, -74.040787, -41.064774, -15.155565, -13.488386, -9.942302, -34.781620, -79.345375, -78.968376, -32.785488, -48.451019, -70.498245, -59.293182, -49.672245, -61.825340, -41.288067, -27.964794,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.04
+ESP32: score1: 0.18
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_TIE_SAD_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.45 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-3434 max=2768
+ESP32: Normalized audio range: min=-0.104801 max=0.084475
+ESP32: MFCC range: min=-210.378357 max=16.228245
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -200.853500, -197.355194, -197.873795, -192.656036, -186.299561, -184.206161, -205.210739, -192.691284, -195.567337, -196.629593, -189.939484, -192.828262, -193.355240, -170.498123, -180.241302, -210.378357, -191.839584, -199.260193, -190.243164, -196.640823, -195.911896, -196.769592, -202.854126, -190.497452, -193.757523, -194.895615, -176.112823, -106.416252, -79.832657, -74.134651,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.31
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_TSI_NEU_XX.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.60 ms
+ESP32: Total calc time: 870.35 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-6526 max=5525
+ESP32: Normalized audio range: min=-0.199164 max=0.168615
+ESP32: MFCC range: min=-209.014511 max=24.947628
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -200.231827, -189.690750, -207.178024, -206.070236, -196.904327, -200.787659, -191.756363, -191.772781, -192.939011, -201.260483, -199.146210, -198.384750, -199.980362, -199.356964, -200.361389, -193.414062, -191.312653, -196.612198, -197.579865, -203.357269, -144.586792, -82.697311, -90.673241, -106.930244, -138.158966, -111.120560, -71.167961, -68.192200, -56.753048, -76.860397,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.02
+ESP32: score1: 0.24
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1001_WSI_DIS_XX.wav
+ESP32: MFCC calc time: 147.84 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.44 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8966 max=5923
+ESP32: Normalized audio range: min=-0.273629 max=0.180761
+ESP32: MFCC range: min=-206.526581 max=26.150366
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -200.208527, -186.248810, -196.443008, -192.182266, -188.273148, -196.624252, -202.554306, -197.405869, -199.593445, -188.066360, -200.787598, -190.861481, -206.526581, -196.313782, -192.627975, -206.227127, -143.795929, -85.659752, -83.267296, -91.119637, -100.211479, -116.046181, -147.412369, -169.880356, -150.584702, -74.054863, -67.620010, -70.650238, -58.201920, -53.645664,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.27
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1002_IEO_FEA_MD.wav
+ESP32: MFCC calc time: 147.66 ms
+ESP32: Inference time: 715.40 ms
+ESP32: Total calc time: 870.21 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-4441 max=4065
+ESP32: Normalized audio range: min=-0.135533 max=0.124058
+ESP32: MFCC range: min=-1338.671265 max=22.918238
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -199.957672, -196.547424, -205.689056, -209.071716, -191.712906, -207.639771, -199.183151, -187.354111, -197.154724, -202.765732, -192.645386, -197.265091, -190.086212, -196.987717, -193.190948, -176.493134, -144.606781, -145.646530, -145.855331, -132.269012, -122.229706, -136.260361, -122.213394, -122.730255, -128.178070, -142.189163, -153.087296, -154.976303, -138.032150, -97.836838,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.28
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1002_IOM_HAP_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.40 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8928 max=11415
+ESP32: Normalized audio range: min=-0.272469 max=0.348369
+ESP32: MFCC range: min=-210.557526 max=40.231483
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -199.757446, -200.029205, -210.557526, -197.656738, -202.745667, -198.968811, -193.625992, -191.625946, -197.898758, -200.183990, -197.911835, -198.740891, -197.117874, -207.973373, -175.370300, -182.899567, -135.494415, -98.576599, -110.375023, -112.116150, -110.866989, -97.818954, -98.875862, -102.827377, -88.367630, -106.309807, -97.450012, -110.109894, -104.466888, -99.869652,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.04
+ESP32: score1: 0.19
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/other\1002_IOM_NEU_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.37 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-2651 max=2744
+ESP32: Normalized audio range: min=-0.080905 max=0.083743
+ESP32: MFCC range: min=-209.176773 max=32.671925
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -206.836243, -204.948914, -197.404282, -190.378082, -209.160141, -193.013885, -186.867126, -186.357864, -193.043655, -193.069885, -205.946472, -203.950455, -202.675751, -195.460129, -186.773499, -126.244598, -101.360405, -125.564293, -120.098602, -114.967987, -116.187218, -112.950569, -133.761429, -143.591660, -116.303200, -125.283607, -131.565567, -147.839905, -135.818192, -140.584259,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.26
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0001_0001_000352.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.60 ms
+ESP32: Total calc time: 870.27 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-9732 max=10754
+ESP32: Normalized audio range: min=-0.297006 max=0.328196
+ESP32: MFCC range: min=-430.389740 max=68.190948
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -425.349152, -430.389740, -426.787628, -417.750824, -402.047089, -411.693756, -362.973572, -377.872711, -412.874176, -415.805573, -222.353348, -171.214081, -151.904068, -147.621124, -151.924179, -155.623230, -143.738495, -135.096786, -132.753845, -93.621193, -112.844734, -115.440567, -109.371658, -92.645004, -149.059555, -206.224289, -104.975601, -121.649849, -101.138535, -124.573387,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.39
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0001_0001_000368.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-12097 max=13061
+ESP32: Normalized audio range: min=-0.369182 max=0.398602
+ESP32: MFCC range: min=-434.789398 max=44.891098
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -398.808411, -412.600708, -425.743011, -433.635162, -429.621521, -434.789398, -426.105011, -397.031677, -365.844116, -304.210236, -159.297485, -144.641907, -130.274506, -130.823135, -182.249756, -106.813858, -92.261139, -91.825211, -134.841705, -133.480743, -149.996643, -129.731125, -169.091141, -137.322571, -125.995697, -133.373016, -153.653549, -247.053268, -79.866165, -103.456238,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.34
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0001_0001_000376.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.36 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-12807 max=15473
+ESP32: Normalized audio range: min=-0.390851 max=0.472213
+ESP32: MFCC range: min=-425.536133 max=53.529125
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -403.690094, -412.512268, -417.224091, -411.444519, -421.209106, -425.536133, -423.430176, -414.237213, -416.207489, -369.456970, -309.386627, -294.131165, -310.034668, -258.198242, -219.176285, -139.951950, -167.341888, -130.339447, -154.033249, -90.905037, -72.351318, -118.492493, -103.941750, -155.474182, -231.074524, -338.365601, -359.654724, -358.821625, -366.965912, -368.754272,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.46
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0001_0001_000672.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.34 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11383 max=11924
+ESP32: Normalized audio range: min=-0.347392 max=0.363903
+ESP32: MFCC range: min=-424.748138 max=51.532864
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -351.017944, -351.301086, -353.825989, -372.212891, -377.067780, -395.743835, -408.836975, -357.784576, -403.288940, -424.748138, -120.146606, -73.415573, -121.161346, -152.647552, -158.376740, -115.201271, -68.322266, -74.805237, -59.093922, -63.196407, -118.418060, -163.004013, -145.667999, -132.385941, -90.327736, -118.623215, -76.949806, -178.532578, -202.238129, -133.851395,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.32
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0001_0001_000678.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.43 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11415 max=12546
+ESP32: Normalized audio range: min=-0.348369 max=0.382885
+ESP32: MFCC range: min=-426.836090 max=49.308495
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -414.520905, -420.542023, -420.992584, -405.597382, -426.836090, -425.824463, -420.190125, -421.804352, -356.317108, -221.419678, -199.116257, -197.764221, -151.032990, -164.632935, -159.033966, -220.998093, -150.928345, -104.869263, -162.358383, -85.335205, -132.210724, -78.904160, -130.951080, -136.703812, -146.957520, -200.817398, -130.667007, -110.991714, -151.399017, -146.761475,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.54
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0013_0013_000619.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.48 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-20626 max=18908
+ESP32: Normalized audio range: min=-0.629475 max=0.577044
+ESP32: MFCC range: min=-329.575348 max=37.300385
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -323.410248, -329.575348, -312.235199, -310.880432, -248.564041, -217.330048, -294.428619, -313.752594, -322.205719, -302.295593, -81.027184, -48.793438, -54.975155, -120.614998, -231.221603, -240.135193, -257.147034, -245.657669, -271.336487, -278.803497, -266.795837, -265.034912, -266.514923, -190.579849, -50.644699, -32.648102, -31.029322, -78.849724, -62.552944, -118.168945,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.33
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0013_0013_000626.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-9119 max=9561
+ESP32: Normalized audio range: min=-0.278298 max=0.291787
+ESP32: MFCC range: min=-1338.671265 max=41.490726
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -1338.671265, -725.394470, -342.196869, -319.498535, -316.333221, -317.884033, -323.496735, -317.036652, -299.857086, -296.041748, -280.035126, -188.159134, -175.253357, -95.895729, -72.363197, -112.335457, -127.342476, -135.723511, -118.033691, -125.689644, -112.958168, -124.028496, -106.954369, -144.294769, -192.964462, -161.642624, -92.057724, -83.174095, -130.351425, -113.768555,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.59
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0013_0013_000631.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.66 ms
+ESP32: Total calc time: 870.49 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-20926 max=19809
+ESP32: Normalized audio range: min=-0.638630 max=0.604541
+ESP32: MFCC range: min=-342.258179 max=38.791946
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -328.201843, -333.710937, -328.174591, -327.086487, -320.090302, -329.234985, -342.258179, -332.604156, -335.215912, -308.885437, -218.593872, -141.259354, -143.228622, -170.038651, -195.368805, -276.883606, -327.563080, -330.173523, -326.048096, -229.444870, -199.529343, -170.000824, -161.443130, -111.187111, -40.757809, -32.850052, -46.016575, -33.965221, -108.765556, -118.556778,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.30
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0014_0014_000362.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.32 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-12796 max=15595
+ESP32: Normalized audio range: min=-0.390515 max=0.475936
+ESP32: MFCC range: min=-422.954895 max=50.145802
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -345.255371, -394.975616, -397.272034, -394.280212, -380.286438, -384.317596, -392.022003, -404.302948, -422.954895, -357.374786, -275.490417, -232.130051, -156.564194, -36.010128, -60.556458, -90.132233, -106.112541, -82.438202, -94.614815, -204.752975, -256.234100, -257.465332, -252.834763, -174.228516, -108.551727, -96.503494, -109.684685, -147.267700, -151.396378, -159.174667,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.31
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0014_0014_000369.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.44 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8076 max=8371
+ESP32: Normalized audio range: min=-0.246467 max=0.255470
+ESP32: MFCC range: min=-380.038147 max=47.342567
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -364.715332, -373.886475, -364.275574, -355.353241, -347.907806, -360.682343, -358.304596, -365.865265, -380.038147, -338.512573, -348.927826, -168.315277, -88.569862, -89.264069, -81.573845, -233.265945, -281.488129, -137.044601, -149.793488, -153.935410, -169.243942, -175.009430, -234.869080, -170.222900, -123.553833, -113.411453, -93.472069, -81.894554, -110.974037, -142.817017,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.58
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0014_0014_000375.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.54 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-7295 max=6808
+ESP32: Normalized audio range: min=-0.222633 max=0.207770
+ESP32: MFCC range: min=-403.621613 max=55.043526
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -364.382599, -362.567200, -364.207520, -354.775146, -364.536743, -364.926147, -374.571655, -380.901581, -387.757141, -403.621613, -362.617981, -359.942719, -323.686707, -278.584534, -139.139786, -156.952332, -155.105865, -120.366508, -106.205467, -95.548302, -114.832748, -167.784851, -196.081238, -173.442642, -171.246536, -114.903839, -119.373367, -97.312454, -116.922852, -107.100708,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.10
+ESP32: score1: 0.13
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0015_0015_000502.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-17973 max=18707
+ESP32: Normalized audio range: min=-0.548509 max=0.570910
+ESP32: MFCC range: min=-1338.671265 max=55.631306
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -245.228790, -213.092987, -1338.671265, -1338.671265, -1338.671265, -1338.671265, -229.403900, -166.921432, -213.732422, -232.215103, -294.802307, -340.856171, -174.470337, -74.261002, -86.512421, -86.785339, -91.583221, -182.653534, -229.616394, -138.900085, -137.391129, -114.385521, -137.906372, -206.326157, -241.685760, -232.968994, -143.699982, -128.300888, -145.937958, -143.483810,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.59
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0015_0015_000512.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.60 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-13323 max=19458
+ESP32: Normalized audio range: min=-0.406598 max=0.593829
+ESP32: MFCC range: min=-1338.671265 max=49.512348
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -243.062088, -210.918427, -695.304626, -1338.671265, -1338.671265, -1338.671265, -214.827942, -193.461990, -185.079697, -115.779243, -110.408905, -103.117149, -73.284798, -79.384972, -115.991669, -130.263046, -120.884834, -107.985115, -94.874466, -109.766014, -154.166779, -217.810410, -216.152863, -191.501709, -108.036919, -123.286636, -106.604576, -139.169418, -103.257332, -162.616379,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.59
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0015_0015_000521.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.49 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11479 max=12647
+ESP32: Normalized audio range: min=-0.350322 max=0.385968
+ESP32: MFCC range: min=-1338.671265 max=55.586811
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -346.851532, -1338.671265, -1338.671265, -1338.671265, -1338.671265, -274.940063, -253.505737, -351.444336, -356.531494, -355.945923, -137.928558, -92.912918, -163.412659, -103.070305, -97.255936, -106.953308, -132.410431, -202.705490, -258.084473, -261.524902, -277.964508, -102.862823, -98.950836, -77.264580, -138.005676, -127.549988, -142.654434, -144.673752, -178.287857, -144.242157,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.59
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0016_0016_000501.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.48 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-9572 max=12119
+ESP32: Normalized audio range: min=-0.292123 max=0.369854
+ESP32: MFCC range: min=-404.770264 max=44.093185
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -308.167023, -325.672119, -324.446991, -355.299225, -359.634888, -395.933838, -396.862762, -404.770264, -201.259567, -98.576065, -77.583862, -65.302490, -78.453758, -68.895805, -113.681755, -102.137787, -114.497353, -173.338394, -150.622391, -194.920746, -179.219711, -139.395859, -134.203827, -132.241989, -97.780464, -142.305771, -238.396912, -241.328674, -199.213501, -177.052017,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.35
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0016_0016_000509.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.47 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-14154 max=12082
+ESP32: Normalized audio range: min=-0.431959 max=0.368725
+ESP32: MFCC range: min=-406.959869 max=46.909103
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -329.904175, -332.373688, -356.698547, -374.144867, -388.517944, -406.959869, -394.892548, -404.644745, -392.532745, -360.339600, -335.410217, -332.613495, -330.171509, -294.279816, -108.611908, -71.596680, -94.626205, -113.259933, -225.574081, -253.750336, -281.509125, -297.096313, -303.961090, -244.846848, -169.503113, -130.310257, -140.006378, -164.154663, -209.442810, -169.877167,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.44
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0016_0016_000515.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.45 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-14529 max=14953
+ESP32: Normalized audio range: min=-0.443403 max=0.456343
+ESP32: MFCC range: min=-385.647919 max=55.353592
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -314.025757, -310.951630, -312.710419, -331.624908, -321.526794, -362.799957, -385.647919, -341.206787, -283.950684, -93.956261, -110.878380, -65.212646, -116.358963, -140.708008, -121.085823, -163.758118, -140.623093, -180.638855, -115.356483, -91.075684, -88.949692, -131.122650, -75.205978, -112.989326, -145.762299, -151.222687, -208.206497, -257.253784, -256.115967, -268.303162,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.34
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0018_0018_000459.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.35 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10030 max=8886
+ESP32: Normalized audio range: min=-0.306101 max=0.271187
+ESP32: MFCC range: min=-628.990051 max=50.641731
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -623.351868, -628.990051, -330.299866, -303.453522, -307.482513, -297.758911, -307.547699, -281.909729, -320.637268, -378.266357, -116.929825, -107.264717, -79.155785, -114.528534, -194.242630, -255.630142, -285.390564, -140.162689, -93.725639, -109.264656, -123.781303, -145.930435, -189.763687, -185.346283, -106.129997, -67.064247, -108.242531, -85.486481, -183.026138, -95.948311,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.30
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0018_0018_000460.wav
+ESP32: MFCC calc time: 147.87 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.50 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-12686 max=13763
+ESP32: Normalized audio range: min=-0.387158 max=0.420026
+ESP32: MFCC range: min=-662.301331 max=38.753532
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -662.301331, -511.552612, -347.922333, -354.298004, -334.595856, -324.015533, -328.333099, -322.973267, -355.078461, -398.285797, -177.118958, -158.754364, -135.876831, -126.969490, -142.229782, -143.867996, -275.563293, -266.516632, -242.649078, -313.773010, -268.395294, -226.236557, -225.612122, -217.467392, -180.028244, -156.594955, -118.370331, -112.747925, -129.477936, -120.837883,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.11
+ESP32: score1: 0.13
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0018_0018_000461.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.67 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10874 max=9051
+ESP32: Normalized audio range: min=-0.331858 max=0.276223
+ESP32: MFCC range: min=-403.751312 max=49.837646
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -402.295837, -389.794983, -389.029510, -388.409149, -403.751312, -387.824371, -384.876740, -388.684875, -380.241638, -386.938629, -224.600327, -179.039978, -141.323074, -160.754791, -167.992950, -154.469925, -207.899841, -193.434341, -202.952759, -125.125076, -131.088104, -143.787628, -139.368027, -134.641373, -183.403992, -163.105667, -173.656006, -163.324890, -208.313141, -140.957657,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.60
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0018_0018_000462.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.36 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-13802 max=16016
+ESP32: Normalized audio range: min=-0.421216 max=0.488784
+ESP32: MFCC range: min=-391.270477 max=51.986038
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -347.078125, -337.635284, -323.871796, -331.473969, -323.403687, -334.084198, -350.084656, -362.526764, -389.805054, -391.270477, -159.848267, -119.866287, -134.855118, -177.698288, -167.275009, -106.585297, -97.356430, -53.297707, -83.333420, -91.032074, -123.833839, -130.554565, -120.921295, -150.046158, -156.400497, -199.968796, -271.279327, -223.156631, -226.376801, -177.415802,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.59
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0018_0018_000463.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.36 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-7145 max=7528
+ESP32: Normalized audio range: min=-0.218055 max=0.229743
+ESP32: MFCC range: min=-402.415497 max=42.990429
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -376.267090, -389.786560, -386.080139, -396.023102, -391.538666, -392.409515, -390.663239, -402.415497, -400.839325, -375.964233, -197.624313, -154.483459, -125.599762, -130.505661, -173.773209, -240.847641, -266.428101, -292.993408, -145.187088, -134.493652, -133.504959, -124.197746, -151.083176, -186.739151, -182.726776, -113.403389, -124.481468, -163.443893, -98.844215, -145.354935,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.53
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0018_0018_000464.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.43 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-16790 max=21832
+ESP32: Normalized audio range: min=-0.512406 max=0.666280
+ESP32: MFCC range: min=-375.582001 max=50.702251
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -343.554413, -324.913696, -341.919098, -332.243042, -314.309082, -298.649811, -288.270233, -277.137207, -299.096191, -303.501434, -213.639969, -90.507027, -104.766319, -155.002014, -208.983185, -220.503357, -108.729454, -109.244370, -75.661682, -104.299164, -163.493378, -237.358398, -288.730621, -274.761963, -375.582001, -195.829437, -154.847534, -158.535645, -161.931534, -133.697601,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.55
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0018_0018_000465.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.47 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10244 max=9486
+ESP32: Normalized audio range: min=-0.312632 max=0.289499
+ESP32: MFCC range: min=-365.384247 max=47.357342
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -326.513916, -322.703827, -320.725464, -325.639557, -313.307281, -306.765350, -300.711029, -283.232025, -289.971680, -324.097412, -303.376831, -252.376495, -194.778732, -141.880692, -158.920319, -137.760971, -181.555237, -197.238235, -174.312851, -82.380569, -87.255295, -108.455261, -107.038315, -136.552231, -186.734772, -309.303253, -347.020813, -365.384247, -243.035828, -144.150360,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.88
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0018_0018_000466.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.48 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-22676 max=20522
+ESP32: Normalized audio range: min=-0.692038 max=0.626301
+ESP32: MFCC range: min=-388.323151 max=53.187809
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -339.608429, -340.768555, -341.117310, -319.564209, -312.134186, -295.598083, -297.157684, -293.582947, -334.064697, -388.323151, -242.834991, -211.307159, -203.153946, -175.495010, -194.131927, -135.830246, -82.511673, -94.497124, -103.513725, -84.207001, -93.472343, -62.934948, -88.349083, -67.589981, -85.981918, -128.120682, -109.569557, -165.839142, -101.250336, -122.097038,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.69
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\0018_0018_000467.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.48 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-7822 max=8492
+ESP32: Normalized audio range: min=-0.238716 max=0.259163
+ESP32: MFCC range: min=-376.539154 max=47.623726
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -342.943817, -328.112305, -318.338257, -314.727417, -295.408508, -292.686249, -271.423096, -305.836304, -376.539154, -350.094727, -203.472733, -134.989319, -195.804581, -152.996140, -160.473846, -170.508011, -147.060303, -160.274261, -149.667877, -208.606247, -304.399750, -260.370941, -245.320618, -250.060089, -204.320328, -122.953804, -111.443390, -123.211479, -87.129906, -114.431450,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.48
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\0018_0018_000468.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.52 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-10009 max=12336
+ESP32: Normalized audio range: min=-0.305460 max=0.376476
+ESP32: MFCC range: min=-344.629211 max=52.650814
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -254.197693, -279.076202, -329.858948, -316.583984, -292.214081, -276.529175, -280.342957, -264.559509, -281.303833, -344.629211, -177.755402, -205.065353, -146.917694, -70.589287, -73.575912, -83.660751, -148.607040, -259.031555, -233.309158, -274.411316, -337.520264, -239.647797, -169.402634, -143.684113, -107.382576, -100.674431, -65.702324, -106.536690, -187.707047, -271.438110,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.57
+ESP32: Predicted emotion: ANGRY
+
+Sending: ./data/anger\1001_MTI_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.62 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-16793 max=12289
+ESP32: Normalized audio range: min=-0.512497 max=0.375042
+ESP32: MFCC range: min=-210.563614 max=27.380342
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -196.270264, -178.190506, -189.123474, -192.272720, -199.614105, -210.563614, -191.354843, -188.660583, -195.552719, -199.052032, -203.048599, -194.666183, -203.514084, -191.371918, -165.468277, -127.135109, -61.343742, -45.661930, -50.450657, -42.946106, -55.980659, -82.135193, -82.433487, -78.152603, -90.503075, -112.905037, -117.333992, -120.500275, -82.897354, -96.376755,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.04
+ESP32: score1: 0.20
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1001_WSI_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.40 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-20718 max=19708
+ESP32: Normalized audio range: min=-0.632282 max=0.601459
+ESP32: MFCC range: min=-195.016830 max=27.797220
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -114.784340, -95.973343, -63.865986, -61.071541, -59.528622, -88.845146, -104.885826, -123.063110, -129.573425, -153.819443, -178.779724, -195.016830, -89.037453, -41.344555, -36.759945, -13.833994, -12.795046, -21.215992, -34.380329, -36.111324, -55.042389, -87.044754, -128.142014, -117.161064, -116.474724, -101.262718, -88.993584, -82.477478, -80.349205, -70.998413,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.21
+ESP32: score1: 0.09
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1002_IEO_ANG_MD.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.33 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-18517 max=17706
+ESP32: Normalized audio range: min=-0.565111 max=0.540361
+ESP32: MFCC range: min=-205.927383 max=35.434914
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -204.188171, -195.639709, -189.127518, -201.882919, -202.174896, -190.497971, -189.720642, -189.657135, -202.327545, -185.027069, -194.145752, -204.954300, -205.927383, -189.340302, -202.596024, -196.371689, -177.472565, -165.908783, -185.498657, -191.702820, -102.398071, -87.213242, -106.652367, -137.499344, -95.618668, -100.240631, -56.841576, -50.186924, -61.880287, -62.261780,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.25
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1051_ITS_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.32 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-15080 max=14372
+ESP32: Normalized audio range: min=-0.460219 max=0.438612
+ESP32: MFCC range: min=-195.392563 max=30.694622
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -175.696289, -174.223083, -184.500351, -182.938248, -171.187881, -179.716156, -181.813339, -179.062057, -195.392563, -183.065063, -190.523102, -178.963867, -182.676895, -181.319672, -186.467728, -179.853149, -178.549316, -178.638214, -121.751389, -53.244556, -33.853069, -49.723618, -81.750328, -127.446335, -71.543365, -57.883556, -65.273521, -69.654633, -93.944832, -96.053902,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.12
+ESP32: score1: 0.12
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1051_IWL_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.64 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-26957 max=32484
+ESP32: Normalized audio range: min=-0.822687 max=0.991363
+ESP32: MFCC range: min=-186.129868 max=29.759441
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -181.390686, -183.535736, -186.129868, -184.770218, -183.431854, -184.129456, -182.266251, -185.567032, -181.378189, -171.817963, -169.352036, -181.381775, -171.727570, -173.815399, -182.666214, -101.126328, -29.543972, -19.762321, 18.210022, 7.904134, 22.200611, -14.243406, -32.348087, -57.667408, -56.397488, -50.507744, -58.046436, -88.697639, -75.702019, -29.104273,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.59
+ESP32: score1: 0.00
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1051_IWW_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.61 ms
+ESP32: Total calc time: 870.34 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11585 max=12970
+ESP32: Normalized audio range: min=-0.353557 max=0.395825
+ESP32: MFCC range: min=-192.420212 max=23.306795
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -192.420212, -170.461044, -185.990509, -172.700516, -181.957230, -174.901062, -181.260956, -188.234146, -182.486633, -176.573013, -171.297684, -184.203003, -183.748535, -178.112183, -184.910721, -186.957901, -170.580902, -169.932053, -175.520340, -181.096512, -183.054596, -172.557129, -178.538116, -109.908401, -62.308372, -44.279091, -60.100132, -71.885544, -32.146290, -5.396964,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.04
+ESP32: score1: 0.20
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1051_MTI_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.50 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-22059 max=21467
+ESP32: Normalized audio range: min=-0.673208 max=0.655141
+ESP32: MFCC range: min=-191.160355 max=30.381750
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -179.997467, -184.623383, -172.490372, -179.374237, -180.093887, -178.408401, -184.357986, -175.586014, -176.723557, -186.043915, -191.160355, -186.619125, -178.568054, -186.423904, -163.224167, -185.565948, -185.861542, -172.749542, -172.769012, -175.996887, -159.150711, -173.712738, -173.967789, -136.527054, -34.097576, -15.893175, -16.366989, -12.717275, -40.393349, -49.401787,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.26
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1054_TAI_ANG_XX.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.46 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-9893 max=10087
+ESP32: Normalized audio range: min=-0.301920 max=0.307840
+ESP32: MFCC range: min=-1338.671265 max=43.927341
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -178.469620, -181.838211, -166.159943, -120.056732, -108.647514, -111.047340, -132.422119, -102.338211, -68.783722, -67.963272, -66.860863, -61.131176, -73.958260, -107.737976, -131.010483, -110.481529, -79.708031, -63.694069, -71.533890, -77.380135, -84.787651, -105.647362, -89.985451, -112.598587, -72.287247, -69.696190, -64.829651, -67.812027, -73.690292, -62.266243,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.53
+ESP32: score1: 0.01
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1056_TAI_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.60 ms
+ESP32: Total calc time: 870.26 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-16396 max=19785
+ESP32: Normalized audio range: min=-0.500381 max=0.603809
+ESP32: MFCC range: min=-187.299301 max=31.824064
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -179.626816, -178.806610, -187.299301, -183.291748, -124.242989, -87.946579, -47.505581, -41.631458, -40.323975, -36.817871, -56.676098, -72.791397, -90.909615, -77.321693, -113.196953, -116.536209, -79.664474, -70.445541, -86.300934, -48.954044, -32.924858, -37.080303, -48.179226, -57.084908, -68.799988, -77.699234, -44.906376, -43.073051, -53.947189, -40.254219,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.15
+ESP32: score1: 0.11
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1072_IWL_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.60 ms
+ESP32: Total calc time: 870.55 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-32548 max=31782
+ESP32: Normalized audio range: min=-0.993316 max=0.969939
+ESP32: MFCC range: min=-184.839066 max=62.122135
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -173.831497, -175.744049, -184.030396, -184.839066, -169.522217, -179.256119, -177.382767, -173.832016, -182.201096, -180.320648, -174.081192, -172.182343, -169.591309, -170.209213, -183.110275, -179.589035, -178.717682, -170.000412, -80.128906, -45.762703, -14.826005, 62.122135, -18.370804, -52.349064, -32.803207, -13.408748, -8.479206, -32.209572, -28.317909, -34.831509,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.50
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1074_MTI_ANG_XX.wav
+ESP32: MFCC calc time: 147.85 ms
+ESP32: Inference time: 715.63 ms
+ESP32: Total calc time: 870.35 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-25683 max=25819
+ESP32: Normalized audio range: min=-0.783807 max=0.787957
+ESP32: MFCC range: min=-188.134613 max=35.554405
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -185.385986, -182.846130, -176.745987, -181.347031, -187.709702, -183.983795, -188.134613, -182.740631, -171.678864, -173.929016, -174.946198, -173.750244, -177.424911, -179.428467, -180.054260, -160.720490, -112.534607, -58.439793, -5.310899, -11.840097, -13.836411, -46.455170, -41.819885, -61.086979, -60.398914, -58.431026, -70.456497, -81.767036, -105.296745, -121.239563,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.44
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1090_ITH_ANG_XX.wav
+ESP32: MFCC calc time: 147.65 ms
+ESP32: Inference time: 715.48 ms
+ESP32: Total calc time: 869.99 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-8993 max=11903
+ESP32: Normalized audio range: min=-0.274453 max=0.363262
+ESP32: MFCC range: min=-216.629440 max=39.338722
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -216.006287, -209.882050, -206.283051, -206.435318, -209.212952, -212.913559, -204.454636, -216.188171, -216.629440, -213.591888, -210.582733, -120.940895, -63.204056, -53.057930, -48.229549, -48.275539, -84.748077, -130.664703, -159.536774, -177.561401, -185.895340, -184.887085, -179.654251, -156.999222, -52.411037, -53.462460, -62.041195, -66.921478, -38.699024, -49.610508,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.01
+ESP32: score1: 0.27
+ESP32: Predicted emotion: NOT ANGRY
+
+Sending: ./data/anger\1091_IOM_ANG_XX.wav
+ESP32: MFCC calc time: 147.86 ms
+ESP32: Inference time: 715.62 ms
+ESP32: Total calc time: 870.45 ms
+ESP32: -------------------------------
+ESP32: Waiting for audio from PC (send BUFLEN samples)...
+ESP32: Free heap before MFCC: 357120 bytes
+ESP32: Raw audio range: min=-11017 max=10166
+ESP32: Normalized audio range: min=-0.336222 max=0.310251
+ESP32: MFCC range: min=-220.841232 max=38.173374
+ESP32: === MODEL INPUT (first 30 values) ===
+ESP32: -220.806213, -213.259933, -210.974304, -216.197922, -195.840469, -207.215775, -214.234787, -165.303726, -88.751045, -76.508377, -77.341293, -87.610268, -120.239151, -77.392776, -72.705513, -45.232388, -62.580143, -73.898872, -67.202919, -74.993515, -81.165871, -73.345009, -63.154659, -75.996582, -68.705017, -88.800117, -83.308678, -89.484718, -107.749222, -127.183952,
+ESP32: ====================================
+ESP32: NN input buffer range: min=-126884624827436466746819489583931064320.000000 max=226709472882161057397529753864623882240.000000  i_min=7294 i_max=7436
+ESP32: score0: 0.00
+ESP32: score1: 0.34
+ESP32: Predicted emotion: NOT ANGRY
+
+Total files: 79
+Correct predictions: 43
+Accuracy: 54.43%
+
+Process finished with exit code 0
