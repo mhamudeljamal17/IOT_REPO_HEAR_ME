@@ -3,6 +3,11 @@
 #include <AudioGeneratorMP3.h>
 #include <AudioOutputI2S.h>
 
+#define I2S_BCLK  7
+#define I2S_LRC   8
+#define I2S_DOUT  9
+
+
 // ---- WiFi ----
 const char* ssid     = "Mahmuds_iphone";
 const char* password = "mahmudja";
@@ -13,7 +18,9 @@ AudioFileSourceICYStream *file;
 AudioOutputI2S *out;
 
 // Plain HTTP MP3 stream
-const char* streamUrl = "http://ice1.somafm.com/u80s-128-mp3";
+const char* streamUrl =   "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service";
+
+//"http://ice1.somafm.com/u80s-128-mp3";
 
 void setup() {
   Serial.begin(115200);
@@ -33,7 +40,7 @@ void setup() {
 
   // ----- I2S output → match your MAX98357A pins -----
   out = new AudioOutputI2S();
-  out->SetPinout(0, 1, 2);    // BCLK, LRC, DIN
+  out->SetPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);  // BCLK, LRC, DIN
   out->SetGain(0.7);             // 0.0–1.0
 
   // ----- Start MP3 stream -----
