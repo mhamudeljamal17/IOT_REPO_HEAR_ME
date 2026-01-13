@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "241310482114",
+    "firebase_url": "https://hearme-a5f10-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "hearme-a5f10",
+    "storage_bucket": "hearme-a5f10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241310482114:android:826e0bff7113249de3055b",
+        "android_client_info": {
+          "package_name": "com.example.hearme_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfyfrXwwzTDYPMcO4KyfBoO2ySoFe_lgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241310482114:android:1d218cfeb91b73c4e3055b",
+        "android_client_info": {
+          "package_name": "com.technion.iot.hearme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfyfrXwwzTDYPMcO4KyfBoO2ySoFe_lgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
