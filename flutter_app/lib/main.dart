@@ -3,10 +3,22 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'screens/home_page.dart';
 import 'screens/welcome_page.dart';
+import 'services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  
+  // Initialize notification service
+  await NotificationService().initialize();
+  
+  // Save FCM token for logged-in user
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user != null) {
+      NotificationService().saveTokenToFirestore(user.uid);
+    }
+  });
+  
   runApp(const MyApp());
 }
 

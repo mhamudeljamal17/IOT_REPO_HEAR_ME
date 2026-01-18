@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter_sound/flutter_sound.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
+import '../services/notification_service.dart';
 
-class MenteeDetailsPage extends StatelessWidget {
+class MenteeDetailsPage extends StatefulWidget {
   final String menteeDocId;
   final String name;
   final int age;
   final String phone;
-  final String menteeId;
+  final int menteeNumber;  // Changed from menteeId to menteeNumber
+  final DateTime? createdAt;
 
   const MenteeDetailsPage({
     super.key,
@@ -15,8 +22,187 @@ class MenteeDetailsPage extends StatelessWidget {
     required this.name,
     required this.age,
     required this.phone,
-    required this.menteeId,
+    required this.menteeNumber,
+    this.createdAt,
   });
+
+  @override
+  State<MenteeDetailsPage> createState() => _MenteeDetailsPageState();
+}
+
+class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
+  final FlutterSoundRecorder _audioRecorder = FlutterSoundRecorder();
+  bool _isRecording = false;
+  bool _isUploading = false;
+  bool _isRecorderInitialized = false;
+  String? _recordingPath;
+
+  @override
+  void initState() {
+    super.initState();
+    _initRecorder();
+  }
+
+  Future<void> _initRecorder() async {
+    await _audioRecorder.openRecorder();
+    setState(() {
+      _isRecorderInitialized = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    _audioRecorder.closeRecorder();
+    super.dispose();
+  }
+
+  Future<void> _startRecording() async {
+    try {
+      if (!_isRecorderInitialized) {
+        await _initRecorder();
+      }
+
+      // Request microphone permission
+      final status = await Permission.microphone.request();
+      if (!status.isGranted) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Microphone permission denied')),
+          );
+        }
+        return;
+      }
+
+      // Get directory to save recording
+      final directory = await getApplicationDocumentsDirectory();
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      _recordingPath = '${directory.path}/recording_$timestamp.wav';
+
+      // Start recording
+      await _audioRecorder.startRecorder(
+        toFile: _recordingPath,
+        codec: Codec.pcm16WAV,
+      );
+
+      setState(() {
+        _isRecording = true;
+      });
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error starting recording: $e')),
+        );
+      }
+    }
+  }
+
+  Future<void> _stopRecording() async {
+    try {
+      await _audioRecorder.stopRecorder();
+
+      setState(() {
+        _isRecording = false;
+        _isUploading = true;
+      });
+
+      // Upload to Firebase Storage
+      await _uploadToFirebase();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error stopping recording: $e')),
+        );
+      }
+      setState(() {
+        _isRecording = false;
+        _isUploading = false;
+      });
+    }
+  }
+
+  Future<void> _uploadToFirebase() async {
+    try {
+      if (_recordingPath == null || !File(_recordingPath!).existsSync()) {
+        throw Exception('Recording file not found');
+      }
+
+      final file = File(_recordingPath!);
+      final timestamp = DateTime.now();
+      final fileName = 'mentee_${widget.menteeNumber}_${timestamp.millisecondsSinceEpoch}.wav';
+      
+      // Upload to Firebase Storage
+      final storageRef = FirebaseStorage.instance
+          .ref()
+          .child('voice_recordings')
+          .child(widget.menteeDocId)
+          .child(fileName);
+
+      final uploadTask = await storageRef.putFile(file);
+      final downloadUrl = await uploadTask.ref.getDownloadURL();
+
+      // Save metadata to Firestore
+      final docRef = await FirebaseFirestore.instance
+          .collection('voice_recordings')
+          .add({
+        'menteeDocId': widget.menteeDocId,
+        'menteeNumber': widget.menteeNumber,
+        'menteeName': widget.name,
+        'fileName': fileName,
+        'downloadUrl': downloadUrl,
+        'timestamp': timestamp,
+        'duration': null, // Can be added if needed
+        'processed': false, // Flag for ESP32 to process
+      });
+
+      // Send notification to mentee and trigger ESP32 update
+      await NotificationService().sendNotificationToMentee(
+        menteeId: widget.menteeDocId,
+        title: 'New Voice Recording',
+        body: 'Your mentor has sent you a new voice message',
+        data: {
+          'type': 'voice_recording',
+          'recordingId': docRef.id,
+          'downloadUrl': downloadUrl,
+          'fileName': fileName,
+          'menteeNumber': widget.menteeNumber,
+        },
+      );
+
+      // Delete local file after upload
+      await file.delete();
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Recording saved successfully!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error uploading recording: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      setState(() {
+        _isUploading = false;
+        _recordingPath = null;
+      });
+    }
+  }
+
+  String _formatDate(DateTime date) {
+    final months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+    return '${months[date.month - 1]} ${date.day}, ${date.year}';
+  }
 
   Future<Map<String, dynamic>> _getEmergencyStats() async {
     try {
@@ -34,7 +220,7 @@ class MenteeDetailsPage extends StatelessWidget {
         
         final snapshot = await FirebaseFirestore.instance
             .collection('emergencies')
-            .where('menteeId', isEqualTo: menteeDocId)
+            .where('menteeId', isEqualTo: widget.menteeDocId)
             .where('timestamp', isGreaterThanOrEqualTo: startOfDay)
             .where('timestamp', isLessThanOrEqualTo: endOfDay)
             .get();
@@ -49,7 +235,7 @@ class MenteeDetailsPage extends StatelessWidget {
       // Get total emergencies
       final totalSnapshot = await FirebaseFirestore.instance
           .collection('emergencies')
-          .where('menteeId', isEqualTo: menteeDocId)
+          .where('menteeId', isEqualTo: widget.menteeDocId)
           .get();
       
       final totalEmergencies = totalSnapshot.docs.length;
@@ -112,7 +298,7 @@ class MenteeDetailsPage extends StatelessWidget {
                           radius: 50,
                           backgroundColor: Colors.green,
                           child: Text(
-                            name.isNotEmpty ? name[0].toUpperCase() : 'M',
+                            widget.name.isNotEmpty ? widget.name[0].toUpperCase() : 'M',
                             style: const TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.bold,
@@ -122,14 +308,14 @@ class MenteeDetailsPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          name,
+                          widget.name,
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         const SizedBox(height: 8),
-                        if (phone.isNotEmpty)
+                        if (widget.phone.isNotEmpty)
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -140,7 +326,7 @@ class MenteeDetailsPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                phone,
+                                widget.phone,
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey.shade600,
@@ -167,17 +353,25 @@ class MenteeDetailsPage extends StatelessWidget {
                 // Info Cards
                 _buildInfoCard(
                   icon: Icons.badge,
-                  label: 'Mentee ID',
-                  value: menteeId,
+                  label: 'Mentee Number',
+                  value: '${widget.menteeNumber}',
                   color: Colors.green,
                 ),
                 const SizedBox(height: 12),
                 _buildInfoCard(
                   icon: Icons.cake,
                   label: 'Age',
-                  value: '$age years',
+                  value: '${widget.age} years',
                   color: Colors.orange,
                 ),
+                const SizedBox(height: 12),
+                if (widget.createdAt != null)
+                  _buildInfoCard(
+                    icon: Icons.calendar_today,
+                    label: 'Added Date',
+                    value: _formatDate(widget.createdAt!),
+                    color: Colors.blue,
+                  ),
                 const SizedBox(height: 24),
 
                 // Emergency Statistics Section
@@ -393,6 +587,35 @@ class MenteeDetailsPage extends StatelessWidget {
             ),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _isUploading
+            ? null
+            : () {
+                if (_isRecording) {
+                  _stopRecording();
+                } else {
+                  _startRecording();
+                }
+              },
+        backgroundColor: _isRecording
+            ? Colors.red
+            : (_isUploading ? Colors.grey : Colors.green),
+        icon: _isUploading
+            ? const SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 2,
+                ),
+              )
+            : Icon(_isRecording ? Icons.stop : Icons.mic),
+        label: Text(
+          _isUploading
+              ? 'Uploading...'
+              : (_isRecording ? 'Stop Recording' : 'Record Voice'),
+        ),
       ),
     );
   }

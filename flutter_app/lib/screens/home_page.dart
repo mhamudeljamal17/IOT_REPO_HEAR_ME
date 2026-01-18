@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'alerts_page.dart';
 import 'settings_page.dart';
 import 'mentee_details_page.dart';
+import '../services/mentee_service.dart';
 
 // Mentee data is stored in Firestore; no local model required here.
 
@@ -21,7 +22,6 @@ class _HomePageState extends State<HomePage> {
   String? get _currentMentorId => FirebaseAuth.instance.currentUser?.uid;
 
   Future<void> _showAddMenteeDialog() async {
-    String menteeId = '';
     String name = '';
     String phone = '';
     String ageStr = '';
@@ -39,18 +39,6 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Mentee ID',
-                        hintText: 'Enter unique ID',
-                      ),
-                      validator:
-                          (v) =>
-                              (v == null || v.trim().isEmpty)
-                                  ? 'Enter mentee ID'
-                                  : null,
-                      onSaved: (v) => menteeId = v!.trim(),
-                    ),
                     TextFormField(
                       decoration: const InputDecoration(labelText: 'Name'),
                       validator:
@@ -98,13 +86,16 @@ class _HomePageState extends State<HomePage> {
                       return;
                     }
 
+                    // Generate unique mentee number
+                    final menteeNumber = await MenteeService.generateMenteeNumber();
+
                     final col = FirebaseFirestore.instance.collection(
                       'mentees',
                     );
                     final docRef = col.doc();
                     await docRef.set({
                       'id': docRef.id,
-                      'menteeId': menteeId, // Custom mentee ID from user input
+                      'menteeNumber': menteeNumber, // Auto-generated unique number
                       'mentorId':
                           mentorId, // Associate mentee with current mentor
                       'name': name,
@@ -112,7 +103,67 @@ class _HomePageState extends State<HomePage> {
                       'age': int.parse(ageStr),
                       'createdAt': FieldValue.serverTimestamp(),
                     });
+                    
+                    // Show success dialog with mentee number
                     Navigator.pop(context, true);
+                    if (context.mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('✅ Mentee Added'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Name: $name'),
+                              const SizedBox(height: 16),
+                              Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: Colors.green.shade50,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: Colors.green),
+                                ),
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'Mentee Number',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      '$menteeNumber',
+                                      style: const TextStyle(
+                                        fontSize: 32,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 12),
+                              const Text(
+                                'Give this number to the mentee. They will use it to identify themselves on the ESP32 device.',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   }
                 },
                 child: const Text('Add'),
@@ -153,18 +204,13 @@ class _HomePageState extends State<HomePage> {
             ToggleButtons(
               isSelected: [
                 _selectedFilter == 0,
-                _selectedFilter == 1,
                 _selectedFilter == 2,
               ],
-              onPressed: (i) => setState(() => _selectedFilter = i),
+              onPressed: (i) => setState(() => _selectedFilter = i == 0 ? 0 : 2),
               children: const [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 18),
                   child: Text('All'),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  child: Text('Alerts'),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 18),
@@ -184,10 +230,7 @@ class _HomePageState extends State<HomePage> {
                         : FirebaseFirestore.instance
                             .collection('mentees')
                             .where('mentorId', isEqualTo: _currentMentorId)
-                            .where(
-                              _selectedFilter == 1 ? 'alert' : 'emergency',
-                              isEqualTo: true,
-                            )
+                            .where('emergency', isEqualTo: true)
                             .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
@@ -251,7 +294,9 @@ class _HomePageState extends State<HomePage> {
                       final name = data['name'] as String? ?? '';
                       final phone = data['phone'] as String? ?? '';
                       final age = data['age'] as int? ?? 0;
-                      final menteeId = data['menteeId'] as String? ?? '';
+                      final menteeNumber = data['menteeNumber'] as int? ?? 0;
+                      final createdAtTimestamp = data['createdAt'] as Timestamp?;
+                      final createdAt = createdAtTimestamp?.toDate();
                       final subtitle =
                           phone.isNotEmpty
                               ? phone
@@ -262,7 +307,8 @@ class _HomePageState extends State<HomePage> {
                         subtitle: subtitle,
                         age: age,
                         phone: phone,
-                        menteeId: menteeId,
+                        menteeNumber: menteeNumber,
+                        createdAt: createdAt,
                       );
                     },
                   );
@@ -317,7 +363,8 @@ class MenteeTile extends StatelessWidget {
   final String subtitle;
   final int age;
   final String phone;
-  final String menteeId;
+  final int menteeNumber;  // Changed from menteeId to menteeNumber
+  final DateTime? createdAt;
 
   const MenteeTile({
     super.key,
@@ -326,7 +373,8 @@ class MenteeTile extends StatelessWidget {
     required this.subtitle,
     required this.age,
     required this.phone,
-    required this.menteeId,
+    required this.menteeNumber,
+    this.createdAt,
   });
 
   @override
@@ -358,7 +406,8 @@ class MenteeTile extends StatelessWidget {
                   name: name,
                   age: age,
                   phone: phone,
-                  menteeId: menteeId,
+                  menteeNumber: menteeNumber,
+                  createdAt: createdAt,
                 ),
               ),
             );
