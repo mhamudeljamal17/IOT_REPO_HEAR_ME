@@ -185,7 +185,8 @@ void notifyMentorOfDetection(int menteeNumber, const String &imageUrl, const Str
   json.set("fields/audioPath/stringValue", audioUrl);
   json.set("fields/timestamp/stringValue", detectionTime);
   json.set("fields/title/stringValue", "New Detection - Mentee Alert");
-  json.set("fields/message/stringValue", "Your mentee has triggered a detection. Tap to view.");
+  json.set("fields/message/stringValue", 
+           "Mentee #" + String(menteeNumber) + " triggered a detection");
   json.set("fields/status/stringValue", "pending");
   json.set("fields/type/stringValue", "mentor_alert");
 
@@ -198,7 +199,7 @@ void notifyMentorOfDetection(int menteeNumber, const String &imageUrl, const Str
         &fbdo,
         FIRESTORE_PROJECT_ID,
         "",
-        "notifications",
+        "notifications_from_esp",
         notificationDocId.c_str(),
         jsonStr.c_str(),
         "")) {

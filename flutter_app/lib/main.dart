@@ -4,23 +4,33 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'screens/home_page.dart';
 import 'screens/welcome_page.dart';
 import 'services/notification_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('🔕 Background message: ${message.messageId}');
+}
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
-  // Initialize notification service
+
+  FirebaseMessaging.onBackgroundMessage(
+    firebaseMessagingBackgroundHandler,
+  );
+
   await NotificationService().initialize();
-  
-  // Save FCM token for logged-in user
+
   FirebaseAuth.instance.authStateChanges().listen((User? user) {
     if (user != null) {
       NotificationService().saveTokenToFirestore(user.uid);
     }
   });
-  
+
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -56,18 +66,12 @@ class AuthWrapper extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
+            body: Center(child: CircularProgressIndicator()),
           );
         }
-
         if (snapshot.hasData) {
-          // User is signed in
           return const HomePage();
         }
-
-        // User is not signed in - show welcome page
         return const WelcomePage();
       },
     );
