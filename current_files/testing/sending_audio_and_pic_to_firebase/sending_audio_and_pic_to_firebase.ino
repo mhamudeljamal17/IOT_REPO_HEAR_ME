@@ -4,6 +4,7 @@
 #include "driver/i2s_pdm.h"
 #include <Firebase_ESP_Client.h>
 #include <time.h>
+#include "esp_heap_caps.h"
 
 /* ================= WIFI ================= */
 #define WIFI_SSID "Mahmuds_iphone"
@@ -13,6 +14,7 @@
 #define API_KEY "AIzaSyDfyfrXwwzTDYPMcO4KyfBoO2ySoFe_lgY"
 #define STORAGE_BUCKET_ID "hearme-a5f10.firebasestorage.app"
 #define FIRESTORE_PROJECT_ID "hearme-a5f10"
+#define DATABASE_URL "https://hearme-a5f10.firebaseio.com/"
 
 #define USER_EMAIL "admin@admin.com"
 #define USER_PASSWORD "admin1"
@@ -49,15 +51,15 @@ FirebaseConfig config;
 i2s_chan_handle_t rx_chan;
 
 /* ================= AUDIO BUFFER ================= */
-static uint8_t *audio_buffer;
-static size_t audio_size;
+static uint8_t *audio_buffer = nullptr;
+static size_t audio_size = 0;
 
 /* ================================================= */
 
 void setupCamera() {
   Serial.println("[CAM] Initializing camera...");
-  camera_config_t c;
 
+  camera_config_t c;
   c.ledc_channel = LEDC_CHANNEL_0;
   c.ledc_timer = LEDC_TIMER_0;
   c.pin_d0 = Y2_GPIO_NUM; c.pin_d1 = Y3_GPIO_NUM;
@@ -76,11 +78,12 @@ void setupCamera() {
   c.pixel_format = PIXFORMAT_JPEG;
   c.frame_size = FRAMESIZE_QVGA;
   c.jpeg_quality = 12;
-  c.fb_count = 2;
+  c.fb_count = 1;
+  c.fb_location = CAMERA_FB_IN_PSRAM;
 
   if (esp_camera_init(&c) != ESP_OK) {
     Serial.println("[CAM][ERROR] Camera init failed!");
-    while (1);
+    while (true);
   }
 
   Serial.println("[CAM] Camera ready");
@@ -90,8 +93,9 @@ void setupMic() {
   Serial.println("[MIC] Initializing PDM microphone...");
 
   i2s_chan_config_t chan_cfg =
-    I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
-  i2s_new_channel(&chan_cfg, NULL, &rx_chan);
+      I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
+
+  ESP_ERROR_CHECK(i2s_new_channel(&chan_cfg, NULL, &rx_chan));
 
   i2s_pdm_rx_config_t pdm_cfg = {
     .clk_cfg = I2S_PDM_RX_CLK_DEFAULT_CONFIG(SAMPLE_RATE),
@@ -99,14 +103,14 @@ void setupMic() {
         I2S_DATA_BIT_WIDTH_16BIT,
         I2S_SLOT_MODE_MONO),
     .gpio_cfg = {
-      .clk = GPIO_NUM_42,
-      .din = GPIO_NUM_41,
-      .invert_flags = {.clk_inv = false},
+      .clk = (gpio_num_t)PDM_CLK,
+      .din = (gpio_num_t)PDM_DATA,
+      .invert_flags = { .clk_inv = false },
     },
   };
 
-  i2s_channel_init_pdm_rx_mode(rx_chan, &pdm_cfg);
-  i2s_channel_enable(rx_chan);
+  ESP_ERROR_CHECK(i2s_channel_init_pdm_rx_mode(rx_chan, &pdm_cfg));
+  ESP_ERROR_CHECK(i2s_channel_enable(rx_chan));
 
   Serial.println("[MIC] Microphone ready");
 }
@@ -115,13 +119,28 @@ void recordAudio() {
   Serial.printf("[MIC] Recording audio (%d seconds)...\n", RECORD_SECONDS);
 
   audio_size = SAMPLE_RATE * RECORD_SECONDS * 2;
-  audio_buffer = (uint8_t *)malloc(audio_size);
 
-  size_t read_bytes, offset = 0;
+  audio_buffer = (uint8_t *)heap_caps_malloc(
+      audio_size,
+      MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT
+  );
+
+  if (!audio_buffer) {
+    Serial.println("[MIC][ERROR] Audio buffer allocation failed");
+    return;
+  }
+
+  size_t read_bytes = 0;
+  size_t offset = 0;
   uint8_t temp[BUFFER_SIZE];
 
   while (offset < audio_size) {
-    i2s_channel_read(rx_chan, temp, BUFFER_SIZE, &read_bytes, portMAX_DELAY);
+    size_t to_read = min(BUFFER_SIZE, audio_size - offset);
+    size_t to_read = min((size_t)BUFFER_SIZE, audio_size - offset);
+
+    ESP_ERROR_CHECK(
+      i2s_channel_read(rx_chan, temp, to_read, &read_bytes, portMAX_DELAY)
+    );
     memcpy(audio_buffer + offset, temp, read_bytes);
     offset += read_bytes;
   }
@@ -130,8 +149,8 @@ void recordAudio() {
 }
 
 void setup() {
-  Serial.println("\n[BOOT] ESP32-S3 starting...");
   Serial.begin(115200);
+  Serial.println("\n[BOOT] ESP32-S3 starting...");
 
   Serial.print("[WIFI] Connecting");
   WiFi.begin(WIFI_SSID, WIFI_PASS);
@@ -146,10 +165,13 @@ void setup() {
 
   Serial.println("[FIREBASE] Signing in...");
   config.api_key = API_KEY;
+  config.database_url = DATABASE_URL;
   auth.user.email = USER_EMAIL;
   auth.user.password = USER_PASSWORD;
+
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
+
   Serial.println("[FIREBASE] Ready");
 
   configTime(0, 0, "pool.ntp.org");
@@ -171,12 +193,23 @@ void loop() {
   /* ---------- IMAGE ---------- */
   Serial.println("[CAM] Capturing image...");
   camera_fb_t *fb = esp_camera_fb_get();
-  Serial.printf("[CAM] Image captured (%d KB)\n", fb->len / 1024);
+  if (!fb) {
+    Serial.println("[CAM][ERROR] Capture failed");
+    return;
+  }
 
-  Serial.println("[UPLOAD] Uploading image...");
   String imgPath = "/detections/" + detectID + "/image.jpg";
-  Firebase.Storage.upload(&fbdo, STORAGE_BUCKET_ID,
-    fb->buf, fb->len, imgPath.c_str(), "image/jpeg");
+  Serial.println("[UPLOAD] Uploading image...");
+
+  if (!Firebase.Storage.upload(
+        &fbdo,
+        STORAGE_BUCKET_ID,
+        fb->buf,
+        fb->len,
+        imgPath.c_str(),
+        "image/jpeg")) {
+    Serial.println(fbdo.errorReason());
+  }
 
   esp_camera_fb_return(fb);
   Serial.println("[UPLOAD] Image upload complete");
@@ -184,12 +217,23 @@ void loop() {
   /* ---------- AUDIO ---------- */
   recordAudio();
 
-  Serial.println("[UPLOAD] Uploading audio...");
   String audPath = "/detections/" + detectID + "/audio.raw";
-  Firebase.Storage.upload(&fbdo, STORAGE_BUCKET_ID,
-    audio_buffer, audio_size, audPath.c_str(), "audio/raw");
+  Serial.println("[UPLOAD] Uploading audio...");
 
+  if (!Firebase.Storage.upload(
+        &fbdo,
+        STORAGE_BUCKET_ID,
+        audio_buffer,
+        audio_size,
+        audPath.c_str(),
+        "audio/pcm")) {
+    Serial.println(fbdo.errorReason());
+  }
+
+  i2s_channel_disable(rx_chan);
   free(audio_buffer);
+  audio_buffer = nullptr;
+
   Serial.println("[UPLOAD] Audio upload complete");
 
   /* ---------- FIRESTORE ---------- */
@@ -199,15 +243,22 @@ void loop() {
   json.set("fields/image/stringValue", imgPath);
   json.set("fields/audio/stringValue", audPath);
   json.set("fields/timestamp/stringValue", String(ts));
+  json.set("fields/message/stringValue",
+           "New detection available – tap to view");
 
   String jsonStr;
   json.toString(jsonStr, true);
 
-  Firebase.Firestore.createDocument(
-    &fbdo, FIRESTORE_PROJECT_ID, "",
-    detectID.c_str(), jsonStr.c_str());
+  if (!Firebase.Firestore.createDocument(
+        &fbdo,
+        FIRESTORE_PROJECT_ID,
+        "",
+        detectID.c_str(),
+        jsonStr.c_str())) {
+    Serial.println(fbdo.errorReason());
+  }
 
   Serial.println("[DONE] Detection saved successfully");
 
-  while (1); // run once
+  while (true); // run once
 }

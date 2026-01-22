@@ -9,8 +9,8 @@
 
 
 // ---- WiFi ----
-const char* ssid     = "Shadens_iPhone";
-const char* password = "shaden2606";
+const char* ssid     = "Mahmuds_iphone";
+const char* password = "mahmudja";
 
 // ---- Audio objects ----
 AudioGeneratorMP3 *mp3;
