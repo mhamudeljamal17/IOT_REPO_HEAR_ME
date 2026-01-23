@@ -199,4 +199,24 @@ class NotificationService {
       .update({'fcmToken': FieldValue.delete()});
 }
 
+Future<void> triggerEspAudio({
+  required int menteeNumber,
+  required String audioUrl,
+  required int durationSeconds,
+}) async {
+  final ref = FirebaseDatabase.instance
+      .ref()
+      .child('esp_commands')
+      .child(menteeNumber.toString());
+
+  await ref.set({
+    'status': 'new',
+    'audioUrl': audioUrl,
+    'duration': durationSeconds,
+    'timestamp': ServerValue.timestamp,
+  });
+
+  print('✅ ESP trigger sent for mentee $menteeNumber');
+}
+
 }

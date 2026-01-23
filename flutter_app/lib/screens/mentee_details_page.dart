@@ -138,7 +138,11 @@ class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
           .child(fileName);
 
       final uploadTask = await storageRef.putFile(file);
+      
       final downloadUrl = await uploadTask.ref.getDownloadURL();
+
+// Convert to proxy URL
+final proxyUrl = 'http://your-backend.com/proxy?url=${Uri.encodeComponent(downloadUrl)}';
 
       // Save metadata to Firestore
       final docRef = await FirebaseFirestore.instance
@@ -148,13 +152,13 @@ class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
         'menteeNumber': widget.menteeNumber,
         'menteeName': widget.name,
         'fileName': fileName,
-        'downloadUrl': downloadUrl,
+        'downloadUrl': proxyUrl,  // the proxied URL
         'timestamp': timestamp,
-        'duration': null, // Can be added if needed
-        'processed': false, // Flag for ESP32 to process
+        'duration': null,
+        'processed': false,
       });
 
-      // Send notification to mentee and trigger ESP32 update
+      // Send notification to ESP32 via backend
       await NotificationService().sendNotificationToMentee(
         menteeId: widget.menteeDocId,
         title: 'New Voice Recording',
@@ -162,7 +166,7 @@ class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
         data: {
           'type': 'voice_recording',
           'recordingId': docRef.id,
-          'downloadUrl': downloadUrl,
+          'downloadUrl': downloadUrl,  // Backend will convert this
           'fileName': fileName,
           'menteeNumber': widget.menteeNumber,
         },
