@@ -1,11 +1,10 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
+#include <queue>
 
-/* ===== AUDIO ===== */
-#include <AudioGeneratorWAV.h>
-#include <AudioFileSourceHTTPStream.h>
-#include <AudioOutputI2S.h>
+/* ===== AUDIO (ESP32-audioI2S) ===== */
+#include "Audio.h"
 
 /* ================= WIFI ================= */
 #define WIFI_SSID "Mahmuds_iphone"
@@ -31,54 +30,55 @@ FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig config;
 
-/* ================= AUDIO OBJECTS ================= */
-AudioGeneratorWAV *wav = nullptr;
-AudioFileSourceHTTPStream *file = nullptr; // fallback to HTTP stream
-AudioOutputI2S *out = nullptr;
-
+/* ================= AUDIO OBJECT ================= */
+Audio audio;
 bool audioPlaying = false;
 
-/* ===================================================== */
+/* ================= AUDIO QUEUE ================= */
+std::queue<String> audioQueue;
 
-void playAudioFromUrl(const String &url) {
-  Serial.println("[AUDIO] Starting playback...");
+/* ===================================================== */
+/* AUDIO CALLBACKS */
+void audio_info(const char *info) {
+  Serial.print("[AUDIO] ");
+  Serial.println(info);
+}
+
+// Called when MP3 finishes
+void audio_eof_mp3(const char *info) {
+  Serial.println("[AUDIO] MP3 finished");
+  audioPlaying = false;
+  Serial.println("[AUDIO] ✅ Ready for next audio");
+  Firebase.RTDB.setString(&fbdo, ESP_COMMAND_PATH "/status", "done");
+}
+
+// Called when WAV finishes
+void audio_eof_wav(const char *info) {
+  Serial.println("[AUDIO] WAV finished");
+  audioPlaying = false;
+  Serial.println("[AUDIO] ✅ Ready for next audio");
+  Firebase.RTDB.setString(&fbdo, ESP_COMMAND_PATH "/status", "done");
+}
+
+/* ================= PLAY NEXT AUDIO ================= */
+void playNextAudio() {
+  if (audioPlaying || audioQueue.empty()) return;
+
+  String url = audioQueue.front();
+  audioQueue.pop();
+
+  Serial.println("[AUDIO] Starting HTTPS playback");
   Serial.println("[AUDIO] URL: " + url);
 
-  // Use HTTPSStream if available:
-  // file = new AudioFileSourceHTTPSStream(url.c_str());
-  file = new AudioFileSourceHTTPStream(url.c_str());
-
-  out  = new AudioOutputI2S();
-  out->SetPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
-  out->SetGain(0.9);
-
-  wav = new AudioGeneratorWAV();
-
-  if (!wav->begin(file, out)) {
-    Serial.println("[AUDIO][ERROR] WAV begin failed");
-    delete wav;
-    delete file;
-    delete out;
-    return;
-  }
+  // Stop previous audio just in case
+  if (audio.isRunning()) audio.stopSong();
+  delay(50);
 
   audioPlaying = true;
-  while (wav->isRunning()) {
-    wav->loop();
-    delay(1);
+  if (!audio.connecttohost(url.c_str())) {
+    Serial.println("[AUDIO][ERROR] Failed to start audio");
+    audioPlaying = false;
   }
-  wav->stop();
-
-  delete wav;
-  delete file;
-  delete out;
-
-  wav = nullptr;
-  file = nullptr;
-  out  = nullptr;
-
-  Serial.println("[AUDIO] Playback finished");
-  audioPlaying = false;
 }
 
 /* ================= RTDB STREAM CALLBACK ================= */
@@ -91,26 +91,33 @@ void streamCallback(FirebaseStream data) {
   }
 
   FirebaseJson *json = data.to<FirebaseJson*>();
-
   FirebaseJsonData result;
+
   String status;
   String audioUrl;
 
-  if (json->get(result, "status")) status = result.stringValue;
+  if (json->get(result, "status"))   status   = result.stringValue;
   if (json->get(result, "audioUrl")) audioUrl = result.stringValue;
 
-  Serial.println("[RTDB] status = " + status);
+  Serial.println("[RTDB] status   = " + status);
   Serial.println("[RTDB] audioUrl = " + audioUrl);
 
-  if (status == "new" && !audioPlaying && audioUrl.length() > 10) {
-    Serial.println("[RTDB] 🔊 New audio command detected");
-    playAudioFromUrl(audioUrl);
+  // ✅ Only handle new audio commands
+  if (status == "new" && audioUrl.length() > 10) {
+    Serial.println("[RTDB] 🔊 New audio command detected, adding to queue");
 
-    // ACK
-    Firebase.RTDB.setString(&fbdo, ESP_COMMAND_PATH "/status", "done");
-    Serial.println("[RTDB] ✅ ACK sent (status=done)");
+    // Add to queue
+    audioQueue.push(audioUrl);
+
+    // ✅ Immediately update status to "old" so it won't trigger again
+    if (Firebase.RTDB.setString(&fbdo, ESP_COMMAND_PATH "/status", "old")) {
+      Serial.println("[RTDB] Status updated to 'old'");
+    } else {
+      Serial.println("[RTDB][ERROR] Failed to update status: " + fbdo.errorReason());
+    }
   }
 }
+
 
 void streamTimeoutCallback(bool timeout) {
   if (timeout) {
@@ -123,45 +130,113 @@ void setup() {
   Serial.begin(115200);
   delay(500);
 
-  /* ---- WiFi ---- */
-  Serial.print("[WIFI] Connecting");
   WiFi.begin(WIFI_SSID, WIFI_PASS);
   while (WiFi.status() != WL_CONNECTED) {
     delay(300);
     Serial.print(".");
   }
   Serial.println("\n[WIFI] Connected");
-  Serial.println("[WIFI] IP: " + WiFi.localIP().toString());
 
-  /* ---- Firebase ---- */
+  audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+  audio.setVolume(15); // 0..21
+
+  
+  // Firebase
   config.api_key = API_KEY;
   config.database_url = DATABASE_URL;
-
   auth.user.email = USER_EMAIL;
   auth.user.password = USER_PASSWORD;
 
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 
-  Serial.println("[FIREBASE] Connected");
-
-  /* ---- Start RTDB stream ---- */
   if (!Firebase.RTDB.beginStream(&fbdo, ESP_COMMAND_PATH)) {
     Serial.println("[RTDB][ERROR] Stream begin failed");
     Serial.println(fbdo.errorReason());
   }
-
-  Firebase.RTDB.setStreamCallback(
-    &fbdo,
-    streamCallback,
-    streamTimeoutCallback
-  );
-
+  Firebase.RTDB.setStreamCallback(&fbdo, streamCallback, streamTimeoutCallback);
   Serial.println("[RTDB] Listening for ESP commands...");
 }
 
 /* ================= LOOP ================= */
 void loop() {
-  // Firebase stream runs asynchronously.
-  delay(1000);
+  audio.loop();        // Must be called frequently
+
+  // Check if audio finished
+  if (audioPlaying && !audio.isRunning()) {
+    audioPlaying = false;
+    Serial.println("[AUDIO] Playback finished, ready for next audio");
+    Firebase.RTDB.setString(&fbdo, ESP_COMMAND_PATH "/status", "done");
+  }
+
+  // Play next in queue if available
+  playNextAudio();
+
+  delay(2);
 }
+
+
+
+// }
+// #include <Arduino.h>
+// #include <WiFi.h>
+// #include "Audio.h"
+
+// /* ================= WIFI ================= */
+// #define WIFI_SSID "Mahmuds_iphone"
+// #define WIFI_PASS "mahmudja"
+
+// /* ================= I2S DAC (SAME AS YOUR PROJECT) ================= */
+// #define I2S_BCLK  7
+// #define I2S_LRC   8
+// #define I2S_DOUT  9
+
+// /* ================= AUDIO ================= */
+// Audio audio;
+
+// /* ===================================================== */
+
+// void audio_info(const char *info) {
+//   Serial.print("[AUDIO] ");
+//   Serial.println(info);
+// }
+
+// void audio_eof_mp3(const char *info) {
+//   Serial.println("[AUDIO] Playback finished");
+// }
+
+// /* ===================================================== */
+
+// void setup() {
+//   Serial.begin(115200);
+//   delay(500);
+
+//   /* ---- WiFi ---- */
+//   Serial.print("[WIFI] Connecting");
+//   WiFi.begin(WIFI_SSID, WIFI_PASS);
+//   while (WiFi.status() != WL_CONNECTED) {
+//     delay(300);
+//     Serial.print(".");
+//   }
+//   Serial.println("\n[WIFI] Connected");
+//   Serial.println("[WIFI] IP: " + WiFi.localIP().toString());
+
+//   /* ---- Audio ---- */
+//   audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+//   audio.setVolume(18);               // 0–21
+
+//   Serial.println("[AUDIO] Starting HTTPS audio test...");
+
+//   /* ---- TEST HTTPS AUDIO URL ---- */
+//   audio.connecttohost(
+//     //"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+//     "https://firebasestorage.googleapis.com/v0/b/hearme-a5f10.firebasestorage.app/o/voice_recordings%2FrGO8rDnkl5YHgHHUfTAx%2Fmentee_2761_1769140907204.wav?alt=media&token=ec0865d3-b00b-4d6e-b155-0ea93c7bb5ca"
+//   );
+// }
+
+// /* ===================================================== */
+
+// void loop() {
+//   audio.loop();   // MUST be called frequently
+//   delay(2);
+// }

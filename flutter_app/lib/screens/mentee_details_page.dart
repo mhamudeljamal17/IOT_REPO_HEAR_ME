@@ -7,6 +7,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import '../services/notification_service.dart';
+import 'package:firebase_database/firebase_database.dart';
+
 
 class MenteeDetailsPage extends StatefulWidget {
   final String menteeDocId;
@@ -119,6 +121,22 @@ class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
       });
     }
   }
+Future<void> _uploadToRealtimeDatabase(String downloadUrl, String fileName) async {
+  try {
+    final dbRef = FirebaseDatabase.instance
+        .ref('esp_commands/${widget.menteeNumber}');
+
+    await dbRef.set({
+      'status': 'new',
+      'audioUrl': downloadUrl, // or your proxy URL if needed
+      'fileName': fileName,
+    });
+
+    print('✅ Uploaded to Realtime Database');
+  } catch (e) {
+    print('❌ RTDB upload error: $e');
+  }
+}
 
   Future<void> _uploadToFirebase() async {
     try {
@@ -142,7 +160,7 @@ class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
       final downloadUrl = await uploadTask.ref.getDownloadURL();
 
 // Convert to proxy URL
-final proxyUrl = 'http://your-backend.com/proxy?url=${Uri.encodeComponent(downloadUrl)}';
+//final proxyUrl = 'http://your-backend.com/proxy?url=${Uri.encodeComponent(downloadUrl)}';
 
       // Save metadata to Firestore
       final docRef = await FirebaseFirestore.instance
@@ -152,11 +170,13 @@ final proxyUrl = 'http://your-backend.com/proxy?url=${Uri.encodeComponent(downlo
         'menteeNumber': widget.menteeNumber,
         'menteeName': widget.name,
         'fileName': fileName,
-        'downloadUrl': proxyUrl,  // the proxied URL
+        'downloadUrl': downloadUrl,  // the prox URL
         'timestamp': timestamp,
         'duration': null,
         'processed': false,
       });
+      await _uploadToRealtimeDatabase(downloadUrl, fileName);
+
 
       // Send notification to ESP32 via backend
       await NotificationService().sendNotificationToMentee(
