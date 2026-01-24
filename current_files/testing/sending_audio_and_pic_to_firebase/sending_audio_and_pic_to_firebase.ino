@@ -6,6 +6,7 @@
 #include <time.h>
 #include "esp_heap_caps.h"
 
+
 /* ================= WIFI ================= */
 #define WIFI_SSID "Mahmuds_iphone"
 #define WIFI_PASS "mahmudja"
@@ -53,6 +54,21 @@ i2s_chan_handle_t rx_chan;
 /* ================= AUDIO BUFFER ================= */
 static uint8_t *audio_buffer = nullptr;
 static size_t audio_size = 0;
+struct WAVHeader {
+  char riff[4] = {'R','I','F','F'};
+  uint32_t fileSize;
+  char wave[4] = {'W','A','V','E'};
+  char fmt[4]  = {'f','m','t',' '};
+  uint32_t fmtSize = 16;
+  uint16_t audioFormat = 1;   // PCM
+  uint16_t numChannels = 1;   // mono
+  uint32_t sampleRate = SAMPLE_RATE;
+  uint32_t byteRate;
+  uint16_t blockAlign;
+  uint16_t bitsPerSample = 16;
+  char data[4] = {'d','a','t','a'};
+  uint32_t dataSize;
+};
 
 /* ================================================= */
 
@@ -115,10 +131,44 @@ void setupMic() {
   Serial.println("[MIC] Microphone ready");
 }
 
+// void recordAudio() {
+//   Serial.printf("[MIC] Recording audio (%d seconds)...\n", RECORD_SECONDS);
+
+//   audio_size = SAMPLE_RATE * RECORD_SECONDS * 2;
+
+//   audio_buffer = (uint8_t *)heap_caps_malloc(
+//       audio_size,
+//       MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT
+//   );
+
+//   if (!audio_buffer) {
+//     Serial.println("[MIC][ERROR] Audio buffer allocation failed");
+//     return;
+//   }
+
+//   size_t read_bytes = 0;
+//   size_t offset = 0;
+//   uint8_t temp[BUFFER_SIZE];
+
+//   while (offset < audio_size) {
+//     size_t to_read = min(BUFFER_SIZE, audio_size - offset);
+//     size_t to_read = min((size_t)BUFFER_SIZE, audio_size - offset);
+
+//     ESP_ERROR_CHECK(
+//       i2s_channel_read(rx_chan, temp, to_read, &read_bytes, portMAX_DELAY)
+//     );
+//     memcpy(audio_buffer + offset, temp, read_bytes);
+//     offset += read_bytes;
+//   }
+
+//   Serial.printf("[MIC] Recording complete (%d bytes)\n", audio_size);
+// }
+#define MIC_GAIN 4   // 2 = safe, 3 = good, 4 = louder but test
+
 void recordAudio() {
   Serial.printf("[MIC] Recording audio (%d seconds)...\n", RECORD_SECONDS);
 
-  audio_size = SAMPLE_RATE * RECORD_SECONDS * 2;
+  audio_size = SAMPLE_RATE * RECORD_SECONDS * 2; // 16-bit mono
 
   audio_buffer = (uint8_t *)heap_caps_malloc(
       audio_size,
@@ -135,12 +185,27 @@ void recordAudio() {
   uint8_t temp[BUFFER_SIZE];
 
   while (offset < audio_size) {
-    size_t to_read = min(BUFFER_SIZE, audio_size - offset);
     size_t to_read = min((size_t)BUFFER_SIZE, audio_size - offset);
 
     ESP_ERROR_CHECK(
       i2s_channel_read(rx_chan, temp, to_read, &read_bytes, portMAX_DELAY)
     );
+
+    // -------- DIGITAL GAIN (16-bit PCM) --------
+    int16_t *samples = (int16_t *)temp;
+    int sample_count = read_bytes / 2;
+
+    for (int i = 0; i < sample_count; i++) {
+      int32_t amplified = samples[i] * MIC_GAIN;
+
+      // Clamp to int16 range
+      if (amplified > 32767) amplified = 32767;
+      if (amplified < -32768) amplified = -32768;
+
+      samples[i] = (int16_t)amplified;
+    }
+    // ------------------------------------------
+
     memcpy(audio_buffer + offset, temp, read_bytes);
     offset += read_bytes;
   }
@@ -216,22 +281,49 @@ void loop() {
 
   /* ---------- AUDIO ---------- */
   recordAudio();
+  // ---------- WAV WRAP ----------
+WAVHeader header;
+header.dataSize = audio_size;
+header.byteRate = SAMPLE_RATE * 2;
+header.blockAlign = 2;
+header.fileSize = 36 + audio_size;
 
-  String audPath = "/detections/" + detectID + "/audio.raw";
+size_t wavSize = audio_size + sizeof(WAVHeader);
+
+uint8_t *wavBuffer = (uint8_t *)heap_caps_malloc(
+    wavSize,
+    MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT
+);
+
+if (!wavBuffer) {
+  Serial.println("[WAV][ERROR] Allocation failed");
+  return;
+}
+
+memcpy(wavBuffer, &header, sizeof(WAVHeader));
+memcpy(wavBuffer + sizeof(WAVHeader), audio_buffer, audio_size);
+
+
+//  String audPath = "/detections/" + detectID + "/audio.raw";
   Serial.println("[UPLOAD] Uploading audio...");
+String audPath = "/detections/" + detectID + "/audio.wav";
 
   if (!Firebase.Storage.upload(
-        &fbdo,
-        STORAGE_BUCKET_ID,
-        audio_buffer,
-        audio_size,
-        audPath.c_str(),
-        "audio/pcm")) {
+  &fbdo,
+  STORAGE_BUCKET_ID,
+  wavBuffer,
+  wavSize,
+  audPath.c_str(),
+  "audio/wav"
+)) {
     Serial.println(fbdo.errorReason());
   }
 
   i2s_channel_disable(rx_chan);
-  free(audio_buffer);
+  free(wavBuffer);
+free(audio_buffer);
+audio_buffer = nullptr;
+
   audio_buffer = nullptr;
 
   Serial.println("[UPLOAD] Audio upload complete");
