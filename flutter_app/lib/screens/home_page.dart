@@ -18,8 +18,49 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedFilter = 0; // 0=All,1=Alerts,2=Emergency
   final int _currentIndex = 0; // Home tab index
+  String _mentorName = 'Mentor';
 
   String? get _currentMentorId => FirebaseAuth.instance.currentUser?.uid;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMentorName();
+  }
+
+  Future<void> _loadMentorName() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      try {
+        final doc = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .get();
+        
+        String name;
+        if (doc.exists && doc.data()?['name'] != null) {
+          name = doc.data()!['name'];
+        } else if (user.displayName != null && user.displayName!.isNotEmpty) {
+          name = user.displayName!;
+        } else if (user.email != null) {
+          name = user.email!.split('@')[0];
+        } else {
+          name = 'Mentor';
+        }
+        
+        setState(() {
+          _mentorName = name;
+        });
+      } catch (e) {
+        print('Error loading mentor name: $e');
+        if (user.email != null) {
+          setState(() {
+            _mentorName = user.email!.split('@')[0];
+          });
+        }
+      }
+    }
+  }
 
   Future<void> _showAddMenteeDialog() async {
     String name = '';
@@ -178,17 +219,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.notifications_none),
-          onPressed: () {},
-        ),
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Text(
+                'Welcome, $_mentorName',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),

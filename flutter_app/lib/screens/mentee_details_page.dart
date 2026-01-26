@@ -7,7 +7,9 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import '../services/notification_service.dart';
+import '../services/emergency_service.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:intl/intl.dart';
 
 
 class MenteeDetailsPage extends StatefulWidget {
@@ -32,16 +34,18 @@ class MenteeDetailsPage extends StatefulWidget {
   State<MenteeDetailsPage> createState() => _MenteeDetailsPageState();
 }
 
-class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
+class _MenteeDetailsPageState extends State<MenteeDetailsPage> with SingleTickerProviderStateMixin {
   final FlutterSoundRecorder _audioRecorder = FlutterSoundRecorder();
   bool _isRecording = false;
   bool _isUploading = false;
   bool _isRecorderInitialized = false;
   String? _recordingPath;
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
     _initRecorder();
   }
 
@@ -55,6 +59,7 @@ class _MenteeDetailsPageState extends State<MenteeDetailsPage> {
   @override
   void dispose() {
     _audioRecorder.closeRecorder();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -298,8 +303,60 @@ Future<void> _uploadToRealtimeDatabase(String downloadUrl, String fileName) asyn
           'Mentee Details',
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
+        bottom: TabBar(
+          controller: _tabController,
+          labelColor: Colors.green,
+          unselectedLabelColor: Colors.grey,
+          indicatorColor: Colors.green,
+          tabs: const [
+            Tab(text: 'Overview'),
+            Tab(text: 'Emergency History'),
+          ],
+        ),
       ),
-      body: FutureBuilder<Map<String, dynamic>>(
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          _buildOverviewTab(),
+          _buildEmergencyHistoryTab(),
+        ],
+      ),
+      floatingActionButton: _tabController.index == 0
+          ? FloatingActionButton.extended(
+              onPressed: _isUploading
+                  ? null
+                  : () {
+                      if (_isRecording) {
+                        _stopRecording();
+                      } else {
+                        _startRecording();
+                      }
+                    },
+              backgroundColor: _isRecording
+                  ? Colors.red
+                  : (_isUploading ? Colors.grey : Colors.green),
+              icon: _isUploading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      ),
+                    )
+                  : Icon(_isRecording ? Icons.stop : Icons.mic),
+              label: Text(
+                _isUploading
+                    ? 'Uploading...'
+                    : (_isRecording ? 'Stop Recording' : 'Record Voice'),
+              ),
+            )
+          : null,
+    );
+  }
+
+  Widget _buildOverviewTab() {
+    return FutureBuilder<Map<String, dynamic>>(
         future: _getEmergencyStats(),
         builder: (context, snapshot) {
           return SingleChildScrollView(
@@ -611,34 +668,283 @@ Future<void> _uploadToRealtimeDatabase(String downloadUrl, String fileName) asyn
             ),
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _isUploading
-            ? null
-            : () {
-                if (_isRecording) {
-                  _stopRecording();
-                } else {
-                  _startRecording();
-                }
-              },
-        backgroundColor: _isRecording
-            ? Colors.red
-            : (_isUploading ? Colors.grey : Colors.green),
-        icon: _isUploading
-            ? const SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                  strokeWidth: 2,
+      );
+  }
+
+  Widget _buildEmergencyHistoryTab() {
+    return StreamBuilder<List<EmergencyEvent>>(
+      stream: EmergencyService().getEmergencyEventsForMentee(widget.menteeDocId),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('Error loading emergency history: ${snapshot.error}'),
+          );
+        }
+
+        final events = snapshot.data ?? [];
+
+        if (events.isEmpty) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.check_circle_outline,
+                  size: 80,
+                  color: Colors.grey.shade400,
                 ),
-              )
-            : Icon(_isRecording ? Icons.stop : Icons.mic),
-        label: Text(
-          _isUploading
-              ? 'Uploading...'
-              : (_isRecording ? 'Stop Recording' : 'Record Voice'),
+                const SizedBox(height: 16),
+                Text(
+                  'No Emergency Events',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey.shade600,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'All clear! No emergency events recorded.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey.shade500,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        return ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: events.length,
+          itemBuilder: (context, index) {
+            final event = events[index];
+            return _buildEmergencyEventCard(event);
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildEmergencyEventCard(EmergencyEvent event) {
+    final dateFormat = DateFormat('MMM dd, yyyy • hh:mm a');
+    
+    Color statusColor;
+    IconData statusIcon;
+    
+    switch (event.status) {
+      case 'new':
+        statusColor = Colors.red;
+        statusIcon = Icons.warning;
+        break;
+      case 'viewed':
+        statusColor = Colors.orange;
+        statusIcon = Icons.visibility;
+        break;
+      case 'resolved':
+        statusColor = Colors.green;
+        statusIcon = Icons.check_circle;
+        break;
+      default:
+        statusColor = Colors.grey;
+        statusIcon = Icons.info;
+    }
+
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header with status
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(statusIcon, color: statusColor, size: 24),
+                    const SizedBox(width: 8),
+                    Text(
+                      event.emotionDetected.toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: statusColor,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: statusColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: statusColor),
+                  ),
+                  child: Text(
+                    event.status.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      color: statusColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            
+            // Timestamp
+            Row(
+              children: [
+                Icon(Icons.access_time, size: 16, color: Colors.grey.shade600),
+                const SizedBox(width: 4),
+                Text(
+                  dateFormat.format(event.timestamp),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey.shade600,
+                  ),
+                ),
+              ],
+            ),
+            
+            if (event.audioUrl != null) ...[
+              const SizedBox(height: 16),
+              const Divider(),
+              const SizedBox(height: 8),
+              // Audio player placeholder
+              Row(
+                children: [
+                  const Icon(Icons.audiotrack, color: Colors.green),
+                  const SizedBox(width: 8),
+                  const Expanded(
+                    child: Text(
+                      'Audio Recording Available',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                  const Icon(Icons.play_circle_outline, size: 32, color: Colors.green),
+                ],
+              ),
+            ],
+            
+            if (event.imageUrls.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              const Divider(),
+              const SizedBox(height: 8),
+              // Images
+              Text(
+                '${event.imageUrls.length} Image${event.imageUrls.length > 1 ? 's' : ''} Captured',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: event.imageUrls.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 8),
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Icon(Icons.image, size: 40, color: Colors.grey.shade400),
+                        // TODO: Load actual image from Firebase Storage
+                        // child: Image.network(event.imageUrls[index], fit: BoxFit.cover),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+            
+            if (event.notes != null && event.notes!.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              const Divider(),
+              const SizedBox(height: 8),
+              const Text(
+                'Notes:',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                event.notes!,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey.shade700,
+                ),
+              ),
+            ],
+            
+            // Action buttons
+            if (event.status != 'resolved') ...[
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (event.status == 'new')
+                    TextButton.icon(
+                      onPressed: () async {
+                        await EmergencyService().updateEmergencyStatus(event.id, 'viewed');
+                      },
+                      icon: const Icon(Icons.visibility, size: 18),
+                      label: const Text('Mark Viewed'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.orange,
+                      ),
+                    ),
+                  const SizedBox(width: 8),
+                  ElevatedButton.icon(
+                    onPressed: () async {
+                      await EmergencyService().updateEmergencyStatus(event.id, 'resolved');
+                    },
+                    icon: const Icon(Icons.check, size: 18),
+                    label: const Text('Resolve'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
