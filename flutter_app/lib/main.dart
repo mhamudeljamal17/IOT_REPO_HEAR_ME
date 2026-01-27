@@ -6,6 +6,9 @@ import 'screens/welcome_page.dart';
 import 'services/notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+// Global navigator key for navigation from anywhere
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('🔕 Background message: ${message.messageId}');
@@ -38,6 +41,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'HearMe App',
       theme: ThemeData(

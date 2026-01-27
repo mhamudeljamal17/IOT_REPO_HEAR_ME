@@ -2,6 +2,68 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import '../main.dart';
+import '../screens/mentee_details_page.dart';
+
+// Top-level function for background messages
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('📬 Background message: ${message.notification?.title}');
+  
+  // Store notification in Firestore with proper timestamp
+  try {
+    final timestampStr = message.data['timestamp'];
+    DateTime notificationTime;
+    
+    if (timestampStr != null && timestampStr.isNotEmpty) {
+      notificationTime = DateTime.parse(timestampStr);
+    } else {
+      notificationTime = DateTime.now();
+    }
+    
+    await FirebaseFirestore.instance.collection('notifications').add({
+      'title': message.notification?.title ?? 'Alert',
+      'body': message.notification?.body ?? '',
+      'menteeNumber': int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0,
+      'menteeId': message.data['menteeId'] ?? '',
+      'mentorId': message.data['mentorId'] ?? '',
+      'timestamp': Timestamp.fromDate(notificationTime),
+      'isRead': false,
+      'type': message.data['type'] ?? 'mentor_alert',
+      'imagePath': message.data['imagePath'] ?? '',
+      'audioPath': message.data['audioPath'] ?? '',
+    });
+    
+    // Create emergency record if emotion is angry or panic
+    final emotion = message.data['emotion'] ?? '';
+    if (emotion == 'angry' || emotion == 'panic') {
+      try {
+        final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
+        final menteeId = message.data['menteeId'] ?? '';
+        
+        if (menteeNumber > 0) {
+          await FirebaseFirestore.instance.collection('emergencies').add({
+            'menteeId': menteeId,
+            'menteeNumber': menteeNumber,
+            'mentorId': message.data['mentorId'] ?? '',
+            'emotion': emotion,
+            'timestamp': Timestamp.fromDate(notificationTime),
+            'audioPath': message.data['audioPath'],
+            'imagePath': message.data['imagePath'],
+            'status': 'new',
+          });
+          print('✅ Emergency record created for mentee #$menteeNumber');
+        }
+      } catch (emergencyError) {
+        print('❌ Error creating emergency record: $emergencyError');
+      }
+    }
+    
+    print('✅ Background notification saved to Firestore with timestamp: $notificationTime');
+  } catch (e) {
+    print('❌ Error saving background notification to Firestore: $e');
+  }
+}
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -59,6 +121,9 @@ class NotificationService {
     // Handle foreground messages (app is open)
     FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
 
+    // Handle background messages (app is in background)
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
     // Handle notification tap when app is in background or terminated
     FirebaseMessaging.onMessageOpenedApp.listen(_handleBackgroundNotificationTap);
 
@@ -101,29 +166,99 @@ class NotificationService {
     }
   }
 
-  void _handleForegroundMessage(RemoteMessage message) {
+  void _handleForegroundMessage(RemoteMessage message) async {
     print('📬 Foreground message: ${message.notification?.title}');
     
     if (message.notification != null) {
       _showLocalNotification(message);
+      
+      // Store notification in Firestore with proper timestamp
+      try {
+        final timestampStr = message.data['timestamp'];
+        DateTime notificationTime;
+        
+        if (timestampStr != null && timestampStr.isNotEmpty) {
+          notificationTime = DateTime.parse(timestampStr);
+        } else {
+          notificationTime = DateTime.now();
+        }
+        
+        await FirebaseFirestore.instance.collection('notifications').add({
+          'title': message.notification?.title ?? 'Alert',
+          'body': message.notification?.body ?? '',
+          'menteeNumber': int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0,
+          'menteeId': message.data['menteeId'] ?? '',
+          'mentorId': message.data['mentorId'] ?? '',
+          'timestamp': Timestamp.fromDate(notificationTime),
+          'isRead': false,
+          'type': message.data['type'] ?? 'mentor_alert',
+          'imagePath': message.data['imagePath'] ?? '',
+          'audioPath': message.data['audioPath'] ?? '',
+        });
+        
+        // Create emergency record if emotion is angry or panic
+        final emotion = message.data['emotion'] ?? '';
+        if (emotion == 'angry' || emotion == 'panic') {
+          try {
+            final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
+            final menteeId = message.data['menteeId'] ?? '';
+            
+            if (menteeNumber > 0) {
+              await FirebaseFirestore.instance.collection('emergencies').add({
+                'menteeId': menteeId,
+                'menteeNumber': menteeNumber,
+                'mentorId': message.data['mentorId'] ?? '',
+                'emotion': emotion,
+                'timestamp': Timestamp.fromDate(notificationTime),
+                'audioPath': message.data['audioPath'],
+                'imagePath': message.data['imagePath'],
+                'status': 'new',
+              });
+              print('✅ Emergency record created for mentee #$menteeNumber');
+            }
+          } catch (e) {
+            print('❌ Error creating emergency record: $e');
+          }
+        }
+        
+        print('✅ Notification saved to Firestore with timestamp: $notificationTime');
+      } catch (e) {
+        print('❌ Error saving notification to Firestore: $e');
+      }
     }
   }
 
-  void _handleBackgroundNotificationTap(RemoteMessage message) {
+  void _handleBackgroundNotificationTap(RemoteMessage message) async {
     print('🔔 Notification tapped: ${message.notification?.title}');
     print('Data: ${message.data}');
     
     // Handle navigation based on notification data
     if (message.data.containsKey('menteeNumber')) {
-      String menteeNumber = message.data['menteeNumber'] ?? '';
-      print('Navigating to mentee: $menteeNumber');
-      // TODO: Implement navigation to mentee details page
-      // You can use GetX, Navigator, or your routing solution
+      int menteeNumber = int.tryParse(message.data['menteeNumber']?.toString() ?? '0') ?? 0;
+      print('Navigating to mentee #$menteeNumber');
+      await _navigateToMenteeDetails(menteeNumber);
     }
   }
 
-  void _onNotificationTap(NotificationResponse response) {
+  void _onNotificationTap(NotificationResponse response) async {
     print('📲 Local notification tapped: ${response.payload}');
+    
+    // Parse payload to get menteeNumber
+    if (response.payload != null && response.payload!.isNotEmpty) {
+      try {
+        // The payload format is like: menteeNumber: xxx
+        final payloadStr = response.payload!;
+        final menteeNumberMatch = RegExp(r'menteeNumber[:\s]+(\d+)').firstMatch(payloadStr);
+        
+        if (menteeNumberMatch != null) {
+          int menteeNumber = int.tryParse(menteeNumberMatch.group(1) ?? '0') ?? 0;
+          print('Extracted menteeNumber: $menteeNumber');
+          await _navigateToMenteeDetails(menteeNumber);
+        }
+      } catch (e) {
+        print('Error parsing notification payload: $e');
+      }
+    }
   }
 
   Future<void> _showLocalNotification(RemoteMessage message) async {
@@ -149,12 +284,15 @@ class NotificationService {
       iOS: iosDetails,
     );
 
+    // Create payload with menteeNumber for navigation
+    String payload = 'menteeNumber: ${message.data['menteeNumber'] ?? '0'}';
+
     await _localNotifications.show(
       message.hashCode,
       message.notification?.title ?? 'New Notification',
       message.notification?.body ?? '',
       details,
-      payload: message.data.toString(),
+      payload: payload,
     );
   }
 
@@ -218,5 +356,49 @@ Future<void> triggerEspAudio({
 
   print('✅ ESP trigger sent for mentee $menteeNumber');
 }
+
+  /// Navigate to mentee details page using menteeNumber
+  Future<void> _navigateToMenteeDetails(int menteeNumber) async {
+    try {
+      if (menteeNumber <= 0) {
+        print('⚠️ Cannot navigate: invalid menteeNumber ($menteeNumber)');
+        return;
+      }
+
+      // Query mentee data from Firestore by menteeNumber
+      final menteeQuery = await FirebaseFirestore.instance
+          .collection('mentees')
+          .where('menteeNumber', isEqualTo: menteeNumber)
+          .limit(1)
+          .get();
+
+      if (menteeQuery.docs.isEmpty) {
+        print('⚠️ Mentee not found with menteeNumber: $menteeNumber');
+        return;
+      }
+
+      final menteeDoc = menteeQuery.docs.first;
+      final menteeData = menteeDoc.data();
+      final menteeDocId = menteeDoc.id;
+      
+      // Navigate using global navigator key
+      navigatorKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => MenteeDetailsPage(
+            menteeDocId: menteeDocId,
+            name: menteeData['name'] ?? 'Unknown',
+            age: menteeData['age'] ?? 0,
+            phone: menteeData['phone'] ?? '',
+            menteeNumber: menteeData['menteeNumber'] ?? 0,
+            createdAt: (menteeData['createdAt'] as Timestamp?)?.toDate(),
+          ),
+        ),
+      );
+
+      print('✅ Navigated to mentee #$menteeNumber: ${menteeData['name']}');
+    } catch (e) {
+      print('❌ Error navigating to mentee details: $e');
+    }
+  }
 
 }

@@ -247,9 +247,10 @@ Future<void> _uploadToRealtimeDatabase(String downloadUrl, String fileName) asyn
         final startOfDay = DateTime(date.year, date.month, date.day);
         final endOfDay = DateTime(date.year, date.month, date.day, 23, 59, 59);
         
+        // Query by menteeNumber to include all emergencies (old and new)
         final snapshot = await FirebaseFirestore.instance
             .collection('emergencies')
-            .where('menteeId', isEqualTo: widget.menteeDocId)
+            .where('menteeNumber', isEqualTo: widget.menteeNumber)
             .where('timestamp', isGreaterThanOrEqualTo: startOfDay)
             .where('timestamp', isLessThanOrEqualTo: endOfDay)
             .get();
@@ -261,10 +262,10 @@ Future<void> _uploadToRealtimeDatabase(String downloadUrl, String fileName) asyn
         dayLabels.add(weekdays[date.weekday % 7]);
       }
       
-      // Get total emergencies
+      // Get total emergencies by menteeNumber
       final totalSnapshot = await FirebaseFirestore.instance
           .collection('emergencies')
-          .where('menteeId', isEqualTo: widget.menteeDocId)
+          .where('menteeNumber', isEqualTo: widget.menteeNumber)
           .get();
       
       final totalEmergencies = totalSnapshot.docs.length;
