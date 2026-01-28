@@ -39,17 +39,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     if (emotion == 'angry' || emotion == 'panic') {
       try {
         final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
-        final menteeId = message.data['menteeId'] ?? '';
         
         if (menteeNumber > 0) {
           await FirebaseFirestore.instance.collection('emergencies').add({
-            'menteeId': menteeId,
             'menteeNumber': menteeNumber,
             'mentorId': message.data['mentorId'] ?? '',
             'emotion': emotion,
             'timestamp': Timestamp.fromDate(notificationTime),
             'audioPath': message.data['audioPath'],
             'imagePath': message.data['imagePath'],
+            'detectionId': message.data['detectionId'],
             'status': 'new',
           });
           print('✅ Emergency record created for mentee #$menteeNumber');
@@ -201,17 +200,16 @@ class NotificationService {
         if (emotion == 'angry' || emotion == 'panic') {
           try {
             final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
-            final menteeId = message.data['menteeId'] ?? '';
             
             if (menteeNumber > 0) {
               await FirebaseFirestore.instance.collection('emergencies').add({
-                'menteeId': menteeId,
                 'menteeNumber': menteeNumber,
                 'mentorId': message.data['mentorId'] ?? '',
                 'emotion': emotion,
                 'timestamp': Timestamp.fromDate(notificationTime),
                 'audioPath': message.data['audioPath'],
                 'imagePath': message.data['imagePath'],
+                'detectionId': message.data['detectionId'],
                 'status': 'new',
               });
               print('✅ Emergency record created for mentee #$menteeNumber');
