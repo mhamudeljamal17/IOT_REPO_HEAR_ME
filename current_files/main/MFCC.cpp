@@ -53,10 +53,10 @@ output_signal[SIZE_WINDOW / 2] = fabsf(fft_plan->output[1]);
     fft_destroy(fft_plan);
 }
 
-
 int freq_to_bin(float freq) {
-    return int((SIZE_WINDOW / 2 + 1) * freq / SAMPLING_RATE);
+    return int((SIZE_WINDOW / 2 + 1) * freq / (SAMPLING_RATE / 2.0f));
 }
+
 
 void triangular_filters() {
     static bool initialized = false;
@@ -114,7 +114,13 @@ void dct1d(float *in, float *out) {
         for (int n = 0; n < MEL_BANDS; n++) {
             sum += in[n] * cosf(PI * k * (2*n + 1) / (2.0f * MEL_BANDS));
         }
-        out[k] = (k == 0) ? sum * scale0 : sum * scale;
+        float norm = sqrtf(2.0f / MEL_BANDS);
+out[k] = sum * norm;
+if (k == 0) {
+    out[k] /= sqrtf(2.0f);
+}
+
+  
     }
 }
 

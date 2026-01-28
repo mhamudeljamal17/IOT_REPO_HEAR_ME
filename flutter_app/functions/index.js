@@ -50,9 +50,10 @@ exports.sendMentorNotification = onDocumentWritten(
       const data = after.data();
 
       // Only process mentor_alert type notifications
-      if (data.type !== "mentor_alert") {
+      if (data.type !== "mentor_alert" && data.type !== "help_request") {
         return;
       }
+
 
       console.log("📬 Processing mentor alert:", after.id);
 
@@ -166,7 +167,8 @@ exports.sendMentorNotification = onDocumentWritten(
                 status: "new",
               });
 
-              console.log("✅ Emergency record created for mentee #" + menteeNumber);
+              console.log("✅ Emergency record created for mentee #" +
+                menteeNumber);
             }
           } catch (emergencyError) {
             console.error("❌ Error creating emergency record:", emergencyError);
