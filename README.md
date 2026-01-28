@@ -3,6 +3,8 @@
 ## Project Description
 
 An IoT system for detecting anger using ESP32 microcontroller, machine learning, and mobile notifications. The system captures audio through a microphone, processes it using a TensorFlow Lite model, and sends alerts to a Flutter mobile application via Firebase.
+For wider view of the app read MENTEE_NUMBER_SYSTEM.md, where it is explained about the unique numbers generated.
+For further explanation on how to set up the complete notification system with ESP32 integration read NOTIFICATION_SETUP_GUIDE.md
 
 ## Team Members
 
@@ -64,3 +66,4 @@ An IoT system for detecting anger using ESP32 microcontroller, machine learning,
 
 
 ## Project Structure
+
