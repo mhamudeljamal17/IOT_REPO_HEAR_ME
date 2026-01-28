@@ -1,45 +1,23 @@
-#ifndef _SECRETS_H
-#define _SECRETS_H
+#ifndef SECRETS_H
+#define SECRETS_H
 
-const char*ssid = ""; //example only - your project may have ssid/pass set by user
-const char* password = "";
-const char*  server = "speech.googleapis.com";
+/* ============== WIFI CONFIGURATION ============== */
+#define WIFI_SSID "Your_WiFi_SSID"
+#define WIFI_PASS "Your_WiFi_Password"
 
-// To get the certificate for your region run:
-// openssl s_client -showcerts -connect speech.googleapis.com:443
-// Copy the certificate (all lines between and including ---BEGIN CERTIFICATE---
-// and --END CERTIFICATE--) to root.cert and put here on the root_cert variable.
-const char* root_ca = 
-    "-----BEGIN CERTIFICATE-----\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"
-    "-----END CERTIFICATE-----;";
+/* ============== FIREBASE CONFIGURATION ============== */
+#define API_KEY "Your_Firebase_API_Key"
+#define STORAGE_BUCKET_ID "your-project.firebasestorage.app"
+#define FIRESTORE_PROJECT_ID "your-project-id"
+#define DATABASE_URL "https://your-project-default-rtdb.region.firebasedatabase.app/"
+#define USER_EMAIL "your_email@example.com"
+#define USER_PASSWORD "your_password"
+
+/* ============== MENTEE CONFIGURATION ============== */
+#define MENTEE_NUMBER 0000
+#define ESP_COMMAND_PATH "/esp_commands/0000"
 
 
+/* link https://docs.google.com/document/d/16sM9n22lDofZ13lkmQ0FkOjTuNXGaNMN9WaFCnx4bPE/edit?usp=sharing */
 
-// Getting Access Token : 
-// At first, you should get service account key (JSON file).
-// Type below command in Google Cloud Shell to get AccessToken: 
-// $ gcloud auth activate-service-account --key-file=KEY_FILE   (KEY_FILE is your service account key file)
-// $ gcloud auth print-access-token
-// The Access Token is expired in an hour.
-// Google recommends to use Access Token.
-//const String AccessToken = "";
-
-// It is also possible to use "API Key" instead of "Access Token". It doesn't have time limit.
-const String ApiKey = "";
-
-// see https://cloud.google.com/docs/authentication?hl=ja#getting_credentials_for_server-centric_flow
-// see https://qiita.com/basi/items/3623a576b754f738138e (Japanese)
-
-#endif  // _SECRETS_H
+#endif // SECRETS_H

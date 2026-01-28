@@ -5,19 +5,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
 import '../screens/mentee_details_page.dart';
-import 'dart:typed_data'; 
 
-
+// Top-level function for background messages
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('📬 Background message: ${message.notification?.title}');
-  
-  // ✅ Check if urgent
-  final isUrgent = message.data['isUrgent'] == 'true' || 
-                   message.data['type'] == 'help_request';
-  
-  if (isUrgent) {
-    print('🆘 URGENT help request received in background!');
-  }
   
   // Store notification in Firestore with proper timestamp
   try {
@@ -41,64 +32,38 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       'type': message.data['type'] ?? 'mentor_alert',
       'imagePath': message.data['imagePath'] ?? '',
       'audioPath': message.data['audioPath'] ?? '',
-      'isUrgent': isUrgent, // ✅ Add urgent flag
-      'status': message.data['status'] ?? 'pending',
     });
-    
-    // ✅ Create URGENT record for help requests
-    if (isUrgent) {
-      try {
-        final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
-        final menteeId = message.data['menteeId'] ?? '';
-        
-        if (menteeNumber > 0) {
-          await FirebaseFirestore.instance.collection('urgent_help_requests').add({
-            'menteeId': menteeId,
-            'menteeNumber': menteeNumber,
-            'mentorId': message.data['mentorId'] ?? '',
-            'timestamp': Timestamp.fromDate(notificationTime),
-            'audioPath': message.data['audioPath'] ?? '',
-            'imagePath': message.data['imagePath'] ?? '',
-            'status': 'new',
-            'type': 'help_request',
-          });
-          print('🆘 URGENT help request recorded (background)');
-        }
-      } catch (urgentError) {
-        print('❌ Error creating urgent help record (background): $urgentError');
-      }
-    }
     
     // Create emergency record if emotion is angry or panic
     final emotion = message.data['emotion'] ?? '';
     if (emotion == 'angry' || emotion == 'panic') {
       try {
         final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
-        final menteeId = message.data['menteeId'] ?? '';
         
         if (menteeNumber > 0) {
           await FirebaseFirestore.instance.collection('emergencies').add({
-            'menteeId': menteeId,
             'menteeNumber': menteeNumber,
             'mentorId': message.data['mentorId'] ?? '',
             'emotion': emotion,
             'timestamp': Timestamp.fromDate(notificationTime),
             'audioPath': message.data['audioPath'],
             'imagePath': message.data['imagePath'],
+            'detectionId': message.data['detectionId'],
             'status': 'new',
           });
-          print('✅ Emergency record created (background)');
+          print('✅ Emergency record created for mentee #$menteeNumber');
         }
       } catch (emergencyError) {
-        print('❌ Error creating emergency record (background): $emergencyError');
+        print('❌ Error creating emergency record: $emergencyError');
       }
     }
     
-    print('✅ Background notification saved to Firestore');
+    print('✅ Background notification saved to Firestore with timestamp: $notificationTime');
   } catch (e) {
-    print('❌ Error saving background notification: $e');
+    print('❌ Error saving background notification to Firestore: $e');
   }
 }
+
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
   factory NotificationService() => _instance;
@@ -151,7 +116,6 @@ class NotificationService {
 
     // Create Android notification channel
     await _createNotificationChannel();
-    await _createUrgentNotificationChannel(); // ✅ Add this
 
     // Handle foreground messages (app is open)
     FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
@@ -181,24 +145,6 @@ class NotificationService {
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
   }
-Future<void> _createUrgentNotificationChannel() async {
-  const AndroidNotificationChannel urgentChannel = AndroidNotificationChannel(
-    'hearme_urgent_channel',
-    'Urgent Help Requests',
-    description: 'Critical alerts for mentee help requests',
-    importance: Importance.max,
-    playSound: true,
-    enableVibration: true,
-    enableLights: true,
-    ledColor: Colors.red
-  );
-
-  await _localNotifications
-      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(urgentChannel);
-
-  print('✅ Urgent notification channel created');
-}
 
   Future<String?> getDeviceToken() async {
     return await _messaging.getToken();
@@ -218,48 +164,68 @@ Future<void> _createUrgentNotificationChannel() async {
       print('✅ FCM token saved for user: $userId');
     }
   }
-void _handleForegroundMessage(RemoteMessage message) async {
-  print('📬 Foreground message: ${message.notification?.title}');
-  
-  if (message.notification != null) {
-    // ✅ Check if urgent based on type
-    final isUrgent = message.data['type'] == 'help_request';
+
+  void _handleForegroundMessage(RemoteMessage message) async {
+    print('📬 Foreground message: ${message.notification?.title}');
     
-    _showLocalNotification(message, isUrgent: isUrgent);
-    
-    // Store notification in Firestore
-    try {
-      final timestampStr = message.data['timestamp'];
-      DateTime notificationTime;
+    if (message.notification != null) {
+      _showLocalNotification(message);
       
-      if (timestampStr != null && timestampStr.isNotEmpty) {
-        notificationTime = DateTime.parse(timestampStr);
-      } else {
-        notificationTime = DateTime.now();
+      // Store notification in Firestore with proper timestamp
+      try {
+        final timestampStr = message.data['timestamp'];
+        DateTime notificationTime;
+        
+        if (timestampStr != null && timestampStr.isNotEmpty) {
+          notificationTime = DateTime.parse(timestampStr);
+        } else {
+          notificationTime = DateTime.now();
+        }
+        
+        await FirebaseFirestore.instance.collection('notifications').add({
+          'title': message.notification?.title ?? 'Alert',
+          'body': message.notification?.body ?? '',
+          'menteeNumber': int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0,
+          'menteeId': message.data['menteeId'] ?? '',
+          'mentorId': message.data['mentorId'] ?? '',
+          'timestamp': Timestamp.fromDate(notificationTime),
+          'isRead': false,
+          'type': message.data['type'] ?? 'mentor_alert',
+          'imagePath': message.data['imagePath'] ?? '',
+          'audioPath': message.data['audioPath'] ?? '',
+        });
+        
+        // Create emergency record if emotion is angry or panic
+        final emotion = message.data['emotion'] ?? '';
+        if (emotion == 'angry' || emotion == 'panic') {
+          try {
+            final menteeNumber = int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0;
+            
+            if (menteeNumber > 0) {
+              await FirebaseFirestore.instance.collection('emergencies').add({
+                'menteeNumber': menteeNumber,
+                'mentorId': message.data['mentorId'] ?? '',
+                'emotion': emotion,
+                'timestamp': Timestamp.fromDate(notificationTime),
+                'audioPath': message.data['audioPath'],
+                'imagePath': message.data['imagePath'],
+                'detectionId': message.data['detectionId'],
+                'status': 'new',
+              });
+              print('✅ Emergency record created for mentee #$menteeNumber');
+            }
+          } catch (e) {
+            print('❌ Error creating emergency record: $e');
+          }
+        }
+        
+        print('✅ Notification saved to Firestore with timestamp: $notificationTime');
+      } catch (e) {
+        print('❌ Error saving notification to Firestore: $e');
       }
-      
-      // ✅ Single notification record
-      await FirebaseFirestore.instance.collection('notifications').add({
-        'title': message.notification?.title ?? 'Alert',
-        'body': message.notification?.body ?? '',
-        'menteeNumber': int.tryParse(message.data['menteeNumber'] ?? '0') ?? 0,
-        'menteeId': message.data['menteeId'] ?? '',
-        'mentorId': message.data['mentorId'] ?? '',
-        'timestamp': Timestamp.fromDate(notificationTime),
-        'isRead': false,
-        'type': message.data['type'] ?? 'mentor_alert',
-        'imagePath': message.data['imagePath'] ?? '',
-        'audioPath': message.data['audioPath'] ?? '',
-        'isUrgent': isUrgent,
-        'status': message.data['status'] ?? 'pending',
-      });
-      
-      print('✅ Notification saved to Firestore');
-    } catch (e) {
-      print('❌ Error saving notification: $e');
     }
   }
-}
+
   void _handleBackgroundNotificationTap(RemoteMessage message) async {
     print('🔔 Notification tapped: ${message.notification?.title}');
     print('Data: ${message.data}');
@@ -293,72 +259,40 @@ void _handleForegroundMessage(RemoteMessage message) async {
     }
   }
 
-  Future<void> _showLocalNotification(RemoteMessage message, {bool isUrgent = false}) async {
-  // ✅ Use different channel and settings for urgent notifications
-  final AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
-    isUrgent ? 'hearme_urgent_channel' : 'hearme_channel',
-    isUrgent ? 'Urgent Help Requests' : 'HearMe Notifications',
-    channelDescription: isUrgent 
-        ? 'Critical alerts for mentee help requests'
-        : 'Notifications for HearMe app',
-    importance: Importance.max,
-    priority: isUrgent ? Priority.max : Priority.high,
-    showWhen: true,
-    // ✅ Urgent notifications settings
-    playSound: true,
-    enableVibration: true,
-    enableLights: isUrgent,
-    ledColor: isUrgent ? const Color(0xFFFF0000) : null,
-    ledOnMs: isUrgent ? 1000 : null,
-    ledOffMs: isUrgent ? 500 : null,
-    visibility: isUrgent ? NotificationVisibility.public : NotificationVisibility.private,
-    fullScreenIntent: isUrgent, // ✅ Show as full-screen for urgent
-    category: isUrgent ? AndroidNotificationCategory.alarm : AndroidNotificationCategory.message,
-    // ✅ Custom vibration for urgent
-    vibrationPattern: isUrgent 
-        ? Int64List.fromList([0, 1000, 500, 1000, 500, 1000])
-        : null,
-    // ✅ Color coding
-    color: isUrgent ? const Color(0xFFFF0000) : null,
-    colorized: isUrgent,
-  );
+  Future<void> _showLocalNotification(RemoteMessage message) async {
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+      'hearme_channel',
+      'HearMe Notifications',
+      channelDescription: 'Notifications for HearMe app',
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: true,
+      
+    );
 
-  final DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
-    presentAlert: true,
-    presentBadge: true,
-    presentSound: true,
-    // ✅ iOS critical alert for urgent notifications
-    interruptionLevel: isUrgent 
-        ? InterruptionLevel.critical 
-        : InterruptionLevel.timeSensitive,
-    sound: isUrgent ? 'urgent_alert.wav' : null,
-  );
+    const DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
 
-  final NotificationDetails details = NotificationDetails(
-    android: androidDetails,
-    iOS: iosDetails,
-  );
+    const NotificationDetails details = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
 
-  // Create payload with menteeNumber and urgency for navigation
-  String payload = 'menteeNumber: ${message.data['menteeNumber'] ?? '0'}, isUrgent: $isUrgent';
+    // Create payload with menteeNumber for navigation
+    String payload = 'menteeNumber: ${message.data['menteeNumber'] ?? '0'}';
 
-  // ✅ Different notification title/body for urgent
-  String title = message.notification?.title ?? 'New Notification';
-  String body = message.notification?.body ?? '';
-  
-  if (isUrgent) {
-    title = '🆘 ' + title; // Add emoji to urgent notifications
+    await _localNotifications.show(
+      message.hashCode,
+      message.notification?.title ?? 'New Notification',
+      message.notification?.body ?? '',
+      details,
+      payload: payload,
+    );
   }
-
-  await _localNotifications.show(
-    message.hashCode,
-    title,
-    body,
-    details,
-    payload: payload,
-  );
-}
-
 
   Future<void> sendNotificationToMentee({
     required String menteeId,
