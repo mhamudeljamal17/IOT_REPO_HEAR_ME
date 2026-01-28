@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
-                    .collection('notifications')
+                    .collection('notifications_from_esp')
                     .orderBy('timestamp', descending: true)
                     .snapshots(),
                 builder: (context, snapshot) {
@@ -278,9 +278,10 @@ class _HomePageState extends State<HomePage> {
                   }
 
                   final allNotifications = snapshot.data?.docs ?? [];
+                  // Filter out old notifications with menteeId (before update)
                   final notifications = allNotifications.where((doc) {
                     final data = doc.data() as Map<String, dynamic>;
-                    return data['mentorId'] == _currentMentorId;
+                    return !data.containsKey('menteeId');
                   }).toList();
 
                   if (notifications.isEmpty) {
@@ -303,211 +304,100 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       final notif = notifications[index].data() as Map<String, dynamic>;
                       
-                      DateTime timestamp;
+                      // Parse timestamp from ESP format "YYYYMMDD_HHMMSS"
+                      DateTime? timestamp;
                       final timestampField = notif['timestamp'];
                       
-                      if (timestampField is Timestamp) {
+                      if (timestampField is String && timestampField.isNotEmpty) {
+                        try {
+                          // Format: "20260121_151806" → "2026-01-21 15:18:06"
+                          if (timestampField.length == 15 && timestampField.contains('_')) {
+                            final parts = timestampField.split('_');
+                            final datePart = parts[0];
+                            final timePart = parts[1];
+                            
+                            final year = int.parse(datePart.substring(0, 4));
+                            final month = int.parse(datePart.substring(4, 6));
+                            final day = int.parse(datePart.substring(6, 8));
+                            final hour = int.parse(timePart.substring(0, 2));
+                            final minute = int.parse(timePart.substring(2, 4));
+                            final second = int.parse(timePart.substring(4, 6));
+                            
+                            // Parse as UTC and convert to local time
+                            timestamp = DateTime.utc(year, month, day, hour, minute, second).toLocal();
+                          }
+                        } catch (e) {
+                          print('Error parsing timestamp: $e');
+                        }
+                      } else if (timestampField is Timestamp) {
                         timestamp = timestampField.toDate();
-                      } else if (timestampField is String) {
-                        timestamp = DateTime.tryParse(timestampField) ?? DateTime.now();
-                      } else if (timestampField is int) {
-                        // Check if it's in seconds or milliseconds
-                        if (timestampField > 10000000000) {
-                          // Milliseconds
-                          timestamp = DateTime.fromMillisecondsSinceEpoch(timestampField);
-                        } else {
-                          // Seconds
-                          timestamp = DateTime.fromMillisecondsSinceEpoch(timestampField * 1000);
-                        }
-                      } else if (timestampField == null) {
-                        // Try createdAt or other common timestamp fields
-                        final createdAt = notif['createdAt'];
-                        if (createdAt is Timestamp) {
-                          timestamp = createdAt.toDate();
-                        } else {
-                          timestamp = DateTime.now();
-                        }
-                      } else {
-                        timestamp = DateTime.now();
                       }
                       
-                      final title = notif['title'] as String? ?? 'Notification';
-                      final body = notif['body'] as String? ?? '';
-                      final isRead = notif['isRead'] as bool? ?? false;
+                      final title = notif['title'] as String? ?? 'Detection Alert';
+                      final message = notif['message'] as String? ?? '';
+                      final menteeNumber = notif['menteeNumber'] as int? ?? 0;
                       
-                      // Try multiple possible fields for mentee ID
-                      final menteeId = notif['menteeId'] as String? ?? 
-                                      notif['menteeDocId'] as String? ?? 
-                                      notif['userId'] as String? ?? '';
-                      
-                      // Check if mentee number is directly in notification
-                      final directMenteeNumber = notif['menteeNumber'] as int? ?? 
-                                                 notif['mentee_number'] as int? ?? 0;
-                      
-                      // Debug: Print notification data
-                      print('Notification data: menteeId=$menteeId, menteeNumber=$directMenteeNumber, all data: $notif');
+                      final displayTitle = title;
+                      final timeAgo = _getTimeAgo(timestamp);
+
+                      // Build meta line with mentee number
+                      String metaLine = '';
+                      if (menteeNumber > 0) {
+                        metaLine = 'Mentee #$menteeNumber';
+                      }
 
                       return Card(
                         margin: const EdgeInsets.only(bottom: 12),
-                        color: isRead ? Colors.white : Colors.orange.shade50,
-                        child: menteeId.isNotEmpty && directMenteeNumber == 0
-                            ? FutureBuilder<DocumentSnapshot>(
-                                future: FirebaseFirestore.instance
-                                    .collection('mentees')
-                                    .doc(menteeId)
-                                    .get(),
-                                builder: (context, menteeSnapshot) {
-                                  int menteeNumber = directMenteeNumber;
-                                  if (menteeSnapshot.hasData && menteeSnapshot.data?.exists == true) {
-                                    final menteeData = menteeSnapshot.data!.data() as Map<String, dynamic>?;
-                                    menteeNumber = menteeData?['menteeNumber'] as int? ?? directMenteeNumber;
-                                  }
-                                  
-                                  String displayTitle = title;
-                                  String displayBody = body;
-                                  if (menteeNumber > 0) {
-                                    displayTitle = title.replaceAll('Mentee', 'Mentee #$menteeNumber').replaceAll('mentee', 'Mentee #$menteeNumber');
-                                    displayBody = body.replaceAll('Mentee', 'Mentee #$menteeNumber').replaceAll('mentee', 'Mentee #$menteeNumber');
-                                  }
-
-                                  return ListTile(
-                                    onTap: () async {
-                                      // Mark as read
-                                      await notifications[index].reference.update({'isRead': true});
-                                      
-                                      // Navigate to mentee details if we have the data
-                                      if (menteeSnapshot.hasData && menteeSnapshot.data?.exists == true) {
-                                        final menteeData = menteeSnapshot.data!.data() as Map<String, dynamic>?;
-                                        if (menteeData != null) {
-                                          Navigator.pop(context); // Close bottom sheet
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => MenteeDetailsPage(
-                                                menteeDocId: menteeId,
-                                                name: menteeData['name'] ?? 'Unknown',
-                                                age: menteeData['age'] ?? 0,
-                                                phone: menteeData['phone'] ?? '',
-                                                menteeNumber: menteeData['menteeNumber'] ?? 0,
-                                                createdAt: (menteeData['createdAt'] as Timestamp?)?.toDate(),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                      }
-                                    },
-                                    leading: CircleAvatar(
-                                      backgroundColor: isRead ? Colors.grey.shade300 : Colors.orange,
-                                      child: Icon(
-                                        Icons.notifications,
-                                        color: isRead ? Colors.grey.shade600 : Colors.white,
-                                      ),
-                                    ),
-                                    title: Text(
-                                      displayTitle,
+                        color: Colors.blue.shade50,
+                        elevation: 3,
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            child: Icon(
+                              Icons.notifications_active,
+                              color: Colors.white,
+                            ),
+                          ),
+                          title: Text(
+                            displayTitle,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (message.isNotEmpty) ...[
+                                const SizedBox(height: 4),
+                                Text(message),
+                              ],
+                              const SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  if (metaLine.isNotEmpty)
+                                    Text(
+                                      metaLine,
                                       style: TextStyle(
-                                        fontWeight: isRead ? FontWeight.normal : FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Colors.grey[600],
                                       ),
                                     ),
-                                    subtitle: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        if (displayBody.isNotEmpty) ...[
-                                          Text(displayBody),
-                                          const SizedBox(height: 4),
-                                        ],
-                                        Text(
-                                          _formatTimestamp(timestamp),
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey[600],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              )
-                            : Builder(
-                                builder: (context) {
-                                  int menteeNumber = directMenteeNumber;
-                                  String displayTitle = title;
-                                  String displayBody = body;
-                                  
-                                  if (menteeNumber > 0) {
-                                    displayTitle = title.replaceAll('Mentee', 'Mentee #$menteeNumber').replaceAll('mentee', 'Mentee #$menteeNumber');
-                                    displayBody = body.replaceAll('Mentee', 'Mentee #$menteeNumber').replaceAll('mentee', 'Mentee #$menteeNumber');
-                                  }
-
-                                  return ListTile(
-                                    onTap: () async {
-                                      // Mark as read
-                                      await notifications[index].reference.update({'isRead': true});
-                                      
-                                      // Fetch and navigate to mentee details
-                                      if (menteeId.isNotEmpty) {
-                                        try {
-                                          final menteeDoc = await FirebaseFirestore.instance
-                                              .collection('mentees')
-                                              .doc(menteeId)
-                                              .get();
-                                          
-                                          if (menteeDoc.exists) {
-                                            final menteeData = menteeDoc.data() as Map<String, dynamic>?;
-                                            if (menteeData != null) {
-                                              Navigator.pop(context); // Close bottom sheet
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) => MenteeDetailsPage(
-                                                    menteeDocId: menteeId,
-                                                    name: menteeData['name'] ?? 'Unknown',
-                                                    age: menteeData['age'] ?? 0,
-                                                    phone: menteeData['phone'] ?? '',
-                                                    menteeNumber: menteeData['menteeNumber'] ?? 0,
-                                                    createdAt: (menteeData['createdAt'] as Timestamp?)?.toDate(),
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                          }
-                                        } catch (e) {
-                                          print('Error navigating to mentee: $e');
-                                        }
-                                      }
-                                    },
-                                    leading: CircleAvatar(
-                                      backgroundColor: isRead ? Colors.grey.shade300 : Colors.orange,
-                                      child: Icon(
-                                        Icons.notifications,
-                                        color: isRead ? Colors.grey.shade600 : Colors.white,
-                                      ),
-                                    ),
-                                    title: Text(
-                                      displayTitle,
+                                  if (timeAgo.isNotEmpty)
+                                    Text(
+                                      timeAgo,
                                       style: TextStyle(
-                                        fontWeight: isRead ? FontWeight.normal : FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Colors.blue[700],
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    subtitle: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        if (displayBody.isNotEmpty) ...[
-                                          Text(displayBody),
-                                          const SizedBox(height: 4),
-                                        ],
-                                        Text(
-                                          _formatTimestamp(timestamp),
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey[600],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
+                                ],
                               ),
+                            ],
+                          ),
+                        ),
                       );
                     },
                   );
@@ -520,27 +410,49 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  String _formatTimestamp(DateTime timestamp) {
+  String _formatTimestamp(DateTime? timestamp) {
+    if (timestamp == null) return '';
+
+    final now = DateTime.now();
+    final isSameDay = now.year == timestamp.year &&
+        now.month == timestamp.month &&
+        now.day == timestamp.day;
+
+    if (isSameDay) {
+      return DateFormat('h:mm a').format(timestamp);
+    }
+
+    final difference = now.difference(timestamp);
+    if (difference.inDays < 7) {
+      return DateFormat('MMM d, h:mm a').format(timestamp);
+    } else {
+      return DateFormat('MMM d, y h:mm a').format(timestamp);
+    }
+  }
+
+  String _getTimeAgo(DateTime? timestamp) {
+    if (timestamp == null) return '';
+
     final now = DateTime.now();
     final difference = now.difference(timestamp);
-    
-    // Debug: print timestamp info
-    print('Timestamp: $timestamp, Now: $now, Difference: ${difference.inMinutes} minutes');
 
-    if (difference.inSeconds < 0) {
-      // Timestamp is in the future, might be wrong timezone
-      return 'Just now';
-    } else if (difference.inMinutes < 1) {
-      return 'Just now';
-    } else if (difference.inHours < 1) {
+    if (difference.inSeconds < 60) {
+      return '${difference.inSeconds}s ago';
+    } else if (difference.inMinutes < 60) {
       return '${difference.inMinutes}m ago';
-    } else if (difference.inDays < 1) {
+    } else if (difference.inHours < 24) {
       return '${difference.inHours}h ago';
     } else if (difference.inDays < 7) {
       return '${difference.inDays}d ago';
+    } else if (difference.inDays < 30) {
+      final weeks = (difference.inDays / 7).floor();
+      return '${weeks}w ago';
+    } else if (difference.inDays < 365) {
+      final months = (difference.inDays / 30).floor();
+      return '${months}mo ago';
     } else {
-      // Use DateFormat for better formatting
-      return DateFormat('MMM d, y h:mm a').format(timestamp);
+      final years = (difference.inDays / 365).floor();
+      return '${years}y ago';
     }
   }
 
@@ -559,15 +471,11 @@ class _HomePageState extends State<HomePage> {
         actions: [
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
-                .collection('notifications')
+                .collection('notifications_from_esp')
                 .snapshots(),
             builder: (context, snapshot) {
               final allNotifications = snapshot.data?.docs ?? [];
-              final unreadCount = allNotifications.where((doc) {
-                final data = doc.data() as Map<String, dynamic>;
-                return data['mentorId'] == _currentMentorId && 
-                       (data['isRead'] as bool? ?? false) == false;
-              }).length;
+              final unreadCount = allNotifications.length;
 
               return Stack(
                 children: [

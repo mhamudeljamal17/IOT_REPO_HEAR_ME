@@ -155,14 +155,13 @@ exports.sendMentorNotification = onDocumentWritten(
 
               // Create emergency record
               await admin.firestore().collection("emergencies").add({
-                menteeId: menteeDoc.id,
-                menteeName: menteeData.name || "Unknown",
                 menteeNumber: menteeNumber,
                 mentorId: mentorId,
                 emotion: emotion,
                 timestamp: admin.firestore.FieldValue.serverTimestamp(),
                 audioPath: data.audioPath || null,
                 imagePath: data.imagePath || null,
+                detectionId: data.detectionId || null,
                 status: "new",
               });
 
