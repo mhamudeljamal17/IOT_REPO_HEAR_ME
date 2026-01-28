@@ -17,4 +17,7 @@
 #define MENTEE_NUMBER 0000
 #define ESP_COMMAND_PATH "/esp_commands/0000"
 
+
+/* link https://docs.google.com/document/d/16sM9n22lDofZ13lkmQ0FkOjTuNXGaNMN9WaFCnx4bPE/edit?usp=sharing */
+
 #endif // SECRETS_H
