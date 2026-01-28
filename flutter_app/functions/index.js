@@ -138,6 +138,41 @@ exports.sendMentorNotification = onDocumentWritten(
         const response = await admin.messaging().send(message);
         console.log("✅ FCM sent to mentor:", mentorId, "Response:", response);
 
+        // Create emergency record if emotion is angry or panic
+        const emotion = data.emotion || "unknown";
+        if (emotion === "angry" || emotion === "panic") {
+          try {
+            // Get mentee data
+            const menteeQuery = await admin.firestore()
+                .collection("mentees")
+                .where("menteeNumber", "==", menteeNumber)
+                .limit(1)
+                .get();
+
+            if (!menteeQuery.empty) {
+              const menteeDoc = menteeQuery.docs[0];
+              const menteeData = menteeDoc.data();
+
+              // Create emergency record
+              await admin.firestore().collection("emergencies").add({
+                menteeId: menteeDoc.id,
+                menteeName: menteeData.name || "Unknown",
+                menteeNumber: menteeNumber,
+                mentorId: mentorId,
+                emotion: emotion,
+                timestamp: admin.firestore.FieldValue.serverTimestamp(),
+                audioPath: data.audioPath || null,
+                imagePath: data.imagePath || null,
+                status: "new",
+              });
+
+              console.log("✅ Emergency record created for mentee #" + menteeNumber);
+            }
+          } catch (emergencyError) {
+            console.error("❌ Error creating emergency record:", emergencyError);
+          }
+        }
+
         // Update notification status
         await after.ref.update({
           status: "sent",

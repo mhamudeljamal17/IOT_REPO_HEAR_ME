@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'home_page.dart';
-import 'alerts_page.dart';
 import 'sign_in_page.dart';
 import 'edit_profile_page.dart';
 import 'change_password_page.dart';
@@ -184,10 +183,9 @@ Future<void> _signOut(BuildContext context) async {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2,
+        currentIndex: 1,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Alerts'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
         ],
         onTap: (index) {
@@ -197,11 +195,6 @@ Future<void> _signOut(BuildContext context) async {
               MaterialPageRoute(builder: (_) => const HomePage()),
             );
           } else if (index == 1) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => const AlertsPage()),
-            );
-          } else if (index == 2) {
             // Already on Settings
             return;
           }
