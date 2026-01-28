@@ -60,8 +60,8 @@ For further explanation on how to set up the complete notification system with E
 8. Build and run the Flutter application
 
 ### Configuration Files
-- **SECRETS.h**: WiFi credentials and Firebase tokens (see SECRETS_EXAMPLE.h)
-- **parameters.h**: Hardware GPIO pin configuration (see PARAMETERS.md)
+- **SECRETS.h**: WiFi credentials and Firebase tokens (see ESP32/SECRETS.h)
+- **parameters.h**: Hardware GPIO pin configuration (see ESP32/PARAMETERS.md)
 
 
 
